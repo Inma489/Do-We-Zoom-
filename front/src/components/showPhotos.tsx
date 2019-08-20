@@ -55,7 +55,10 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                       <img
                         className="activator"
                         src={
-                          "http://localhost:8080/uploads/photos/" + p.filename
+                          p.filename
+                            ? "http://localhost:8080/uploads/photos/" +
+                              p.filename
+                            : "/image/largee.gif"
                         }
                       />
                     </Link>

@@ -50,7 +50,7 @@ const ShowUsers: React.FC<
                       src={
                         u.avatar
                           ? "http://localhost:8080/uploads/avatars/" + u.avatar
-                          : "/image/foto-default.png"
+                          : "/image/avatar-default.png"
                       }
                       alt="user"
                     />

@@ -18,6 +18,7 @@ import EditEvent from "./editEvent";
 import PhotoDetail from "./photoDetail";
 import PhotoUserDetail from "./photoUserDetail";
 import UserDetail from "./userDetail";
+import "../css/layout.css";
 
 interface IPropsGlobal {
   setUsers: (users: IUser[]) => void;
@@ -71,7 +72,7 @@ const LayoutPage: React.FC<
   React.useEffect(listPhotos, []);
 
   return (
-    <div>
+    <div className="layout">
       <Navbar />
       <Switch>
         <Route path="/users/:userId/edit" exact component={EditProfile} />

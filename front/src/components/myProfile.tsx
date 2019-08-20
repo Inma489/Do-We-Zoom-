@@ -49,7 +49,7 @@ const MyProfile: React.FC<
             src={
               user.avatar
                 ? "http://localhost:8080/uploads/avatars/" + user.avatar + "?" + Date()
-                : "/image/foto-default.png"
+                : "/image/avatar-default.png"
             }
           />
           <div className="row">

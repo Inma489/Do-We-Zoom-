@@ -16,7 +16,7 @@ interface IPropsGlobal {
 }
 
 const Navbar: React.FC<IPropsGlobal> = props => {
-  const {Button,Icon,Divider,Dropdown } = require("react-materialize");
+  const { Button, Icon, Divider, Dropdown } = require("react-materialize");
   const user = props.users.find(u => u._id === props.decoded._id);
 
   const logOut = () => {
@@ -29,69 +29,71 @@ const Navbar: React.FC<IPropsGlobal> = props => {
   }
 
   return (
-
-
-
-
     // creamos de nuevo un navbar
 
-
-
-    
     //si no hay token muestrame estas cosas si no muestrame otras
     // para darle opciones a mi dropdown : options={{hover:true}}
-   <div className="container-fluid">
-<nav>
-  <div className="nav-wrapper">
-    <a  className="brand-logo left">Logo</a>
-    <ul className="right hide-on-med-and-down list">
-      <li><a >Users</a></li>
-      <li><a >Posts</a></li>
-      <li><a >Events</a></li>
-      <li><img
-      width="60"
-      className="avatar"
-      src={
-        user.avatar
-          ? "http://localhost:8080/uploads/avatars/" +
-            user.avatar +
-            "?" +
-            Date()
-          : "/image/foto-default.png"
-      }
-      alt="avatar"
-    /></li>
+    <div className="container-fluid">
+      <nav>
+        <div className="nav-wrapper">
+        <Link to="/">
+          <a className="brand-logo left">Logo</a>
+          </Link>
+          <ul className="right hide-on-med-and-down list">
+            <li>
+              <Link to="/users">Users</Link>
+            </li>
+            <li>
+              <Link to="/posts">Posts</Link>
+            </li>
+            <li>
+              <Link to="/events">Events</Link>
+            </li>
+            <li>
+              <img
+                width="60"
+                className="avatar"
+                src={
+                  user.avatar
+                    ? "http://localhost:8080/uploads/avatars/" +
+                      user.avatar +
+                      "?" +
+                      Date()
+                    : "/image/avatar-default.png"
+                }
+                alt="avatar"
+              />
+            </li>
 
-      <Dropdown trigger={<Button >{user.username}</Button>}>
-      
-<a href="#">
-<Icon>person</Icon>Profile
-</a>
-<Divider/>
-<a href="#">
-My Posts
-</a>
-<Divider/>
-</Dropdown>
-<Link
-        to="/"
-        className="waves-effect waves-light btn-small"
-        onClick={logOut}
-      >
-        <i className="small material-icons">settings_power</i>
-      </Link>
-    </ul>
-  </div>
-</nav>
-        
-   </div>
-
-    
-
-
-
-
-    
+            <Dropdown trigger={<Button>{user.username}</Button>}>
+              
+              <Link to={"/users/" + props.decoded._id}>
+                <Icon>person</Icon>Profile
+                </Link>
+              
+              
+              <Divider />
+              {!props.decoded.admin && (
+              
+              <Link to={"/myPosts/" + props.decoded._id}>
+                <Icon>insert_photo</Icon>
+                My Posts
+                </Link>
+              
+              )}
+              <Divider />
+            </Dropdown>
+            <Link
+              to="/"
+              className="waves-effect waves-light btn-small"
+              onClick={logOut}
+            >
+              <i className="small material-icons">settings_power</i>
+            </Link>
+          </ul>
+        </div>
+      </nav>
+    </div>
 
     /*
  <div className="container-fluid">

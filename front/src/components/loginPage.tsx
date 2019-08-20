@@ -53,6 +53,7 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
 
   // para que se loguee el usuario y acceda a su pagina
   const getToken = () => {
+    if(email && password){
     fetch("http://localhost:8080/api/auth", {
       // es una funcion promesa, funcion que se ejecuta que puede esperar hasta que se obtenga la respuesta, devuelve una respuesta
       method: "POST",
@@ -80,6 +81,14 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
         });
       }
     });
+  }else{
+    if(!email){
+      setErrorEmail("you must to complete those fields");
+    }
+    if(!password){
+      setErrorPassword("you must to complete those fields")
+    }
+  }
   };
   // registro de usuarios
   // para mandar la foto en el formulario de registrar a un usuario
@@ -197,6 +206,7 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                         id="password"
                       />
                       <label>Password</label>
+                      <div>{errorEmail}</div>
                     </div>
                   </div>
                 </div>
@@ -218,7 +228,7 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
           SignUp
         </Button>
         <Modal id="modal2" header="Welcome to Do We Zoom">
-          <img src="/image/foto-default.png" alt="avatar" />
+          <img  width="150"src="/image/avatar-default.png" alt="avatar" />
           <div className="input-field">
             <input
               ref={inputFileRef}
