@@ -1,9 +1,15 @@
-/* .dropdown {
+.dropdown {
     top: 52.25px !important;
 }
-.dropdown-trigger{
-    width: 100px;
-} */
-/* i.right{
+ .dropdown-trigger{
+    width: 102px;
+} 
+ /* i.right{
     margin-left: 0px;
-} */
+}  */
+.list{
+    margin-right: 0%;
+}
+.avatar{
+    margin-right: 11px
+}

@@ -162,7 +162,8 @@ router.post(
         if (error) {
           if (error.code === 11000) {
             console.log(error);
-            res.status(400).send("El username ya existe.");
+            //el username ya existe con este error
+            res.status(400).send({e: error});
           } else {
             res.status(400).send("error " + error.errmsg[0]);
           }

@@ -25,19 +25,30 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
   const [password, setPassword] = React.useState("");
   const [file, setFile] = React.useState();
   const inputFileRef = React.createRef<any>();
-  const [error, setError] = React.useState("");
+  const [errorUser, setErrorUser] = React.useState("");
+  const [errorEmail, setErrorEmail] = React.useState("");
+  const [errorPassword, setErrorPassword] = React.useState("");
   // const [updated, setUpdated] = React.useState(false);
   // const inputFileRef = React.createRef<any>();
   const handleFileUpload = (event: any) => setFile(event.target.files[0]);
   const updateFile = (event: React.ChangeEvent<HTMLInputElement>) =>
     setFile(event.target.files![0]);
 
-  const updateUsername = (event: ChangeEvent<HTMLInputElement>) =>
+  const updateUsername = (event: ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
-  const updateEmail = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setErrorUser("");
+  }
+
+  const updateEmail = (event: React.ChangeEvent<HTMLInputElement>) =>{
     setEmail(event.target.value);
-  const updatePassword = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setErrorEmail("");
+  }
+  const updatePassword = (event: React.ChangeEvent<HTMLInputElement>) =>{
     setPassword(event.target.value);
+    setErrorPassword("");
+
+    
+  }
   // para mandar la foto en el formulario de registrar a un usuario
 
   // para que se loguee el usuario y acceda a su pagina
@@ -73,6 +84,9 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
   // registro de usuarios
   // para mandar la foto en el formulario de registrar a un usuario
   const addUser = () => {
+    if(username && email && password){
+
+    
     const data = new FormData();
     if (file) {
       data.append("file", file);
@@ -101,16 +115,46 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
             // que le saliera un texto que le pusiera: usuario resgistrado o algo asi
           });
         } else {
-          //   res.send("error");
+          res.json().then(({e}) =>{
+            if (e.code === 11000){
+             let err = e.errmsg.split("{")[1];
+             console.log(err);
+             err = err.split('"')[1];
+             console.log(err);
+             if(err === username){
+              setErrorUser(" that username already exist")
+             }else if(err === email){
+              setErrorEmail(" that email already exist")
+             }
 
-          console.log("el username ya existe");
-          setError("El username ya está ocupado");
+              }
+             
+            
+            console.log(e)
+          }).catch(err =>{
+            console.log(err)
+          })
+       
+
+       
+          
         }
       })
       .catch(err => {
         // res.status(400).send("error add ," + err);
         console.log("error al add user," + err);
       });
+    }else {
+      if(!username){
+        setErrorUser("you must to complete this field")
+      }
+      if(!email){
+        setErrorEmail("you must to complete this field")
+      }
+      if(!password){
+        setErrorPassword("you must to complete this field")
+      }
+    }
   };
 
   return (
@@ -193,21 +237,23 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
           </div>
           <div className="input-field">
             <i className="material-icons prefix">person</i>
-            <input type="text" value={username} onChange={updateUsername} />
+            <input  className={errorUser? "border-red": ""} type="text" value={username} onChange={updateUsername}  />
             <label>Username</label>
-            <div>{error}</div>
+            <div>{errorUser}</div>
           </div>
           <br />
           <div className="input-field">
             <i className="material-icons prefix">email</i>
             <input type="text" value={email} onChange={updateEmail} />
             <label>Email</label>
+            <div>{errorEmail}</div>
           </div>
           <br />
           <div className="input-field">
             <i className="material-icons prefix">lock</i>
             <input type="password" value={password} onChange={updatePassword} />
             <label>Password</label>
+            <div>{errorPassword}</div>
           </div>
           <br />
           <input

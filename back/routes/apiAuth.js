@@ -33,9 +33,12 @@ router.post("/", function(req, res) {
           
       res.send(token);
     } else {
+      console.log(document)
       res.status(400).send("Invalid credentials");
     }
-  });
+  }).catch(err =>{
+    console.log(err)
+  })
 });
 
 module.exports = router;

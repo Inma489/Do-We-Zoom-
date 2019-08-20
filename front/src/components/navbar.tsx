@@ -16,7 +16,7 @@ interface IPropsGlobal {
 }
 
 const Navbar: React.FC<IPropsGlobal> = props => {
-  // const {Navbar,NavItem,Divider,Dropdown } = require("react-materialize");
+  const {Button,Icon,Divider,Dropdown } = require("react-materialize");
   const user = props.users.find(u => u._id === props.decoded._id);
 
   const logOut = () => {
@@ -29,50 +29,64 @@ const Navbar: React.FC<IPropsGlobal> = props => {
   }
 
   return (
+
+
+
+
+    // creamos de nuevo un navbar
+
+
+
+    
     //si no hay token muestrame estas cosas si no muestrame otras
     // para darle opciones a mi dropdown : options={{hover:true}}
-    <div className="container-fluid">
-      <div className="navbar-fixed">
-        <nav className="#c2185b pink darken-2">
-          <div className="nav-wrapper">
-            <a href="#" className="brand-logo">
-              Mi Logo
-            </a>
-            <ul className="right">
-              <li>
-                <a href="#">Users</a>
-              </li>
-              <li>
-                <a href="#">Posts</a>
-              </li>
-              <li>
-                <a href="#">Events</a>
-              </li>
-              <li>
-                <a href="#" className="dropdown-trigger"  data-beloworigin="true"data-target="drop">
-                  {user.username}
-                  <i className="material-icons right">arrow_drop_down</i>
-                </a>
-                <ul id="drop" className="dropdown-content">
-                  <li>
-                    <div >Profile</div>
-                  </li>
-                  <li className="divider"></li>
-                  <li>
-                    <a href="#">My posts</a>
-                  </li>
-                  <li>
-                    <a href="#">Logout</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-    </div>
+   <div className="container-fluid">
+<nav>
+  <div className="nav-wrapper">
+    <a  className="brand-logo left">Logo</a>
+    <ul className="right hide-on-med-and-down list">
+      <li><a >Users</a></li>
+      <li><a >Posts</a></li>
+      <li><a >Events</a></li>
+      <li><img
+      width="60"
+      className="avatar"
+      src={
+        user.avatar
+          ? "http://localhost:8080/uploads/avatars/" +
+            user.avatar +
+            "?" +
+            Date()
+          : "/image/foto-default.png"
+      }
+      alt="avatar"
+    /></li>
 
-    // el nuevo navbar comiezza aqui
+      <Dropdown trigger={<Button >{user.username}</Button>}>
+      
+<a href="#">
+<Icon>person</Icon>Profile
+</a>
+<Divider/>
+<a href="#">
+My Posts
+</a>
+<Divider/>
+</Dropdown>
+<Link
+        to="/"
+        className="waves-effect waves-light btn-small"
+        onClick={logOut}
+      >
+        <i className="small material-icons">settings_power</i>
+      </Link>
+    </ul>
+  </div>
+</nav>
+        
+   </div>
+
+    
 
 
 
