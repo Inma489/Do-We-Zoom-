@@ -4,9 +4,10 @@
  .dropdown-trigger{
     width: 102px;
 } 
- /* i.right{
-    margin-left: 0px;
-}  */
+ .i{
+    margin-top: -51px;
+    margin-right: -82px;
+} 
 .list{
     margin-right: 0%;
 }

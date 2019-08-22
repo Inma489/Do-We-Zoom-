@@ -73,7 +73,7 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                             u.avatar
                               ? "http://localhost:8080/uploads/avatars/" +
                                 u.avatar
-                              : "/image/foto-default.png"
+                              : "/image/avatar-default.png"
                           }
                           alt="user"
                         />

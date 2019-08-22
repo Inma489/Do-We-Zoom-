@@ -13,6 +13,7 @@ import LayoutPage from "./components/layout";
 import "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
 
+
 interface IPropsGlobal {
   token: string;
 }

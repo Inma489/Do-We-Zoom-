@@ -34,11 +34,14 @@ const Navbar: React.FC<IPropsGlobal> = props => {
     //si no hay token muestrame estas cosas si no muestrame otras
     // para darle opciones a mi dropdown : options={{hover:true}}
     <div className="container-fluid">
-      <nav>
+     
+      <nav className="nav-extended">
         <div className="nav-wrapper">
-        <Link to="/">
-          <a className="brand-logo left">Logo</a>
+          <Link to="/">
+            <div className="brand-logo">Logo</div>
           </Link>
+          <a href="#" data-target="mobile-nav" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+
           <ul className="right hide-on-med-and-down list">
             <li>
               <Link to="/users">Users</Link>
@@ -65,21 +68,24 @@ const Navbar: React.FC<IPropsGlobal> = props => {
               />
             </li>
 
-            <Dropdown trigger={<Button>{user.username}</Button>}>
-              
+            <Dropdown
+              trigger={
+                <Button>
+                  {user.username}
+                  <Icon className="material-icons i">arrow_drop_down</Icon>
+                </Button>
+              }
+            >
               <Link to={"/users/" + props.decoded._id}>
                 <Icon>person</Icon>Profile
-                </Link>
-              
-              
+              </Link>
+
               <Divider />
               {!props.decoded.admin && (
-              
-              <Link to={"/myPosts/" + props.decoded._id}>
-                <Icon>insert_photo</Icon>
-                My Posts
+                <Link to={"/myPosts/" + props.decoded._id}>
+                  <Icon>insert_photo</Icon>
+                  My Posts
                 </Link>
-              
               )}
               <Divider />
             </Dropdown>
@@ -93,6 +99,17 @@ const Navbar: React.FC<IPropsGlobal> = props => {
           </ul>
         </div>
       </nav>
+      <ul className="sidenav" id="mobile-nav">
+      <li>
+              <Link to="/users">Users</Link>
+            </li>
+            <li>
+              <Link to="/posts">Posts</Link>
+            </li>
+            <li>
+              <Link to="/events">Events</Link>
+            </li>
+  </ul>
     </div>
 
     /*

@@ -1,6 +1,6 @@
 import React from "react";
 import { IUser, IPhoto, IDecoded } from "../interfaces";
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps, Redirect } from "react-router";
 import { connect } from "react-redux";
 import { IGlobalState } from "../reducers";
 import { Link } from 'react-router-dom';
@@ -18,6 +18,7 @@ interface IPropsGlobal {
 const UserDetail: React.FC<
   IPropsGlobal & RouteComponentProps<{ userId: string }>
 > = props => {
+  const {Icon} = require("react-materialize");
   const user = props.users.find(u => u._id === props.match.params.userId);
   let _id = props.match.params.userId;
   let myphotos = props.photos.filter(p => p.owner === _id);
@@ -48,6 +49,9 @@ const UserDetail: React.FC<
   }
   return (
     <div className="section container">
+      <Link to={"/users"}>
+      <Icon>close</Icon>
+      </Link>
       <div className="row">
         <div className="col s12">
           <div className="card-image" />
@@ -59,7 +63,7 @@ const UserDetail: React.FC<
                   user.avatar +
                   "?" +
                   Date()
-                : "/image/foto-default.png"
+                : "/image/avatar-default.png"
             }
           />
           <div className="row">

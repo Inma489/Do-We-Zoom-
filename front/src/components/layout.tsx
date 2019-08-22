@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Navbar from "./navbar";
 import { Switch, Route, Redirect, RouteComponentProps } from "react-router";
 import ShowUsers from "./showUsers";
@@ -18,7 +18,8 @@ import EditEvent from "./editEvent";
 import PhotoDetail from "./photoDetail";
 import PhotoUserDetail from "./photoUserDetail";
 import UserDetail from "./userDetail";
-import "../css/layout.css";
+import "../css/layoutBackGround.css";
+import LayoutBackGround from './layoutBackGround';
 
 interface IPropsGlobal {
   setUsers: (users: IUser[]) => void;
@@ -72,8 +73,10 @@ const LayoutPage: React.FC<
   React.useEffect(listPhotos, []);
 
   return (
-    <div className="layout">
+      <Fragment>
       <Navbar />
+      <Route path="/" exact component={LayoutBackGround}/>
+      <div className="routes">
       <Switch>
         <Route path="/users/:userId/edit" exact component={EditProfile} />
         <Route path="/myPosts/:photoId/edit" exact component={EditPhoto} />
@@ -98,7 +101,8 @@ const LayoutPage: React.FC<
         <Route path="/myPosts/add/photo" exact component={AddPhoto} />
         <Redirect to="/" />
       </Switch>
-    </div>
+      </div>
+      </Fragment>
   );
 };
 const mapStateToProps = (state: IGlobalState) => ({

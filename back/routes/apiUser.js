@@ -152,9 +152,10 @@ router.post(
         //aqui nos crea un usuario nuevo
         username: newUser.username,
         email: newUser.email,
-        ...(req.file &&
-          req.file.filename != "" && { avatar: req.file.filename }),
-        ...(!req.file && { avatar: "" }),
+        ...(req.file && { avatar: req.file.filename }),
+        // ...(req.file &&
+        //   req.file.filename != "" && { avatar: req.file.filename }),
+        // ...(!req.file && { avatar: "" }),
         password: md5(newUser.password)
       });
       user.save((error, result) => {
