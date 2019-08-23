@@ -8,6 +8,22 @@
      
 }
 */
+.modal1{
+    width: 58% !important;
+    max-height: 88% !important;
+    overflow-y: hidden !important;
+    margin-top: -30px !important;
+    background-color: rgba(34, 150, 96, 0.753) !important;
+}
+.modal2{
+    width: 65% !important;
+    max-height: 98% !important;
+    overflow-y: hidden !important;
+    margin-top: -55 px !important;
+    
+    
+}
+
 .submit{
     width: 100px;
     margin-top: 20px;
