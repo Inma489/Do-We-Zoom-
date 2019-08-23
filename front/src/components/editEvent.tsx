@@ -5,6 +5,7 @@ import { RouteComponentProps } from 'react-router';
 import { connect } from 'react-redux';
 import { IGlobalState } from '../reducers';
 import { updateEvent } from '../actions';
+import { Link } from 'react-router-dom';
 
 interface IPropsGlobal{
     token:string;
@@ -167,6 +168,10 @@ const EditEvent: React.FC<IPropsGlobal & RouteComponentProps<{eventId: string}>>
             onClick={()=>editEvent(event._id)}
             className="waves-effect waves-light btn"
           />
+          
+        <Link to={"/events/"}>
+        <button className="waves-effect waves-light btn">Cancel</button>
+        </Link>
         </div>
       </div>
     )

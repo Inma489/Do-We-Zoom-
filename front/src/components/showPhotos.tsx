@@ -68,7 +68,8 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                       <h6>User</h6>
                       <Link to={"/users/" + u._id + "/userDetail"}>
                         <img
-                          width="60"
+                        className="circle responsive-img"
+                          width="50"
                           src={
                             u.avatar
                               ? "http://localhost:8080/uploads/avatars/" +

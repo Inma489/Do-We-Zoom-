@@ -5,6 +5,7 @@ import ShowUsers from "./showUsers";
 import MyProfile from "./myProfile";
 import ShowPhotos from "./showPhotos";
 import EditProfile from "./editProfile";
+import EditUser from "./editUser";
 import MyPosts from "./myPosts";
 import { IUser, IPhoto, IDecoded } from "../interfaces";
 import { connect } from "react-redux";
@@ -17,7 +18,9 @@ import AddEvent from "./addEvent";
 import EditEvent from "./editEvent";
 import PhotoDetail from "./photoDetail";
 import PhotoUserDetail from "./photoUserDetail";
+import UserPhotoDetail from "./userPhotoDetail";
 import UserDetail from "./userDetail";
+import UserDetails from "./userDetails";
 import "../css/layoutBackGround.css";
 import LayoutBackGround from './layoutBackGround';
 
@@ -79,6 +82,7 @@ const LayoutPage: React.FC<
       <div className="routes">
       <Switch>
         <Route path="/users/:userId/edit" exact component={EditProfile} />
+        <Route path="/users/:userId/editUser" exact component={EditUser} />
         <Route path="/myPosts/:photoId/edit" exact component={EditPhoto} />
         <Route path="/events/:eventId/edit" exact component={EditEvent} />
         <Route
@@ -87,11 +91,19 @@ const LayoutPage: React.FC<
           component={PhotoDetail}
         />
         <Route
+          path="/posts/:photoId/userPhotoDetail"
+          exact
+          component={UserPhotoDetail}
+        />
+        <Route
           path="/posts/:photoId/photoUserDetail"
           exact
           component={PhotoUserDetail}
         />
+        
         <Route path="/users/:userId/userDetail" exact component={UserDetail}/>
+        <Route path="/users/:userId/userDetails" exact component={UserDetails}/>
+        
         <Route path="/myPosts/:userId" exact component={MyPosts} />
         <Route path="/users/:userId" exact component={MyProfile} />
         <Route path="/users" exact component={ShowUsers} />

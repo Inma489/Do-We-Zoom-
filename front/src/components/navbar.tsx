@@ -34,13 +34,14 @@ const Navbar: React.FC<IPropsGlobal> = props => {
     //si no hay token muestrame estas cosas si no muestrame otras
     // para darle opciones a mi dropdown : options={{hover:true}}
     <div className="container-fluid">
-     
-      <nav className="nav-extended">
-        <div className="nav-wrapper">
+      <nav className="nav-extended fixed">
+        <div className="nav-wrapper purple">
           <Link to="/">
             <div className="brand-logo">Logo</div>
           </Link>
-          <a href="#" data-target="mobile-nav" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+          <a href="#" data-target="mobile-nav" className="sidenav-trigger">
+            <i className="material-icons">menu</i>
+          </a>
 
           <ul className="right hide-on-med-and-down list">
             <li>
@@ -55,7 +56,7 @@ const Navbar: React.FC<IPropsGlobal> = props => {
             <li>
               <img
                 width="60"
-                className="avatar"
+                className="circle responsive-img"
                 src={
                   user.avatar
                     ? "http://localhost:8080/uploads/avatars/" +
@@ -77,16 +78,16 @@ const Navbar: React.FC<IPropsGlobal> = props => {
               }
             >
               <Link to={"/users/" + props.decoded._id}>
-                <Icon>person</Icon>Profile
+                <Icon>account_circle</Icon>Profile
               </Link>
 
               <Divider />
-              {!props.decoded.admin && (
-                <Link to={"/myPosts/" + props.decoded._id}>
-                  <Icon>insert_photo</Icon>
-                  My Posts
-                </Link>
-              )}
+
+              <Link to={"/myPosts/" + props.decoded._id}>
+                <Icon>insert_photo</Icon>
+                My Posts
+              </Link>
+
               <Divider />
             </Dropdown>
             <Link
@@ -100,16 +101,16 @@ const Navbar: React.FC<IPropsGlobal> = props => {
         </div>
       </nav>
       <ul className="sidenav" id="mobile-nav">
-      <li>
-              <Link to="/users">Users</Link>
-            </li>
-            <li>
-              <Link to="/posts">Posts</Link>
-            </li>
-            <li>
-              <Link to="/events">Events</Link>
-            </li>
-  </ul>
+        <li>
+          <Link to="/users">Users</Link>
+        </li>
+        <li>
+          <Link to="/posts">Posts</Link>
+        </li>
+        <li>
+          <Link to="/events">Events</Link>
+        </li>
+      </ul>
     </div>
 
     /*

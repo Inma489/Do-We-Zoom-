@@ -41,12 +41,12 @@ const ShowUsers: React.FC<
         {props.users
           .filter(u => u._id != props.decoded._id)
           .map(u => (
-            <div className="col s2" key={u.username}>
-              <Link to={"/users/" + u._id + "/userDetail"}>
+            <div className="col s3" key={u.username}>
+              <Link to={"/users/" + u._id + "/userDetails"}>
                 <div className="card">
                   <div className="card-image waves-effect waves-block waves-light">
                     <img
-                      width="60"
+                      width="50"
                       src={
                         u.avatar
                           ? "http://localhost:8080/uploads/avatars/" + u.avatar
@@ -62,7 +62,7 @@ const ShowUsers: React.FC<
 
                     {props.decoded.admin && (
                       <Link
-                        to={"/users/" + u._id + "/edit"}
+                        to={"/users/" + u._id + "/editUser"}
                         className="waves-effect waves-light btn ml-4"
                       >
                         Edit
@@ -73,7 +73,7 @@ const ShowUsers: React.FC<
                         onClick={() => {
                           Delete(u._id);
                         }}
-                        to="/users/"
+                        to="/users"
                         className="waves-effect waves-light btn"
                       >
                         Delete

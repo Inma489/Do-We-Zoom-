@@ -4,6 +4,7 @@ import { RouteComponentProps } from "react-router";
 import * as actions from "../actions";
 import { connect } from "react-redux";
 import { IGlobalState } from "../reducers";
+import { Link } from 'react-router-dom';
 
 interface IPropsGlobal {
   token: string;
@@ -106,7 +107,7 @@ const EditProfile: React.FC<
                 props.setDecoded(user);
                 props.updateUser(user, user._id);
 
-                props.history.push("/myProfile"); // me redirije a mi pagina showUsers
+                props.history.push("/users/" + props.decoded._id); // me redirije a mi pagina showUsers
               })
               .catch(err => {
                 console.log("error " + err);
@@ -218,6 +219,9 @@ const EditProfile: React.FC<
           value="Save"
           className="waves-effect waves-light btn"
         />
+        <Link to={"/users/" + props.decoded._id}>
+        <button className="waves-effect waves-light btn">Cancel</button>
+        </Link>
       </div>
     </div>
   );

@@ -49,7 +49,7 @@ const UserDetail: React.FC<
   }
   return (
     <div className="section container">
-      <Link to={"/users"}>
+      <Link to={"/posts"}>
       <Icon>close</Icon>
       </Link>
       <div className="row">
@@ -76,7 +76,7 @@ const UserDetail: React.FC<
           <div className="col s2" key={p._id}>
             <div className="card">
               <div className="card-image waves-effect waves-block waves-light">
-                <Link to={"/myPosts/" + p._id + "/photoDetail"}>
+                <Link to={"/posts/" + p._id + "/userPhotoDetail"}>
                 <img
                   className="activator"
                   src={

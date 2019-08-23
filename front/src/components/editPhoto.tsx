@@ -14,8 +14,10 @@ interface IPropsGlobal {
 }
 
 const EditPhoto: React.FC<
-  IPropsGlobal & RouteComponentProps<{ photoId: string }>
+  IPropsGlobal & RouteComponentProps<{ photoId: string}>
 > = props => {
+  // let _id = props.match.params.userId;
+  // let myphotos = props.photos.filter(p => p.owner === _id);
   const [file, setFile] = React.useState();
   const [name, setName] = React.useState("");
   const [camera, setCamera] = React.useState("");
@@ -143,6 +145,9 @@ const EditPhoto: React.FC<
           className="waves-effect waves-light btn"
         >
           Save
+        </Link>
+        <Link to={"/myPosts/" + props.decoded._id}>
+        <button className="waves-effect waves-light btn">Cancel</button>
         </Link>
       </div>
     </div>

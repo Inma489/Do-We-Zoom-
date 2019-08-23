@@ -3,6 +3,7 @@ import { IPhoto, IDecoded, IUser } from '../interfaces';
 import { RouteComponentProps } from 'react-router';
 import { connect } from 'react-redux';
 import { IGlobalState } from '../reducers';
+import { Link } from 'react-router-dom';
 
 
 
@@ -15,6 +16,7 @@ interface IPropsGlobal{
 }
 
 const PhotoDetail: React.FC<IPropsGlobal & RouteComponentProps<{photoId: string}>> = props => {
+    const {Icon} = require("react-materialize");
     const myPhoto = props.photos.find(p => p._id === props.match.params.photoId)
 
     if(!myPhoto){
@@ -22,6 +24,9 @@ const PhotoDetail: React.FC<IPropsGlobal & RouteComponentProps<{photoId: string}
     }
     return(
     <div className="section container">
+        <Link to={"/myPosts/" + props.decoded._id}>
+      <Icon>close</Icon>
+      </Link>
         <div className="row">
             <div className="col s12">
             
