@@ -8,31 +8,65 @@
      
 }
 */
-.modal1{
-    width: 58% !important;
-    max-height: 88% !important;
-    overflow-y: hidden !important;
-    margin-top: -30px !important;
-    background-color: rgba(34, 150, 96, 0.753) !important;
+#btnLogin{
+    margin-top: 10px;
+    border-radius: 10px 10px 10px 10px !important;
+    margin-left: -60px !important;
 }
-.modal2{
-    width: 65% !important;
+#btnSignUp{
+    margin-right: -118px !important;
+    margin-top: -54px;
+    border-radius: 10px 10px 10px 10px !important;
+}
+.modal1{
+    width: 50% !important;
     max-height: 98% !important;
     overflow-y: hidden !important;
-    margin-top: -55 px !important;
+    margin-top: -20px !important;
+    background-color: white !important;
+    opacity: 10px;
+}
+.modal2{
+    width: 60% !important;
+    max-height: 98% !important;
+    overflow-y: hidden !important;
+    margin-top: -20px !important;
+    background-color: rgba(34, 150, 96, 0.753) !important;
     
     
+}
+.loginPhoto{
+    margin-top: 0px !important;
+    
+}
+.avatarDefault{
+    border-radius: 76px;
+}
+.btnLog{
+    width: 150px;
+    margin-top: -9px;
+    text-align: center;
+    margin-left: 230px !important;
+    border-radius: 10px 10px 10px 10px !important;
 }
 
 .submit{
-    width: 100px;
-    margin-top: 20px;
+    width: 150px;
+    margin-top: -9px;
     text-align: center;
-    margin-left: 40%;
+    margin-left: 300px !important;
+    border-radius: 10px 10px 10px 10px !important;
     
+}
+.btnSignup {
+    width: 150px;
+    margin-top: -9px;
+    text-align: center;
+    margin-left: 300px !important;
+    border-radius: 10px 10px 10px 10px !important;
 }
 
 .border-red{
-    border: 2px solid red;
+    border-bottom: 1px solid red;
 
 }

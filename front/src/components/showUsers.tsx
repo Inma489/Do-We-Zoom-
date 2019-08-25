@@ -5,6 +5,7 @@ import { IGlobalState } from "../reducers";
 import * as actions from "../actions";
 import { Link, RouteComponentProps } from "react-router-dom";
 
+
 interface IPropsGlobal {
   token: string;
   decoded: IDecoded;
@@ -46,11 +47,12 @@ const ShowUsers: React.FC<
                 <div className="card">
                   <div className="card-image waves-effect waves-block waves-light">
                     <img
-                      width="50"
+                    className="responsive-img"
+                      width="40"
                       src={
                         u.avatar
                           ? "http://localhost:8080/uploads/avatars/" + u.avatar
-                          : "/image/avatar-default.png"
+                          : "/image/default-avatar1.jpg"
                       }
                       alt="user"
                     />

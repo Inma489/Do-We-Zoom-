@@ -76,7 +76,7 @@ const UserDetails: React.FC<
           <div className="col s2" key={p._id}>
             <div className="card">
               <div className="card-image waves-effect waves-block waves-light">
-                <Link to={"/posts/" + p._id + "/userPhotoDetail"}>
+                <Link to={"/posts/" + p._id + "/userPhotoDetails"}>
                 <img
                   className="activator"
                   src={

@@ -10,6 +10,7 @@ import { IGlobalState } from "./reducers";
 import { connect } from "react-redux";
 import LoginPage from "./components/loginPage";
 import LayoutPage from "./components/layout";
+
 import "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
 import "react-materialize/lib/Icon";

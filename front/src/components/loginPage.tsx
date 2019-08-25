@@ -173,25 +173,27 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
 
       <div className="modal-content center">
         <Button id="btnLogin" href="#modal1" className="modal-trigger">
-          Login
+          Signin
         </Button>
         <Modal id="modal1" header="" className="modal1">
           <div className="section center">
             <div className="row">
-              <div className="col s3">
-                <img width="200" src="/image/foto.jpg" alt="foto" />
+              <div className="col s12">
+                <img
+                  width="200"
+                  className="responsive-img loginPhoto"
+                  src="/image/logo-listo2.png"
+                  alt="foto"
+                />
               </div>
-            </div>
-
-            <div className="col s3">
-              <div className="input-field">
-                <i className="material-icons prefix">email</i>
-                <input type="text" value={email} onChange={updateEmail} />
-                <label>Email</label>
+              <div className="col s12">
+                <div className="input-field">
+                  <i className="material-icons prefix">email</i>
+                  <input type="text" value={email} onChange={updateEmail} />
+                  <label>Email</label>
+                </div>
               </div>
-              <br />
-
-              <div className="col s3">
+              <div className="col s12">
                 <div className="input-field">
                   <i className="material-icons prefix">lock</i>
                   <input
@@ -205,69 +207,91 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                 </div>
               </div>
             </div>
-            <input
-              type="submit"
-              value="SignIn"
-              onClick={getToken}
-              className="btn btn-large submit"
-            />
           </div>
+
+          <input
+            type="submit"
+            value="Login"
+            onClick={getToken}
+            className="btn btn-small btnLog"
+          />
         </Modal>
       </div>
       <div className="modal-content center">
-        <Button href="#modal2" className="modal-trigger">
+        <Button id="btnSignUp" href="#modal2" className="modal-trigger">
           SignUp
         </Button>
-        <Modal id="modal2"  className="modal2" header="">
-          <img width="150" src="/image/avatar-default.png" alt="avatar" />
-          <div className="input-field">
+        <Modal id="modal2" className="modal2" header="">
+          <div className="section content">
+            <div className="row">
+              <div className="col s5">
+                <img
+                  width="150"
+                  className="responsive-img avatarDefault"
+                  src="/image/default-avatar1.jpg"
+                  alt="avatar"
+                />
+                <div className="input-field">
+                  <input
+                    ref={inputFileRef}
+                    hidden
+                    type="file"
+                    onChange={handleFileUpload}
+                    accept=".jpg"
+                  />
+                  <br />
+                  <input
+                    type="button"
+                    value="Add your photo"
+                    className="btn btn-small btnSignup"
+                    onClick={() => inputFileRef.current.click()}
+                  />
+                </div>
+              </div>
+              
+              
+              <div className="col s12">
+                <div className="input-field">
+                  <i className="material-icons prefix">person</i>
+                  <input
+                    className={errorUser ? "border-red" : ""}
+                    type="text"
+                    value={username}
+                    onChange={updateUsername}
+                  />
+                  <label>Username</label>
+                  <div>{errorUser}</div>
+                </div>
+                <div className="col s12">
+                  <div className="input-field">
+                    <i className="material-icons prefix">email</i>
+                    <input type="text" value={email} onChange={updateEmail} />
+                    <label>Email</label>
+                    <div>{errorEmail}</div>
+                  </div>
+                </div>
+                <div className="col s12">
+                  <div className="input-field">
+                    <i className="material-icons prefix">lock</i>
+                    <input
+                      type="password"
+                      value={password}
+                      onChange={updatePassword}
+                    />
+                    <label>Password</label>
+                    <div>{errorPassword}</div>
+                  </div>
+                </div>
+              </div>
+              </div>
+            
             <input
-              ref={inputFileRef}
-              hidden
-              type="file"
-              onChange={handleFileUpload}
-              accept=".jpg"
-            />
-            <br />
-            <input
-              type="button"
-              value="Add your photo"
-              className="waves-effect waves-light btn"
-              onClick={() => inputFileRef.current.click()}
+              type="submit"
+              value="Send"
+              onClick={addUser}
+              className="btn btn-small submit"
             />
           </div>
-          <div className="input-field">
-            <i className="material-icons prefix">person</i>
-            <input
-              className={errorUser ? "border-red" : ""}
-              type="text"
-              value={username}
-              onChange={updateUsername}
-            />
-            <label>Username</label>
-            <div>{errorUser}</div>
-          </div>
-          <br />
-          <div className="input-field">
-            <i className="material-icons prefix">email</i>
-            <input type="text" value={email} onChange={updateEmail} />
-            <label>Email</label>
-            <div>{errorEmail}</div>
-          </div>
-          <br />
-          <div className="input-field">
-            <i className="material-icons prefix">lock</i>
-            <input type="password" value={password} onChange={updatePassword} />
-            <label>Password</label>
-            <div>{errorPassword}</div>
-          </div>
-          <br />
-          <input
-            type="submit"
-            value="Send"
-            onClick={addUser}
-            className="btn btn-large submit"
-          />
         </Modal>
       </div>
     </div>

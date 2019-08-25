@@ -19,9 +19,11 @@ import EditEvent from "./editEvent";
 import PhotoDetail from "./photoDetail";
 import PhotoUserDetail from "./photoUserDetail";
 import UserPhotoDetail from "./userPhotoDetail";
+import UserPhotoDetails from "./userPhotoDetails";
 import UserDetail from "./userDetail";
 import UserDetails from "./userDetails";
 import "../css/layoutBackGround.css";
+import "../css/navbar.css";
 import LayoutBackGround from './layoutBackGround';
 
 interface IPropsGlobal {
@@ -96,6 +98,11 @@ const LayoutPage: React.FC<
           component={UserPhotoDetail}
         />
         <Route
+          path="/posts/:photoId/userPhotoDetails"
+          exact
+          component={UserPhotoDetails}
+        />
+        <Route
           path="/posts/:photoId/photoUserDetail"
           exact
           component={PhotoUserDetail}
@@ -115,6 +122,7 @@ const LayoutPage: React.FC<
       </Switch>
       </div>
       </Fragment>
+      
   );
 };
 const mapStateToProps = (state: IGlobalState) => ({

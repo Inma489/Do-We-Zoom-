@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { IGlobalState } from "../reducers";
 import { IDecoded, IUser } from "../interfaces";
 import * as actions from "../actions";
-
 import "../css/navbar.css";
 
 interface IPropsGlobal {
@@ -34,10 +33,12 @@ const Navbar: React.FC<IPropsGlobal> = props => {
     //si no hay token muestrame estas cosas si no muestrame otras
     // para darle opciones a mi dropdown : options={{hover:true}}
     <div className="container-fluid">
-      <nav className="nav-extended fixed">
-        <div className="nav-wrapper purple">
+      <nav className="nav-extended">
+        <div className="nav-wrapper">
           <Link to="/">
-            <div className="brand-logo">Logo</div>
+            <div className="brand-logo">
+              <img className="responsive-img object" width="70"src="/image/objetivo.png" alt=""/>
+            </div>
           </Link>
           <a href="#" data-target="mobile-nav" className="sidenav-trigger">
             <i className="material-icons">menu</i>
@@ -56,22 +57,22 @@ const Navbar: React.FC<IPropsGlobal> = props => {
             <li>
               <img
                 width="60"
-                className="circle responsive-img"
+                className="responsive-img avatar"
                 src={
                   user.avatar
                     ? "http://localhost:8080/uploads/avatars/" +
                       user.avatar +
                       "?" +
                       Date()
-                    : "/image/avatar-default.png"
+                    : "/image/default-avatar1.jpg"
                 }
                 alt="avatar"
               />
             </li>
 
-            <Dropdown
+            <Dropdown id="dropdown2"
               trigger={
-                <Button>
+                <Button id="btnDrop">
                   {user.username}
                   <Icon className="material-icons i">arrow_drop_down</Icon>
                 </Button>
@@ -87,16 +88,17 @@ const Navbar: React.FC<IPropsGlobal> = props => {
                 <Icon>insert_photo</Icon>
                 My Posts
               </Link>
-
               <Divider />
-            </Dropdown>
-            <Link
+              
+              <Link
               to="/"
-              className="waves-effect waves-light btn-small"
               onClick={logOut}
-            >
-              <i className="small material-icons">settings_power</i>
+            ><Icon>settings_power</Icon>
+              
             </Link>
+            
+            </Dropdown>
+            
           </ul>
         </div>
       </nav>

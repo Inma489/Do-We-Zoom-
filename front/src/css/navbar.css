@@ -1,5 +1,22 @@
-.dropdown {
-    top: 52.25px !important;
+
+nav{
+    background:rgb(0 , 0, 0, .4) !important; 
+    position: fixed !important;
+    height: 64px !important; 
+}
+.object{
+    margin-top: -3px !important;
+}
+
+#dropdown2 {
+    top: 51px !important;
+    margin: 0px !important;
+    border-radius: 10px 10px 10px 10px !important;
+    background: transparent;
+}
+#btnDrop{
+    background-color: transparent !important;
+    border-radius: 10px 10px 10px 10px !important;
 }
  .dropdown-trigger{
     width: 102px;
@@ -9,8 +26,10 @@
     margin-right: -82px;
 } 
 .list{
-    margin-right: 0%;
+    margin-right: 10px !important;
 }
 .avatar{
-    margin-right: 11px
+    margin-right: 11px !important;
+    margin-top: 5px !important;
+    border-radius: 50% !important;
 }
