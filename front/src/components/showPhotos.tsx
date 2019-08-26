@@ -5,6 +5,7 @@ import { IGlobalState } from "../reducers";
 import * as actions from "../actions";
 import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
+import "../css/showPhotos.css";
 
 interface IPropsGlobal {
   token: string;
@@ -16,6 +17,7 @@ interface IPropsGlobal {
 }
 
 const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
+  const { Icon } = require("react-materialize");
   const user = props.users.find(u => u._id === props.decoded._id);
   const deletePhoto = (photo_id: string) => {
     fetch("http://localhost:8080/api/photos/" + photo_id, {
@@ -48,12 +50,12 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
               return null;
             }
             return (
-              <div className="col s3" key={p._id}>
+              <div className="col s6 m4" key={p._id}>
                 <div className="card">
-                  <div className="card-image waves-effect waves-block waves-light">
+                  <div className="card-image photolist">
                     <Link to={"/posts/" + p._id + "/photoUserDetail"}>
                       <img
-                        className="activator"
+                        className="responsive-img activator hoverable photo"
                         src={
                           p.filename
                             ? "http://localhost:8080/uploads/photos/" +
@@ -63,13 +65,29 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                       />
                     </Link>
                   </div>
+                  {/*HACER EL OVERLy por cojonoes pARA cada una de las fotos*/}
+                  {/* <div className="overlay">
+                  <Link to={"/users/" + u._id + "/userDetail"}>
+                        <img
+                          className="circle responsive-img users"
+                          width="60"
+                          src={
+                            u.avatar
+                              ? "http://localhost:8080/uploads/avatars/" +
+                                u.avatar
+                              : "/image/avatar-default.png"
+                          }
+                          alt="user"
+                        />
+                        <div>{u.username}</div>
+                      </Link>
+                  </div> */}
                   <div className="card-content">
-                    <span className="card-title activator grey-text text-darken-4">
-                      <h6>User</h6>
+                    <span className="card-title activator">
                       <Link to={"/users/" + u._id + "/userDetail"}>
                         <img
-                        className="circle responsive-img"
-                          width="50"
+                          className="circle responsive-img users"
+                          width="60"
                           src={
                             u.avatar
                               ? "http://localhost:8080/uploads/avatars/" +
@@ -81,10 +99,6 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                         <div>{u.username}</div>
                       </Link>
                     </span>
-                    <span className="card-title activator grey-text text-darken-4">
-                      <h6>Title</h6>
-                      {p.name}
-                    </span>
                     {props.decoded.admin && (
                       <Link
                         onClick={() => {
@@ -93,7 +107,7 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                         to="/posts"
                         className="waves-effect waves-light btn"
                       >
-                        Delete
+                        <Icon>delete</Icon>
                       </Link>
                     )}
                   </div>

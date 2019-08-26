@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { IGlobalState } from "../reducers";
 import * as actions from "../actions";
 import { Link, RouteComponentProps } from "react-router-dom";
+import "../css/showUsers.css";
 
 
 interface IPropsGlobal {
@@ -17,6 +18,7 @@ interface IPropsGlobal {
 const ShowUsers: React.FC<
   IPropsGlobal & RouteComponentProps<{ userId: string }>
 > = props => {
+  const {Icon} = require("react-materialize");
   // hacemos la peticion para eliminar un usuario de la base de daatos
   const Delete = (id: string) => {
     fetch("http://localhost:8080/api/users/" + id, {
@@ -37,15 +39,16 @@ const ShowUsers: React.FC<
   //  props.decoded.admin || props.decoded._id === props.match.params.userId;
 
   return (
+    <div className="usersBackground">
     <div className="section container">
       <div className="row">
         {props.users
           .filter(u => u._id != props.decoded._id)
           .map(u => (
-            <div className="col s3" key={u.username}>
+            <div className="col s6 m4" key={u.username}>
               <Link to={"/users/" + u._id + "/userDetails"}>
                 <div className="card">
-                  <div className="card-image waves-effect waves-block waves-light">
+                  <div className="card-image">
                     <img
                     className="responsive-img"
                       width="40"
@@ -58,16 +61,16 @@ const ShowUsers: React.FC<
                     />
                   </div>
                   <div className="card-content">
-                    <span className="card-title activator grey-text text-darken-4">
+                    <p className="card-title">
                       {u.username}
-                    </span>
+                    </p>
 
                     {props.decoded.admin && (
                       <Link
                         to={"/users/" + u._id + "/editUser"}
                         className="waves-effect waves-light btn ml-4"
                       >
-                        Edit
+                        <Icon>edit</Icon>
                       </Link>
                     )}
                     {props.decoded.admin && (
@@ -78,7 +81,7 @@ const ShowUsers: React.FC<
                         to="/users"
                         className="waves-effect waves-light btn"
                       >
-                        Delete
+                        <Icon>delete</Icon>
                       </Link>
                     )}
                   </div>
@@ -87,6 +90,7 @@ const ShowUsers: React.FC<
             </div>
           ))}
       </div>
+    </div>
     </div>
   );
 };

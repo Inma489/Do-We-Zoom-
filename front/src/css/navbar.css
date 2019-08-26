@@ -1,8 +1,8 @@
 
-nav{
+.nav{
     background:rgb(0 , 0, 0, .4) !important; 
-    position: fixed !important;
-    height: 64px !important; 
+    height: 64px !important;
+    /* top: 0 !important; */
 }
 .object{
     margin-top: -3px !important;
@@ -29,7 +29,8 @@ nav{
     margin-right: 10px !important;
 }
 .avatar{
+    height: 55px !important;
     margin-right: 11px !important;
     margin-top: 5px !important;
-    border-radius: 50% !important;
+    /* border-radius: 40% !important; */
 }
