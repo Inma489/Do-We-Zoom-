@@ -23,7 +23,7 @@ import UserPhotoDetails from "./userPhotoDetails";
 import UserDetail from "./userDetail";
 import UserDetails from "./userDetails";
 import "../css/layoutBackGround.css";
-import "../css/navbar.css";
+// import "../css/navbar.css";
 import LayoutBackGround from './layoutBackGround';
 
 interface IPropsGlobal {

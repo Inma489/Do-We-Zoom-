@@ -4,7 +4,7 @@ import * as actions from "../actions";
 import { connect } from "react-redux";
 import { IGlobalState } from "../reducers";
 import { Link, RouteComponentProps } from "react-router-dom";
-
+import "../css/showEvents.css";
 
 interface IPropsGlobal {
   events: IEvent[];
@@ -15,6 +15,7 @@ interface IPropsGlobal {
 }
 
 const ShowEvents: React.FC<IPropsGlobal & RouteComponentProps> = props => {
+  const { Icon } = require("react-materialize");
   const listEvents = () => {
     fetch("http://localhost:8080/api/events/", {
       headers: {
@@ -65,55 +66,52 @@ const ShowEvents: React.FC<IPropsGlobal & RouteComponentProps> = props => {
       </div>
       <div className="row">
         {props.events.map(e => (
-          <div className="col s3" key={e._id}>
-            <div className="card">
-              <div className="card-image waves-effect waves-block waves-light">
+          <div className="col s10 m6" key={e._id}>
+            <div className="card horizontal small">
+              <div className="card-image responsive-img">
                 <img
-                  className="activator"
-                  src={e.filename?"http://localhost:8080/uploads/events/" + e.filename : "/image/largee.gif"}
+                  src={
+                    e.filename
+                      ? "http://localhost:8080/uploads/events/" + e.filename
+                      : "/image/largee.gif"
+                  }
                 />
               </div>
-              <div className="card-content">
-                <h5>Name of event</h5>
-                <span className="card-title activator grey-text text-darken-4">
-                  {e.name}
-                </span>
-                <span className="card-title activator grey-text text-darken-4">
-                  <h5>Date</h5>
-                  {new Date(e.date).toLocaleDateString()}
-                </span>
-                <span className="card-title activator grey-text text-darken-4">
-                  <h5>Place</h5>
-                  {e.place}
-                </span>
-                <span className="card-title activator grey-text text-darken-4">
-                  <h5>Time</h5>
-                  {e.time}
-                </span>
-                <span className="card-title activator grey-text text-darken-4">
-                  <h5>Description</h5>
-                  {e.description}
-                </span>
-                {props.decoded.admin && (
-                  <Link
+              <div className="card-stacked">
+                <div className="card-content detailsevent">
+                  <h6>Event</h6>
+                  <p>{e.name}</p>
+                  <h6>Date</h6>
+                  <p>{new Date(e.date).toLocaleDateString()}</p>
+                  <h6>Place</h6>
+                  <p>{e.place}</p>
+                  <h6>Time</h6>
+                  <p>{e.time}</p>
+                  <h6>Description</h6>
+                  <p>{e.description}</p>
+                </div>
+              </div>
+            </div>
+            <div className="btnevents">
+              {props.decoded.admin && (
+                <Link
                   to={"/events/" + e._id + "/edit"}
                   className="waves-effect waves-light btn ml-4"
                 >
-                  Edit
+                  <Icon>edit</Icon>
                 </Link>
-                )}
-                {props.decoded.admin && (
-                  <Link
-                    onClick={() => {
-                      deleteEvent(e._id);
-                    }}
-                    to="/events"
-                    className="waves-effect waves-light btn"
-                  >
-                    Delete
-                  </Link>
-                )}
-              </div>
+              )}
+              {props.decoded.admin && (
+                <Link
+                  onClick={() => {
+                    deleteEvent(e._id);
+                  }}
+                  to="/events"
+                  className="waves-effect waves-light btn"
+                >
+                  <Icon>delete</Icon>
+                </Link>
+              )}
             </div>
           </div>
         ))}

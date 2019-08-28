@@ -50,7 +50,7 @@ const ShowUsers: React.FC<
                 <div className="card">
                   <div className="card-image">
                     <img
-                    className="responsive-img"
+                    className="responsive-img hoverable"
                       width="40"
                       src={
                         u.avatar
@@ -60,7 +60,7 @@ const ShowUsers: React.FC<
                       alt="user"
                     />
                   </div>
-                  <div className="card-content">
+                  <div className="card-content nombres">
                     <p className="card-title">
                       {u.username}
                     </p>

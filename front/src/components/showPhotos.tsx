@@ -96,7 +96,7 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                           }
                           alt="user"
                         />
-                        <div>{u.username}</div>
+                        <div className="nombres">{u.username}</div>
                       </Link>
                     </span>
                     {props.decoded.admin && (
