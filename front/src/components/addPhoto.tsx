@@ -3,17 +3,18 @@ import * as actions from "../actions";
 import { RouteComponentProps } from "react-router";
 import { connect } from "react-redux";
 import { IGlobalState } from "../reducers";
-import { IDecoded } from '../interfaces';
-
-
+import { IDecoded } from "../interfaces";
+import { Link } from "react-router-dom";
+import "../css/addPhoto.css";
 
 interface IPropsGlobal {
   token: string;
-  addPhoto:(photo:string) => void,
-  decoded: IDecoded
+  addPhoto: (photo: string) => void;
+  decoded: IDecoded;
 }
 
 const AddPhoto: React.FC<IPropsGlobal & RouteComponentProps> = props => {
+  const { Icon } = require("react-materialize");
   const [file, setFile] = React.useState();
   const [name, setName] = React.useState("");
   const [camera, setCamera] = React.useState("");
@@ -68,56 +69,64 @@ const AddPhoto: React.FC<IPropsGlobal & RouteComponentProps> = props => {
   };
 
   return (
-    <div className=" section container">
+    <div className=" section container contaddphoto">
       <div className="row">
-        <div className="col s12">
+        <div className="col s12 m7">
           <div className="row card-panel">
-            <div className="input-field col s6">
-              <img width="200" src="" alt=""/>
+            <div className="input-field col s11">
+              <img width="200" src="" alt="" />
               <input
                 type="file"
                 onChange={updateFile}
-                placeholder="Add photo"
-                className="validate"
+                className="validate fileaddphoto"
                 accept=".jpg"
                 required
               />
-
-              <input
-                type="text"
-                onChange={updateName}
-                placeholder="Name of photo"
-                value={name}
-                className="validate"
-                required
-              />
-
-              <input
-                type="text"
-                onChange={updateCamera}
-                value={camera}
-                placeholder="Camera"
-                className="validate"
-                required
-              />
-
-              <input
-                type="text"
-                onChange={updateLocalization}
-                value={localization}
-                placeholder="Localization"
-                className="validate"
-                required
-              />
+              <div className="row">
+                <label>Title</label>
+                <input
+                  type="text"
+                  onChange={updateName}
+                  placeholder="Name of photo"
+                  value={name}
+                  className="validate"
+                  required
+                />
+              </div>
+              <div className="row">
+                <label>Camera</label>
+                <input
+                  type="text"
+                  onChange={updateCamera}
+                  value={camera}
+                  placeholder="Camera"
+                  className="validate"
+                  required
+                />
+              </div>
+              <div className="row">
+                <label>Location</label>
+                <input
+                  type="text"
+                  onChange={updateLocalization}
+                  value={localization}
+                  placeholder="Location"
+                  className="validate"
+                  required
+                />
+              </div>
             </div>
+            <button onClick={add} className="waves-effect waves-light btn btnsavePhoto">
+              <Icon>save</Icon>
+            </button>
+            <Link
+              to={"/myPosts/" + props.decoded._id}
+              className="waves-effect waves-light btn btnCancelPhoto"
+            >
+              <Icon>cancel</Icon>
+            </Link>
           </div>
         </div>
-        <input
-          type="button"
-          value="Add"
-          onClick={add}
-          className="waves-effect waves-light btn"
-        />
       </div>
     </div>
   );
@@ -127,6 +136,9 @@ const mapStateToProps = (state: IGlobalState) => ({
   decoded: state.decoded
 });
 const mapDispatchToProps = {
-  addPhoto:actions.addPhoto
-}
-export default connect(mapStateToProps, mapDispatchToProps)(AddPhoto);
+  addPhoto: actions.addPhoto
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddPhoto);

@@ -96,11 +96,11 @@ const EditEvent: React.FC<
   };
 
   return (
-    <div className=" section container">
+    <div className=" section container contEdit">
       <div className="row">
-        <div className="col s12 m10">
+        <div className="col s12 m9">
           <div className="row card-panel">
-            <div className="input-field col s10">
+            <div className="input-field col s11">
               <img
               className="responsive-img"
                 width="300"
@@ -114,13 +114,14 @@ const EditEvent: React.FC<
                 }
                 alt="photo"
               />
+              
               <input
                 type="file"
                 onChange={updateFile}
                 className="validate"
                 required
               />
-
+              
               <input
                 type="text"
                 onChange={updateName}
@@ -128,8 +129,11 @@ const EditEvent: React.FC<
                 value={name}
                 className="validate"
                 required
+            
               />
-
+              
+              
+              
               <input
                 type="text"
                 onChange={updateDate}
@@ -138,7 +142,8 @@ const EditEvent: React.FC<
                 className="validate"
                 required
               />
-
+              
+              
               <input
                 type="text"
                 onChange={updatePlace}
@@ -147,6 +152,8 @@ const EditEvent: React.FC<
                 className="validate"
                 required
               />
+              
+              
               <input
                 type="text"
                 onChange={updateTime}
@@ -155,6 +162,9 @@ const EditEvent: React.FC<
                 className="validate"
                 required
               />
+              
+              
+              
               <input
                 type="text"
                 onChange={updateDescription}
@@ -163,6 +173,7 @@ const EditEvent: React.FC<
                 className="validate"
                 required
               />
+              
             
             </div>
             <Link

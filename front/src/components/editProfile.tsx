@@ -5,6 +5,7 @@ import * as actions from "../actions";
 import { connect } from "react-redux";
 import { IGlobalState } from "../reducers";
 import { Link } from 'react-router-dom';
+import "../css/editProfile.css";
 
 interface IPropsGlobal {
   token: string;
@@ -17,6 +18,7 @@ interface IPropsGlobal {
 const EditProfile: React.FC<
   IPropsGlobal & RouteComponentProps<{ userId: string }>
 > = props => {
+  const {Icon} = require("react-materialize");
   const [file, setFile] = React.useState();
   const [username, setUsername] = React.useState("");
   const [email, setEmail] = React.useState("");
@@ -137,14 +139,16 @@ const EditProfile: React.FC<
   };
 
   return (
-    <div className="section container">
+    <div className="section container contEditProfile">
       <div className="row">
-        {/*aqui pondre la foto de perfil que tenga el usuario y para poder editarla*/}
+        <div className="col s12 m7">
+          <div className="row card-panel">
         {props.decoded._id === user._id && (
-          <div className="col s6">
+          <div className="input-field col s11">
             {(!props.decoded.admin || props.decoded._id === user._id) && (
               <img
-                width="200"
+              className="circle responsive-img editProfile"
+                width="260"
                 src={
                   user.avatar
                     ? "http://localhost:8080/uploads/avatars/" +
@@ -161,7 +165,7 @@ const EditProfile: React.FC<
             <input
               type="button"
               value="Change photo"
-              className="waves-effect waves-light btn"
+              className="waves-effect waves-light btn btnfileProfile"
               onClick={() => inputFileRef.current.click()}
             />
 
@@ -177,9 +181,9 @@ const EditProfile: React.FC<
             </div>
           </div>
         )}
-      </div>
+      
       <div className="row">
-        <div className="col s6">
+        <div className="col s7 coleditProfile">
           <label>Username</label>
           <input
             value={username}
@@ -190,7 +194,7 @@ const EditProfile: React.FC<
           />
         </div>
 
-        <div className="input-field col s6 mt-5">
+        <div className="col s7 coleditProfile">
           <label>Email</label>
           <input
             value={email}
@@ -201,7 +205,8 @@ const EditProfile: React.FC<
           />
         </div>
         {props.decoded._id === user._id && (
-          <div className="input-field col s6">
+          <div className="col s7 coleditProfile">
+            <label>Password</label>
             <input
               value={password}
               onChange={updatePassword}
@@ -209,19 +214,21 @@ const EditProfile: React.FC<
               className="validate"
               required
             />
-            <label>Password</label>
+            
           </div>
         )}
 
-        <input
-          type="button"
+        
+        </div>
+        <button
           onClick={edit}
-          value="Save"
-          className="waves-effect waves-light btn"
-        />
-        <Link to={"/users/" + props.decoded._id}>
-        <button className="waves-effect waves-light btn">Cancel</button>
+          className="waves-effect waves-light btn btneditPerfil"
+        ><Icon>save</Icon></button>
+        <Link to={"/users/" + props.decoded._id}className="waves-effect waves-light btn btncancelProfile">
+        <Icon>cancel</Icon>
         </Link>
+      </div>
+      </div>
       </div>
     </div>
   );

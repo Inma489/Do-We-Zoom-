@@ -77,7 +77,7 @@ const ShowEvents: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                   }
                 />
               </div>
-              <div className="card-stacked">
+              <div className="card-stacked hoverable">
                 <div className="card-content detailsevent">
                   <h6>Event</h6>
                   <p>{e.name}</p>

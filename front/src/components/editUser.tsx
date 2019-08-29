@@ -5,7 +5,7 @@ import * as actions from "../actions";
 import { connect } from "react-redux";
 import { IGlobalState } from "../reducers";
 import { Link } from "react-router-dom";
-import '../css/editUser.css';
+import "../css/editUser.css";
 
 interface IPropsGlobal {
   token: string;
@@ -66,7 +66,6 @@ const EditUser: React.FC<
             user exista y entonces en useEffect ya inició todos los hooks*/
 
     return null;
-    // return <Redirect to="/" />;
   }
   // esto es para la foto de perfil del usuario
   // const send = () => {
@@ -128,47 +127,14 @@ const EditUser: React.FC<
 
   return (
     // aqui pondremos el nuevo formulario metido en card
-<div className="fondoEditUser">
-    <div className=" section container">
-      <div className="row">
-        <div className="col s12">
-          <div className="row card-panel formulario">
-            <div className="input-field col s6">
-              {(!props.decoded.admin || props.decoded._id === user._id) && (
-                <img
-                  width="200"
-                  src={
-                    user.avatar
-                      ? "http://localhost:8080/uploads/avatars/" +
-                        user.avatar +
-                        "?" +
-                        Date()
-                      : "/image/avatar-default.png"
-                  }
-                />
-              )}
-              {props.decoded._id === user._id && (
-                <>
-                  <input
-                    type="button"
-                    value="Change photo"
-                    className="waves-effect waves-light btn"
-                    onClick={() => inputFileRef.current.click()}
-                  />
 
-                  <div>
-                    <input
-                      ref={inputFileRef}
-                      hidden
-                      type="file"
-                      onChange={handleFileUpload}
-                      accept=".jpg"
-                    />
-                  </div>
-                </>
-              )}
+    <div className=" section container caja1">
+      <div className="row">
+        <div className="col s12 m10">
+          <div className="row card-panel formulario">
+            <div className="input-field col s12">
               <div className="row">
-                <div className="col s6">
+                <div className="col s12">
                   <label>Username</label>
                   <input
                     value={username}
@@ -177,10 +143,10 @@ const EditUser: React.FC<
                     className="validate"
                     required
                   />
-                  </div>
                 </div>
-                <div className="row">
-                <div className="col s6">
+              </div>
+              <div className="row">
+                <div className="col s12">
                   <label>Email</label>
                   <input
                     value={email}
@@ -189,119 +155,25 @@ const EditUser: React.FC<
                     className="validate"
                     required
                   />
-                  </div>
                 </div>
-                {props.decoded._id === user._id && (
-                  <input
-                    value={password}
-                    onChange={updatePassword}
-                    type="password"
-                    className="validate"
-                    required
-                  />
-                )}
-              
+              </div>
             </div>
+            <Link
+              to={"/users"}
+              onClick={edit}
+              className="waves-effect waves-light btn left"
+            >
+              <Icon>save</Icon>
+            </Link>
+
+            <Link to={"/users"} className="waves-effect waves-light btn btnRight">
+              <Icon>cancel</Icon>
+            </Link>
           </div>
-          <input
-            type="button"
-            onClick={edit}
-            value="Save"
-            className="waves-effect waves-light btn left"
-          />
-          <Link to={"/users/"}>
-            <button className="waves-effect waves-light btn right">Cancel</button>
-          </Link>
+         
         </div>
       </div>
     </div>
-    </div>
-
-
-    // <div className="section container">
-    //   <div className="row">
-    //     {props.decoded._id === user._id && (
-    //       <div className="col s6">
-    //         {(!props.decoded.admin || props.decoded._id === user._id) && (
-    //           <img
-    //             width="200"
-    //             src={
-    //               user.avatar
-    //                 ? "http://localhost:8080/uploads/avatars/" +
-    //                   user.avatar +
-    //                   "?" +
-    //                   Date()
-    //                 : "/image/avatar-default.png"
-    //             }
-    //           />
-    //         )}
-
-    //         <input
-    //           type="button"
-    //           value="Change photo"
-    //           className="waves-effect waves-light btn"
-    //           onClick={() => inputFileRef.current.click()}
-    //         />
-
-    //         <br />
-    //         <div>
-    //           <input
-    //             ref={inputFileRef}
-    //             hidden
-    //             type="file"
-    //             onChange={handleFileUpload}
-    //             accept=".jpg"
-    //           />
-    //         </div>
-    //       </div>
-    //     )}
-    //   </div>
-    //   <div className="row">
-    //     <div className="col s6">
-    //       <label>Username</label>
-    //       <input
-    //         value={username}
-    //         onChange={updateUsername}
-    //         type="text"
-    //         className="validate"
-    //         required
-    //       />
-    //     </div>
-
-    //     <div className="input-field col s6 mt-5">
-    //       <label>Email</label>
-    //       <input
-    //         value={email}
-    //         onChange={updateEmail}
-    //         type="email"
-    //         className="validate"
-    //         required
-    //       />
-    //     </div>
-    //     {props.decoded._id === user._id && (
-    //       <div className="input-field col s6">
-    //         <input
-    //           value={password}
-    //           onChange={updatePassword}
-    //           type="password"
-    //           className="validate"
-    //           required
-    //         />
-    //         <label>Password</label>
-    //       </div>
-    //     )}
-
-    //     <input
-    //       type="button"
-    //       onClick={edit}
-    //       value="Save"
-    //       className="waves-effect waves-light btn"
-    //     />
-    //     <Link to={"/users/"}>
-    //       <button className="waves-effect waves-light btn">Cancel</button>
-    //     </Link>
-    //   </div>
-    // </div>
   );
 };
 

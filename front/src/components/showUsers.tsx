@@ -79,7 +79,7 @@ const ShowUsers: React.FC<
                           Delete(u._id);
                         }}
                         to="/users"
-                        className="waves-effect waves-light btn"
+                        className="waves-effect waves-light btn btnDeleteUser"
                       >
                         <Icon>delete</Icon>
                       </Link>

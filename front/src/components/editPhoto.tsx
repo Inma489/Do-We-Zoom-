@@ -5,6 +5,7 @@ import * as actions from "../actions";
 import { connect } from "react-redux";
 import { IGlobalState } from "../reducers";
 import { Link } from "react-router-dom";
+import "../css/editPhoto.css";
 
 interface IPropsGlobal {
   token: string;
@@ -14,8 +15,9 @@ interface IPropsGlobal {
 }
 
 const EditPhoto: React.FC<
-  IPropsGlobal & RouteComponentProps<{ photoId: string}>
+  IPropsGlobal & RouteComponentProps<{ photoId: string }>
 > = props => {
+  const { Icon } = require("react-materialize");
   // let _id = props.match.params.userId;
   // let myphotos = props.photos.filter(p => p.owner === _id);
   const [file, setFile] = React.useState();
@@ -87,13 +89,14 @@ const EditPhoto: React.FC<
   };
 
   return (
-    <div className=" section container">
+    <div className=" section container contPhoto">
       <div className="row">
-        <div className="col s12">
+        <div className="col s12 m7">
           <div className="row card-panel">
-            <div className="input-field col s6">
+            <div className="input-field col s11">
               <img
-                width="200"
+                className="responsive-img"
+                width="250"
                 src={
                   photo.filename
                     ? "http://localhost:8080/uploads/photos/" +
@@ -108,47 +111,58 @@ const EditPhoto: React.FC<
                 type="file"
                 onChange={updateFile} // el file no tiene value
                 className="validate"
-              />
-
-              <input
-                type="text"
-                onChange={updateName}
-                placeholder="Name of photo"
-                value={name}
-                className="validate"
+                accept=".jpg"
                 required
               />
-
-              <input
-                type="text"
-                onChange={updateCamera}
-                value={camera}
-                placeholder="Camera"
-                className="validate"
-                required
-              />
-
-              <input
-                type="text"
-                onChange={updateLocalization}
-                value={localization}
-                placeholder="Localization"
-                className="validate"
-                required
-              />
+              <div className="row">
+                <label>Title</label>
+                <input
+                  type="text"
+                  onChange={updateName}
+                  placeholder="Name of photo"
+                  value={name}
+                  className="validate"
+                  required
+                />
+              </div>
+              <div className="row">
+                <label>Camera</label>
+                <input
+                  type="text"
+                  onChange={updateCamera}
+                  value={camera}
+                  placeholder="Camera"
+                  className="validate"
+                  required
+                />
+              </div>
+              <div className="row">
+                <label>Location</label>
+                <input
+                  type="text"
+                  onChange={updateLocalization}
+                  value={localization}
+                  placeholder="Location"
+                  className="validate"
+                  required
+                />
+              </div>
             </div>
+            <Link
+              to={"/myPosts/" + props.decoded._id}
+              onClick={() => editPhoto(photo._id)}
+              className="waves-effect waves-light btn btnsavePhoto"
+            >
+              <Icon>save</Icon>
+            </Link>
+            <Link
+              to={"/myPosts/" + props.decoded._id}
+              className="waves-effect waves-light btn btnCancelPhoto"
+            >
+              <Icon>cancel</Icon>
+            </Link>
           </div>
         </div>
-        <Link
-          to={"/myPosts/" + props.decoded._id}
-          onClick={() => editPhoto(photo._id)}
-          className="waves-effect waves-light btn"
-        >
-          Save
-        </Link>
-        <Link to={"/myPosts/" + props.decoded._id}>
-        <button className="waves-effect waves-light btn">Cancel</button>
-        </Link>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { IDecoded, IPhoto, IUser } from "../interfaces";
 import * as actions from "../actions";
 import { connect } from "react-redux";
 import { IGlobalState } from "../reducers";
+import "../css/myPosts.css";
 
 interface IPropsGlobal {
   token: string;
@@ -17,6 +18,7 @@ interface IPropsGlobal {
 const MyPosts: React.FC<
   IPropsGlobal & RouteComponentProps<{ userId: string }>
 > = props => {
+  const { Icon } = require("react-materialize");
 
   // hacemos la peticion para eliminar una foto de la base de datos
   let _id = props.match.params.userId;
@@ -39,62 +41,55 @@ const MyPosts: React.FC<
     });
   };
 
-// if (! myphotos){
-//   return null
-// }
-
+  // if (! myphotos){
+  //   return null
+  // }
 
   return (
-    <div className="section content">
+    <div className="section container">
       <div className="row">
         <div className="col s6">
           <Link
             to="/myPosts/add/photo"
             className="waves-effect waves-light btn"
           >
-            + Photos
+            + Photo
           </Link>
         </div>
       </div>
       <div className="row">
         {myphotos.map(p => (
-          <div className="col s2" key={p._id}>
+          <div className="col s6 m4" key={p._id}>
             <div className="card">
-              <div className="card-image waves-effect waves-block waves-light">
+              <div className="card-image">
                 <Link to={"/myPosts/" + p._id + "/photoDetail"}>
-                <img
-                  className="activator"
-                  src={
-                    p.filename
-                      ? "http://localhost:8080/uploads/photos/" + p.filename
-                      : "/image/60352801-icono-de-la-cámara-símbolo-photocamera-profesional-botón-con-el-icono-de-banda-plana-en-el-fondo-blanco-bot.jpg"
-                  }
-                />
-                </Link>
-              </div>
-              <div className="card-content">
-                <span className="card-title activator grey-text text-darken-4">
-                  <h5>Title</h5>
-                  {p.name}
-                </span>
-                <Link
-                  to={"/myPosts/" + p._id + "/edit"}
-                  className="waves-effect waves-light btn ml-4"
-                >
-                  Edit
-                </Link>
-                {/*aqui no me borra la foto */}
-                <Link
-                  onClick={() => {
-                    deletePhoto(p._id);
-                  }}
-                  to={"/myPosts/" + props.decoded._id}
-                  className="waves-effect waves-light btn"
-                >
-                  Delete
+                  <img
+                    className="responsive-img hoverable"
+                    src={
+                      p.filename
+                        ? "http://localhost:8080/uploads/photos/" + p.filename
+                        : "/image/60352801-icono-de-la-cámara-símbolo-photocamera-profesional-botón-con-el-icono-de-banda-plana-en-el-fondo-blanco-bot.jpg"
+                    }
+                  />
                 </Link>
               </div>
             </div>
+            <Link
+              to={"/myPosts/" + p._id + "/edit"}
+              className="waves-effect waves-light btn btnEditPhoto"
+            >
+              <Icon>edit</Icon>
+            </Link>
+            
+            <Link
+              onClick={() => {
+                deletePhoto(p._id);
+              }}
+              to={"/myPosts/" + props.decoded._id}
+              className="waves-effect waves-light btn btndeletePhoto"
+            >
+              <Icon>delete</Icon>
+            </Link>
           </div>
         ))}
       </div>

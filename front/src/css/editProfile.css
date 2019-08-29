@@ -1,0 +1,21 @@
+.editProfile{
+    margin-left: 84px;
+}
+.coleditProfile{
+    margin-left: 55px !important;
+}
+.btneditPerfil{
+    margin-left: 160px;
+    background-color: #424242  !important;
+}
+.btnfileProfile{
+    margin-left: 142px;
+    background-color: #424242  !important;
+}
+.contEditProfile{
+    margin-left: 393px !important;
+}
+.btncancelProfile{
+    background-color: #424242 !important;
+    margin-left: 5px;
+}

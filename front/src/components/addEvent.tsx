@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { IGlobalState } from "../reducers";
 import * as actions from "../actions";
 import { Link } from "react-router-dom";
+import "../css/addEvent.css";
 
 interface IPropsGlobal {
   token: string;
@@ -76,11 +77,11 @@ const AddEvent: React.FC<IPropsGlobal & RouteComponentProps> = props => {
   };
 
   return (
-    <div className=" section container">
+    <div className=" section container contAdd">
       <div className="row">
-        <div className="col s12">
+        <div className="col s12 m9">
           <div className="row card-panel">
-            <div className="input-field col s6">
+            <div className="input-field col s12">
               <input
                 type="file"
                 onChange={updateFile}
@@ -132,21 +133,24 @@ const AddEvent: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                 required
               />
             </div>
-          </div>
-        </div>
-
-        <div>
-        
-          <Link
+            
+            <Link
             onClick={add}
             to="/events"
-            className="waves-effect waves-light btn"
+            className="waves-effect waves-light btn btnaddEvent"
           >
             <Icon>save</Icon>
           </Link>
           <Link to="/events" className="waves-effect waves-light btn">
             <Icon>cancel</Icon>
           </Link>
+          
+          </div>
+        </div>
+
+        <div>
+        
+          
           
         </div>
       </div>

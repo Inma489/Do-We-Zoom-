@@ -1,19 +1,19 @@
-.fondoEditUser{
-    background-color: papayawhip;
-    height: 100vh;
-    
-
-}
 
 .formulario {
     margin-top: 90px !important;
-    background-color: rgba(252, 211, 155, 0.164) !important;
+    
+    
     
 }
 .left{
-    margin-left: 350px;
+    margin-left: 315px;
+
 }
-.right{
-    margin-right: 405px;
+.btnRight{
+    margin-left: 10px !important;
+    
+}
+.caja1{
+    margin-right: 145px !important;
 }
 
