@@ -4,7 +4,8 @@ import { RouteComponentProps, Redirect } from "react-router";
 import { connect } from "react-redux";
 import { IGlobalState } from "../reducers";
 import { Link } from "react-router-dom";
-import * as actions from "../actions";;
+import * as actions from "../actions";
+import "../css/userDetails.css";
 
 interface IPropsGlobal {
   users: IUser[];
@@ -50,10 +51,10 @@ const UserDetails: React.FC<
       <div className="container">
         <div id="profile-page" className="section">
           <Link to={"/users"}>
-            <Icon>close</Icon>
+            <Icon className="x">close</Icon>
           </Link>
           <div id="profile-page-header" className="card1">
-            <div className="card-image waves-effect waves-block waves-light">
+            <div className="card-image waves-effect waves-block">
               <img
                 className="responsive-img fondo-perfil"
                 src={"/image/foto-fondoperfil.jpg"}
@@ -84,8 +85,7 @@ const UserDetails: React.FC<
               </div>
             </div>
           </div>
-        </div>
-        <div className="row">
+          <div id="profile-page-content"className="row">
           {myphotos.map(p => (
             <div className="col s6 m4" key={p._id}>
               <div className="card">
@@ -96,7 +96,7 @@ const UserDetails: React.FC<
                       src={
                         p.filename
                           ? "http://localhost:8080/uploads/photos/" + p.filename
-                          : "/image/60352801-icono-de-la-cámara-símbolo-photocamera-profesional-botón-con-el-icono-de-banda-plana-en-el-fondo-blanco-bot.jpg"
+                          : "/image/largee.gif"
                       }
                     />
                   </Link>
@@ -105,7 +105,10 @@ const UserDetails: React.FC<
             </div>
           ))}
         </div>
+        </div>
+        
       </div>
+      
     </section>
   );
 };

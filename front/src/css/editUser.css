@@ -1,19 +1,21 @@
 
 .formulario {
-    margin-top: 90px !important;
+    margin-top: 90px;
     
     
     
 }
 .left{
-    margin-left: 315px;
+    margin-left: 270px;
 
 }
 .btnRight{
-    margin-left: 10px !important;
+    margin-left: 10px;
     
 }
 .caja1{
-    margin-right: 145px !important;
+    margin-left: 200px;
 }
-
+@media screen and (max-width: 580px){
+    .left{margin-left: 85px}
+}

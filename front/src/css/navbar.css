@@ -8,6 +8,7 @@
     margin-top: -3px !important;
 }
 
+
 #dropdown2 {
     top: 51px !important;
     margin: 0px !important;
@@ -24,7 +25,13 @@
  .i{
     margin-top: -51px;
     margin-right: -82px;
-} 
+}
+.is{
+    color:black;
+}
+.text{
+    color:black !important;
+}
 .list{
     margin-right: 10px !important;
 }

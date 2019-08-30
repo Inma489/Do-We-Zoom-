@@ -130,7 +130,7 @@ const EditUser: React.FC<
 
     <div className=" section container caja1">
       <div className="row">
-        <div className="col s12 m10">
+        <div className="col s12 m8">
           <div className="row card-panel formulario">
             <div className="input-field col s12">
               <div className="row">

@@ -1,58 +1,55 @@
-import React from 'react';
-import { IPhoto, IDecoded } from '../interfaces';
-import { RouteComponentProps } from 'react-router';
-import { connect } from 'react-redux';
-import { IGlobalState } from '../reducers';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { IPhoto, IDecoded } from "../interfaces";
+import { RouteComponentProps } from "react-router";
+import { connect } from "react-redux";
+import { IGlobalState } from "../reducers";
+import { Link } from "react-router-dom";
 
-
-interface IPropsGlobal{
-    photos: IPhoto[];
-    decoded: IDecoded;
-    token: string;
-    
+interface IPropsGlobal {
+  photos: IPhoto[];
+  decoded: IDecoded;
+  token: string;
 }
 
+const PhotoUserDetail: React.FC<
+  IPropsGlobal & RouteComponentProps<{ photoId: string }>
+> = props => {
+  const { Icon } = require("react-materialize");
+  const myPhoto = props.photos.find(p => p._id === props.match.params.photoId);
 
-const PhotoUserDetail: React.FC<IPropsGlobal & RouteComponentProps<{photoId: string}>> = props => {
-    const {Icon} = require("react-materialize");
-    const myPhoto = props.photos.find(p => p._id === props.match.params.photoId)
-
-    if(!myPhoto){
-        return null
-    }
-    return(
-        <div className="section container">
-            <Link to={"/posts"}>
-      <Icon>close</Icon>
+  if (!myPhoto) {
+    return null;
+  }
+  return (
+    <div className="section container">
+      <Link to={"/posts"}>
+        <Icon className="x">close</Icon>
       </Link>
-        <div className="row">
-            <div className="col s12">
-            
-                
-        <img width="100%" src={"http://localhost:8080/uploads/photos/" + myPhoto.filename} alt="photo"/>
+      <div className="row">
+        <div className="col s12 box1">
+          <img
+            className="responsive-img photoInfo"
+            width="93%"
+            src={"http://localhost:8080/uploads/photos/" + myPhoto.filename}
+            alt="photo"
+          />
+
+          <div className="revealinfo overlay1">
+            <h6 className="texts">Title<Icon>create</Icon></h6>
+            <p className="texts1">{myPhoto.name}</p>
+            <h6 className="texts">Camera<Icon>camera_alt</Icon></h6>
+            <p className="texts1">{myPhoto.camera}</p>
+            <h6 className="texts">Location<Icon>location_on</Icon></h6>
+            <p className="texts1">{myPhoto.localization}</p>
+          </div>
         </div>
-        
-        
-        <h6>Title</h6>
-        <p>{myPhoto.name}</p>
-        <h6>Camera</h6>
-        <p>{myPhoto.camera}</p>
-        <h6>Localization</h6>
-        <p>{myPhoto.localization}</p>
-        </div>
-        
-        
-        
-        
-        
-        
+      </div>
     </div>
-    )
-}
+  );
+};
 const mapStateToProps = (state: IGlobalState) => ({
-    photos: state.photos,
-    decoded:state.decoded,
-    token:state.token
+  photos: state.photos,
+  decoded: state.decoded,
+  token: state.token
 });
-export default connect(mapStateToProps) (PhotoUserDetail);
+export default connect(mapStateToProps)(PhotoUserDetail);

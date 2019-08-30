@@ -3,22 +3,21 @@ import { IUser, IPhoto, IDecoded } from "../interfaces";
 import { RouteComponentProps, Redirect } from "react-router";
 import { connect } from "react-redux";
 import { IGlobalState } from "../reducers";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import * as actions from "../actions";
-
 
 interface IPropsGlobal {
   users: IUser[];
   photos: IPhoto[];
   decoded: IDecoded;
-  token:string;
-  setPhotos:(photos: IPhoto[]) => void
+  token: string;
+  setPhotos: (photos: IPhoto[]) => void;
 }
 
 const UserDetail: React.FC<
   IPropsGlobal & RouteComponentProps<{ userId: string }>
 > = props => {
-  const {Icon} = require("react-materialize");
+  const { Icon } = require("react-materialize");
   const user = props.users.find(u => u._id === props.match.params.userId);
   let _id = props.match.params.userId;
   let myphotos = props.photos.filter(p => p.owner === _id);
@@ -43,62 +42,71 @@ const UserDetail: React.FC<
 
   React.useEffect(listPhotos, []);
 
-
   if (!user) {
     return null;
   }
   return (
-    <div className="section container">
-      <Link to={"/posts"}>
-      <Icon>close</Icon>
-      </Link>
-      <div className="row">
-        <div className="col s12">
-          <div className="card-image" />
-          <img
-            width="500"
-            src={
-              user.avatar
-                ? "http://localhost:8080/uploads/avatars/" +
-                  user.avatar +
-                  "?" +
-                  Date()
-                : "/image/avatar-default.png"
-            }
-          />
-          <div className="row">
-            <h2 className="header">{user.username}</h2>
-          </div>
-        </div>
-      </div>
-      <div className="row">
-      {myphotos.map(p => (
-          <div className="col s2" key={p._id}>
-            <div className="card">
-              <div className="card-image waves-effect waves-block waves-light">
-                <Link to={"/posts/" + p._id + "/userPhotoDetail"}>
-                <img
-                  className="activator"
-                  src={
-                    p.filename
-                      ? "http://localhost:8080/uploads/photos/" + p.filename
-                      : "/image/60352801-icono-de-la-cámara-símbolo-photocamera-profesional-botón-con-el-icono-de-banda-plana-en-el-fondo-blanco-bot.jpg"
-                  }
-                />
-                </Link>
-              </div>
-              <div className="card-content">
-                <span className="card-title activator grey-text text-darken-4">
-                  <h5>Title</h5>
-                  {p.name}
-                </span>
-                
+    <section id="content">
+      <div className="container">
+        <div id="profile-page" className="section">
+          <Link to={"/posts"}>
+            <Icon className="x">close</Icon>
+          </Link>
+          <div id="profile-page-header" className="card1">
+            <div className="card-image waves-effect waves-block">
+              <img
+                className="responsive-img fondo-perfil"
+                src={"/image/foto-fondoperfil.jpg"}
+                alt="fondo"
+              />
+            </div>
+            <figure className="card-profile-image">
+              <img
+                className="circle responsive-img foto-perfil"
+                src={
+                  user.avatar
+                    ? "http://localhost:8080/uploads/avatars/" +
+                      user.avatar +
+                      "?" +
+                      Date()
+                    : "/image/avatar-default.png"
+                }
+              />
+            </figure>
+            <div className="card-content">
+              <div className="row">
+                <div className="col s3 offset-s2">
+                  <h4 className="card-title grey-text text-darken-4">
+                    {user.username}
+                  </h4>
+                </div>
               </div>
             </div>
           </div>
-        ))}
+          <div id="profile-page-content" className="row">
+            {myphotos.map(p => (
+              <div className="col s6 m4" key={p._id}>
+                <div className="card">
+                  <div className="card-image">
+                    <Link to={"/posts/" + p._id + "/userPhotoDetail"}>
+                      <img
+                        className="activator"
+                        src={
+                          p.filename
+                            ? "http://localhost:8080/uploads/photos/" +
+                              p.filename
+                            : "/image/largee.gif"
+                        }
+                      />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 const mapStateToProps = (state: IGlobalState) => ({
@@ -109,6 +117,9 @@ const mapStateToProps = (state: IGlobalState) => ({
 });
 const mapDispatchToProps = {
   setPhotos: actions.setPhotos
-}
+};
 
-export default connect(mapStateToProps,mapDispatchToProps)(UserDetail);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserDetail);

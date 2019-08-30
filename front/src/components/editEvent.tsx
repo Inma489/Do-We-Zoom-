@@ -114,14 +114,29 @@ const EditEvent: React.FC<
                 }
                 alt="photo"
               />
+              <div className="file-field input-field">
+                <div className="btn">
+                  <Icon>add_a_photo</Icon>
+                  <input
+                    type="file"
+                    onChange={updateFile}
+                    accept=".jpg"
+                    required
+                  />
+                </div>
+                <div className="file-path-wrapper">
+                  <input className="file-path validate" type="text" />
+                </div>
+              </div>
               
-              <input
+              {/* <input
                 type="file"
                 onChange={updateFile}
                 className="validate"
                 required
-              />
-              
+              /> */}
+              <div className="row">
+              <label className="letters">Title</label>
               <input
                 type="text"
                 onChange={updateName}
@@ -131,9 +146,11 @@ const EditEvent: React.FC<
                 required
             
               />
+              </div>
               
               
-              
+              <div className="row">
+              <label className="letters">Date</label>
               <input
                 type="text"
                 onChange={updateDate}
@@ -142,8 +159,12 @@ const EditEvent: React.FC<
                 className="validate"
                 required
               />
+              </div>
               
               
+              
+              <div className="row">
+              <label className="letters">Place</label>
               <input
                 type="text"
                 onChange={updatePlace}
@@ -152,8 +173,10 @@ const EditEvent: React.FC<
                 className="validate"
                 required
               />
+              </div>
               
-              
+              <div className="row">
+              <label className="letters">Time</label>
               <input
                 type="text"
                 onChange={updateTime}
@@ -162,9 +185,11 @@ const EditEvent: React.FC<
                 className="validate"
                 required
               />
+              </div>
               
               
-              
+              <div className="row">
+              <label className="letters">Description</label>
               <input
                 type="text"
                 onChange={updateDescription}
@@ -173,6 +198,7 @@ const EditEvent: React.FC<
                 className="validate"
                 required
               />
+              </div>
               
             
             </div>

@@ -30,65 +30,75 @@ const Navbar: React.FC<IPropsGlobal> = props => {
 
   return (
     // creamos de nuevo un navbar
+
     <div>
       <materialize.Navbar
-        className="black nav"
-        fixed={true}
-        alignLinks="right"
-        
-      >
-      <materialize.NavItem>
-      <Link to="/">
-            
+        brand={
+          <materialize.NavItem>
+            <Link to="/">
               <img
                 className="responsive-img object"
                 width="70"
                 src="/image/objetivo.png"
                 alt="logo"
               />
+              
+              
+            </Link>
             
-          </Link>
-        </materialize.NavItem>
-       
-        <materialize.NavItem >
+          </materialize.NavItem>
+        }
+        
+        className="black nav"
+        fixed={true}
+        alignLinks="right"
+      >
+        <materialize.NavItem>
           <Link to="/users">Users</Link>
         </materialize.NavItem>
-        <materialize.NavItem >
+        <materialize.NavItem>
           <Link to="/posts">Posts</Link>
         </materialize.NavItem>
-        <materialize.NavItem >
+        <materialize.NavItem>
           <Link to="/events">Events</Link>
         </materialize.NavItem>
         <materialize.NavItem>
-        <img
-          width="60"
-          className="circle responsive-img avatar"
-          src={
-            user.avatar
-              ? "http://localhost:8080/uploads/avatars/" +
-                user.avatar +
-                "?" +
-                Date()
-              : "/image/default-avatar1.jpg"
-          }
-          alt="avatar"
-        />
+          <img
+            width="60"
+            className="circle responsive-img avatar"
+            src={
+              user.avatar
+                ? "http://localhost:8080/uploads/avatars/" +
+                  user.avatar +
+                  "?" +
+                  Date()
+                : "/image/default-avatar1.jpg"
+            }
+            alt="avatar"
+          />
         </materialize.NavItem>
-        <materialize.Dropdown  trigger={<materialize.Button id="btnDrop">
-                 {user.username}
-                  <materialize.Icon className="material-icons i">arrow_drop_down</materialize.Icon>
-                </materialize.Button>}>
-          <Link to={"/users/" + props.decoded._id}>
-            <materialize.Icon>account_circle</materialize.Icon>Profile
+        <materialize.Dropdown
+          trigger={
+            <materialize.Button id="btnDrop">
+              {user.username}
+              <materialize.Icon className="material-icons i">
+                arrow_drop_down
+              </materialize.Icon>
+            </materialize.Button>
+          }
+        >
+          <Link className="text" to={"/users/" + props.decoded._id}>
+            <materialize.Icon className="is">account_circle</materialize.Icon>
+            Profile
           </Link>
           <materialize.Divider />
-          <Link to={"/myPosts/" + props.decoded._id}>
-            <materialize.Icon>insert_photo</materialize.Icon>
+          <Link className="text" to={"/myPosts/" + props.decoded._id}>
+            <materialize.Icon className="is">insert_photo</materialize.Icon>
             My Posts
           </Link>
           <materialize.Divider />
           <Link to="/" onClick={logOut}>
-            <materialize.Icon>settings_power</materialize.Icon>
+            <materialize.Icon className="is">settings_power</materialize.Icon>
           </Link>
         </materialize.Dropdown>
       </materialize.Navbar>
@@ -96,152 +106,7 @@ const Navbar: React.FC<IPropsGlobal> = props => {
 
     //si no hay token muestrame estas cosas si no muestrame otras
     // para darle opciones a mi dropdown : options={{hover:true}}
-
-    // <div className="container-fluid">
-    //   <nav className="nav-extended">
-    //     <div className="nav-wrapper">
-    //       <Link to="/">
-    //         <div className="brand-logo">
-    //           <img className="responsive-img object" width="70"src="/image/objetivo.png" alt=""/>
-    //         </div>
-    //       </Link>
-    //       <a href="#" data-target="mobile-nav" className="sidenav-trigger">
-    //         <i className="material-icons">menu</i>
-    //       </a>
-
-    //       <ul className="right hide-on-med-and-down list">
-    //         <li>
-    //           <Link to="/users">Users</Link>
-    //         </li>
-    //         <li>
-    //           <Link to="/posts">Posts</Link>
-    //         </li>
-    //         <li>
-    //           <Link to="/events">Events</Link>
-    //         </li>
-    //         <li>
-    //           <img
-    //             width="60"
-    //             className="responsive-img avatar"
-    //             src={
-    //               user.avatar
-    //                 ? "http://localhost:8080/uploads/avatars/" +
-    //                   user.avatar +
-    //                   "?" +
-    //                   Date()
-    //                 : "/image/default-avatar1.jpg"
-    //             }
-    //             alt="avatar"
-    //           />
-    //         </li>
-
-    //         <Dropdown id="dropdown2"
-    //           trigger={
-    //             <Button id="btnDrop">
-    //               {user.username}
-    //               <Icon className="material-icons i">arrow_drop_down</Icon>
-    //             </Button>
-    //           }
-    //         >
-    //           <Link to={"/users/" + props.decoded._id}>
-    //             <Icon>account_circle</Icon>Profile
-    //           </Link>
-
-    //           <Divider />
-
-    //           <Link to={"/myPosts/" + props.decoded._id}>
-    //             <Icon>insert_photo</Icon>
-    //             My Posts
-    //           </Link>
-    //           <Divider />
-
-    //           <Link
-    //           to="/"
-    //           onClick={logOut}
-    //         ><Icon>settings_power</Icon>
-
-    //         </Link>
-
-    //         </Dropdown>
-
-    //       </ul>
-    //     </div>
-    //   </nav>
-    //   <ul className="sidenav" id="mobile-nav">
-    //     <li>
-    //       <Link to="/users">Users</Link>
-    //     </li>
-    //     <li>
-    //       <Link to="/posts">Posts</Link>
-    //     </li>
-    //     <li>
-    //       <Link to="/events">Events</Link>
-    //     </li>
-    //   </ul>
-    // </div>
-
-    /*
- <div className="container-fluid">
-
-<nav>
-  <div className="nav-wrapper">
-    <img
-      width="60"
-      src={
-        user.avatar
-          ? "http://localhost:8080/uploads/avatars/" +
-            user.avatar +
-            "?" +
-            Date()
-          : "/image/foto-default.png"
-      }
-      alt="avatar"
-    />
-    <ul className="right hide-on-med-and-down">
-      <li>
-        <Link to={"/users/" + props.decoded._id}>My profile</Link>
-      </li>
-      {!props.decoded.admin && (
-        <li>
-          <Link to={"/myPosts/" + props.decoded._id}>My posts</Link>
-        </li>
-      )}
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-        <li>
-          <Link to="/users">
-            Users
-          </Link>
-        </li>
-      
-      <li>
-        <Link to="/posts">
-          
-          Posts
-        </Link>
-      </li>
-      <li>
-        <Link to="/events">Events</Link>
-      </li>
-      <a className='dropdown-trigger btn' href='#' data-target='dropdown1'>{user.username}</a>
-      <ul id='dropdown1' className='dropdown-content'>
-    <li><a href="#">one</a></li>
-    <li><a href="#">two</a></li>
-  </ul>
-
-      <Link
-        to="/"
-        className="waves-effect waves-light btn-small"
-        onClick={logOut}
-      >
-        <i className="small material-icons">settings_power</i>
-      </Link>
-    </ul>
-  </div>
-</nav>
-</div> 
-*/
+    // aqui comenzare otro navbar de nuevo por 4 vez o 5...
   );
 };
 const mapStateToProps = (state: IGlobalState) => ({

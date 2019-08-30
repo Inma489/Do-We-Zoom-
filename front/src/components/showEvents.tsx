@@ -66,7 +66,7 @@ const ShowEvents: React.FC<IPropsGlobal & RouteComponentProps> = props => {
       </div>
       <div className="row">
         {props.events.map(e => (
-          <div className="col s10 m6" key={e._id}>
+          <div className="col s10 m6 hoverable" key={e._id}>
             <div className="card horizontal small">
               <div className="card-image responsive-img">
                 <img

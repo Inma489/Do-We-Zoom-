@@ -50,7 +50,7 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
               return null;
             }
             return (
-              <div className="col s6 m4" key={p._id}>
+              <div className="col s6 m4 box" key={p._id}>
                 <div className="card">
                   <div className="card-image photolist">
                     <Link to={"/posts/" + p._id + "/photoUserDetail"}>
@@ -66,52 +66,37 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                     </Link>
                   </div>
                   {/*HACER EL OVERLy por cojonoes pARA cada una de las fotos*/}
-                  {/* <div className="overlay">
-                  <Link to={"/users/" + u._id + "/userDetail"}>
-                        <img
-                          className="circle responsive-img users"
-                          width="60"
-                          src={
-                            u.avatar
-                              ? "http://localhost:8080/uploads/avatars/" +
-                                u.avatar
-                              : "/image/avatar-default.png"
-                          }
-                          alt="user"
-                        />
-                        <div>{u.username}</div>
-                      </Link>
-                  </div> */}
-                  <div className="card-content">
-                    <span className="card-title activator">
-                      <Link to={"/users/" + u._id + "/userDetail"}>
-                        <img
-                          className="circle responsive-img users"
-                          width="60"
-                          src={
-                            u.avatar
-                              ? "http://localhost:8080/uploads/avatars/" +
-                                u.avatar
-                              : "/image/avatar-default.png"
-                          }
-                          alt="user"
-                        />
-                        <div className="nombres">{u.username}</div>
-                      </Link>
-                    </span>
-                    {props.decoded.admin && (
-                      <Link
-                        onClick={() => {
-                          deletePhoto(p._id);
-                        }}
-                        to="/posts"
-                        className="waves-effect waves-light btn"
-                      >
-                        <Icon>delete</Icon>
-                      </Link>
-                    )}
+                  <div className="overlay">
+                    <Link
+                      className="word"
+                      to={"/users/" + u._id + "/userDetail"}
+                    >
+                      <img
+                        className="circle responsive-img users"
+                        width="60"
+                        src={
+                          u.avatar
+                            ? "http://localhost:8080/uploads/avatars/" +
+                              u.avatar
+                            : "/image/avatar-default.png"
+                        }
+                        alt="user"
+                      />
+                      <div>{u.username}</div>
+                    </Link>
                   </div>
                 </div>
+                {props.decoded.admin && (
+                  <Link
+                    onClick={() => {
+                      deletePhoto(p._id);
+                    }}
+                    to="/posts"
+                    className="waves-effect waves-light btn btnDeletePost"
+                  >
+                    <Icon>delete</Icon>
+                  </Link>
+                )}
               </div>
             );
           })}

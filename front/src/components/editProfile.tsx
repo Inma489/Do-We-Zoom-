@@ -155,7 +155,7 @@ const EditProfile: React.FC<
                       user.avatar +
                       "?" +
                       Date()
-                    : "/image/avatar-default.png"
+                    : "/image/default-avatar1.jpg"
                 }
               />
             )}

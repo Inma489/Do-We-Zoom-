@@ -75,15 +75,31 @@ const AddPhoto: React.FC<IPropsGlobal & RouteComponentProps> = props => {
           <div className="row card-panel">
             <div className="input-field col s11">
               <img width="200" src="" alt="" />
-              <input
+
+              <div className="file-field input-field">
+                <div className="btn">
+                  <Icon>add_a_photo</Icon>
+                  <input
+                    type="file"
+                    onChange={updateFile}
+                    accept=".jpg"
+                    required
+                  />
+                </div>
+                <div className="file-path-wrapper">
+                  <input className="file-path validate" type="text" />
+                </div>
+              </div>
+
+              {/* <input
                 type="file"
                 onChange={updateFile}
                 className="validate fileaddphoto"
                 accept=".jpg"
                 required
-              />
+              /> */}
               <div className="row">
-                <label>Title</label>
+                <label className="letters">Title</label>
                 <input
                   type="text"
                   onChange={updateName}
@@ -94,7 +110,7 @@ const AddPhoto: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                 />
               </div>
               <div className="row">
-                <label>Camera</label>
+                <label className="letters">Camera</label>
                 <input
                   type="text"
                   onChange={updateCamera}
@@ -105,7 +121,7 @@ const AddPhoto: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                 />
               </div>
               <div className="row">
-                <label>Location</label>
+                <label className="letters">Location</label>
                 <input
                   type="text"
                   onChange={updateLocalization}
@@ -116,7 +132,10 @@ const AddPhoto: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                 />
               </div>
             </div>
-            <button onClick={add} className="waves-effect waves-light btn btnsavePhoto">
+            <button
+              onClick={add}
+              className="waves-effect waves-light btn btnsavePhoto"
+            >
               <Icon>save</Icon>
             </button>
             <Link

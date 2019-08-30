@@ -10,3 +10,6 @@
 .btnDeleteUser{
   margin-left: 5px;
 }
+@media screen and (max-width: 580px){
+  .btnDeleteUser{margin-left: 0px}
+}

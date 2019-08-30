@@ -27,22 +27,21 @@ const PhotoDetail: React.FC<
         <Icon className="x">close</Icon>
       </Link>
       <div className="row">
-        <div className="col s12 m10">
-          
-            <img
-              className="responsive-img"
-              width="100%"
-              src={"http://localhost:8080/uploads/photos/" + myPhoto.filename}
-              alt="photo"
-            />
-        
-          <div className="card-reveal revealinfo">
-            <h6>Title</h6>
-            <p>{myPhoto.name}</p>
-            <h6>Camera</h6>
-            <p>{myPhoto.camera}</p>
-            <h6>Location</h6>
-            <p>{myPhoto.localization}</p>
+        <div className="col s12 box1">
+          <img
+            className="responsive-img photoInfo"
+            width="93%"
+            src={"http://localhost:8080/uploads/photos/" + myPhoto.filename}
+            alt="photo"
+          />
+
+          <div className="revealinfo overlay1">
+            <h6 className="texts">Title<Icon>create</Icon></h6>
+            <p className="texts1">{myPhoto.name}</p>
+            <h6 className="texts">Camera<Icon>camera_alt</Icon></h6>
+            <p className="texts1">{myPhoto.camera}</p>
+            <h6 className="texts">Location<Icon>location_on</Icon></h6>
+            <p className="texts1">{myPhoto.localization}</p>
           </div>
         </div>
       </div>

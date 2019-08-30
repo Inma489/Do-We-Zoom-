@@ -107,13 +107,27 @@ const EditPhoto: React.FC<
                 }
                 alt="photo"
               />
-              <input
+              <div className="file-field input-field">
+                <div className="btn">
+                  <Icon>add_a_photo</Icon>
+                  <input
+                    type="file"
+                    onChange={updateFile}
+                    accept=".jpg"
+                    required
+                  />
+                </div>
+                <div className="file-path-wrapper">
+                  <input className="file-path validate" type="text" />
+                </div>
+              </div>
+              {/* <input
                 type="file"
                 onChange={updateFile} // el file no tiene value
                 className="validate"
                 accept=".jpg"
                 required
-              />
+              /> */}
               <div className="row">
                 <label>Title</label>
                 <input

@@ -17,6 +17,7 @@
     background: rgba(0, 0, 0, 0.5); /* Black see-through */
     color: #f1f1f1; 
     width: 100%;
+    height: 48%;
     transition: .5s ease;
     opacity:0;
     color: white;
@@ -24,11 +25,17 @@
     padding: 20px;
     text-align: center;
 }
-.container {
+.box {
     position: relative;
     width: 50%;
     max-width: 300px;
   }
-.container:hover .overlay {
+.box:hover .overlay {
     opacity: 1;
+  }
+  .word{
+    color: white;
+  }
+  .btnDeletePost{
+    margin-left: 101px;
   }

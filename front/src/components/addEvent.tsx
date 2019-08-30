@@ -82,23 +82,40 @@ const AddEvent: React.FC<IPropsGlobal & RouteComponentProps> = props => {
         <div className="col s12 m9">
           <div className="row card-panel">
             <div className="input-field col s12">
-              <input
+              <div className="file-field input-field">
+                <div className="btn">
+                  <Icon>add_a_photo</Icon>
+                  <input
+                    type="file"
+                    onChange={updateFile}
+                    accept=".jpg"
+                    required
+                  />
+                </div>
+                <div className="file-path-wrapper">
+                  <input className="file-path validate" type="text" />
+                </div>
+              </div>
+              {/* <input
                 type="file"
                 onChange={updateFile}
                 className="validate"
                 accept=".jpg"
                 required
-              />
-
-              <input
-                type="text"
-                onChange={updateName}
-                placeholder="Title"
-                value={name}
-                className="validate"
-                required
-              />
-
+              /> */}
+              <div className="row">
+                <label className="letters">Title</label>
+                <input
+                  type="text"
+                  onChange={updateName}
+                  placeholder="Title"
+                  value={name}
+                  className="validate"
+                  required
+                />
+              </div>
+              <div className="row">
+              <label className="letters">Date</label>
               <input
                 type="text"
                 onChange={updateDate}
@@ -107,7 +124,9 @@ const AddEvent: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                 className="validate"
                 required
               />
-
+              </div>
+              <div className="row">
+              <label className="letters">Place</label>
               <input
                 type="text"
                 onChange={updatePlace}
@@ -116,6 +135,9 @@ const AddEvent: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                 className="validate"
                 required
               />
+              </div>
+              <div className="row">
+              <label className="letters">Time</label>
               <input
                 type="text"
                 onChange={updateTime}
@@ -124,6 +146,9 @@ const AddEvent: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                 className="validate"
                 required
               />
+              </div>
+              <div className="row">
+              <label className="letters">Description</label>
               <input
                 type="text"
                 onChange={updateDescription}
@@ -132,27 +157,23 @@ const AddEvent: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                 className="validate"
                 required
               />
+              </div>
             </div>
-            
+
             <Link
-            onClick={add}
-            to="/events"
-            className="waves-effect waves-light btn btnaddEvent"
-          >
-            <Icon>save</Icon>
-          </Link>
-          <Link to="/events" className="waves-effect waves-light btn">
-            <Icon>cancel</Icon>
-          </Link>
-          
+              onClick={add}
+              to="/events"
+              className="waves-effect waves-light btn btnaddEvent"
+            >
+              <Icon>save</Icon>
+            </Link>
+            <Link to="/events" className="waves-effect waves-light btn">
+              <Icon>cancel</Icon>
+            </Link>
           </div>
         </div>
 
-        <div>
-        
-          
-          
-        </div>
+        <div></div>
       </div>
     </div>
   );

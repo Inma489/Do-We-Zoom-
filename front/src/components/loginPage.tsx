@@ -163,22 +163,14 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
 
   return (
     <div className="container">
-      {/* <Carousel
-        images={[
-          "https://picsum.photos/200/300?image=0",
-          "https://picsum.photos/200/300?image=1",
-          "https://picsum.photos/200/300?image=2"
-        ]}
-      /> */}
-
       <div className="modal-content center">
         <Button id="btnLogin" href="#modal1" className="modal-trigger">
           Signin
         </Button>
-        <Modal id="modal1" header="" className="modal1">
+        <Modal id="modal1"className="modal1">
           <div className="section center">
             <div className="row">
-              <div className="col s12">
+              <div className="col s12 m8">
                 <img
                   width="200"
                   className="responsive-img loginPhoto"
@@ -187,7 +179,7 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                 />
               </div>
               <div className="col s12">
-                <div className="input-field">
+                <div className="input-field inputLogin">
                   <i className="material-icons prefix">email</i>
                   <input type="text" value={email} onChange={updateEmail} />
                   <label>Email</label>
@@ -221,14 +213,14 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
         <Button id="btnSignUp" href="#modal2" className="modal-trigger">
           SignUp
         </Button>
-        <Modal id="modal2" className="modal2" header="">
+        <Modal id="modal2" className="modal2">
           <div className="section content">
             <div className="row">
-              <div className="col s5">
+              <div className="col s12 m8">
                 <img
                   width="150"
                   className="responsive-img avatarDefault"
-                  src="/image/default-avatar1.jpg"
+                  src="/image/objetivo2.png"
                   alt="avatar"
                 />
                 <div className="input-field">
@@ -243,13 +235,12 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                   <input
                     type="button"
                     value="Add your photo"
-                    className="btn btn-small btnSignup"
+                    className="btn btn-small btnSignup1"
                     onClick={() => inputFileRef.current.click()}
                   />
                 </div>
               </div>
-              
-              
+
               <div className="col s12">
                 <div className="input-field">
                   <i className="material-icons prefix">person</i>
@@ -283,15 +274,16 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                   </div>
                 </div>
               </div>
-              </div>
-            
+            </div>
+            </div>
+
             <input
               type="submit"
               value="Send"
               onClick={addUser}
               className="btn btn-small submit"
             />
-          </div>
+          
         </Modal>
       </div>
     </div>

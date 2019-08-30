@@ -1,5 +1,13 @@
-.row1{
+/* .row{
     margin-bottom: 0;
-    /* margin-left: -0.75rem;
-    margin-right: -0.75rem; */
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+} */
+.section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.container .row {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
 }
