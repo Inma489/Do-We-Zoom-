@@ -162,12 +162,12 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
   };
 
   return (
-    <div className="container">
+    <div className="container-fluid responsive-img principal">
       <div className="modal-content center">
         <Button id="btnLogin" href="#modal1" className="modal-trigger">
           Signin
         </Button>
-        <Modal id="modal1"className="modal1">
+        <Modal id="modal1" className="modal1">
           <div className="section center">
             <div className="row">
               <div className="col s12 m8">
@@ -275,16 +275,40 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                 </div>
               </div>
             </div>
-            </div>
+          </div>
 
-            <input
-              type="submit"
-              value="Send"
-              onClick={addUser}
-              className="btn btn-small submit"
-            />
-          
+          <input
+            type="submit"
+            value="Send"
+            onClick={addUser}
+            className="btn btn-small submit"
+          />
         </Modal>
+      </div>
+      <div className="thumb carta">
+        <a href="#"></a>
+      </div>
+      <div className="camera">
+        <div className="row">
+          <div className="col s6 izq">
+            <div className="box2">
+              <img
+                className="responsive-img"
+                src="/image/Camara Inma 1.png"
+                alt="camera left"
+              />
+            </div>
+          </div>
+          <div className="col s6 derech">
+            <div className="box3">
+              <img
+                className="responsive-img"
+                src="/image/Camara Inma 2.png"
+                alt="camera right"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
