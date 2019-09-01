@@ -6,16 +6,17 @@
     
 }
 .left{
-    margin-left: 270px;
+    margin-left: 247px;
 
 }
 .btnRight{
-    margin-left: 10px;
+    margin-left: 5px;
     
 }
 .caja1{
-    margin-left: 200px;
+    margin-right: 40px !important;
 }
 @media screen and (max-width: 580px){
     .left{margin-left: 85px}
+    .caja1{margin-right: 20px !important}
 }

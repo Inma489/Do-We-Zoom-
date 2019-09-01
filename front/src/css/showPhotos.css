@@ -39,3 +39,9 @@
   .btnDeletePost{
     margin-left: 101px;
   }
+  @media screen and (max-width: 580px){
+    .btnDeletePost{margin-left: 110px}
+    .box{margin-left: 12px !important}
+    .overlay{width: 279px}
+    
+  }

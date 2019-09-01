@@ -10,3 +10,6 @@
 .letters{
     color: rgb(48, 46, 46)
 }
+@media screen and (max-width:580px){
+    .contaddphoto{margin-left: 20px !important}
+}

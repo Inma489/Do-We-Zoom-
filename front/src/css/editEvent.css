@@ -1,10 +1,16 @@
 .btnevent{
-    margin-left: 270px !important;
+    margin-left: 80px;
+}
+.btncancelEvent{
+    margin-left: 5px;
 }
 .contEdit{
-    margin-left: 300px !important;
+    margin-left: 508px !important;
     margin-top: 6px !important;
 }
 .card-panel{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+@media screen and (max-width: 580px){
+    .contEdit{margin-left: 35px !important}
 }

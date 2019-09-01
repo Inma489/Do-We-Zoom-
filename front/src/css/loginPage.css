@@ -8,21 +8,21 @@
      
 }
 */
-#btnLogin{
+#btnLogin {
     margin-top: 10px;
     border-radius: 10px 10px 10px 10px !important;
     margin-left: -70px;
 }
-#btnSignUp{
+#btnSignUp {
     margin-right: -118px !important;
     margin-top: -54px;
     border-radius: 10px 10px 10px 10px !important;
 }
-.btnSignup1{
+.btnSignup1 {
     margin-left: 260px;
     border-radius: 10px 10px 10px 10px !important;
 }
-.modal1{
+.modal1 {
     width: 30%;
     max-height: 98% !important;
     overflow-y: hidden !important;
@@ -31,42 +31,35 @@
     opacity: 10px;
     border-radius: 10px 10px 10px 10px !important;
 }
-
-.modal2{
+.modal2 {
     width: 30%;
     max-height: 98% !important;
     overflow-y: hidden !important;
     margin-top: -8px !important;
     background-color: white !important;
     border-radius: 10px 10px 10px 10px !important;
-    
-    
 }
-
-.loginPhoto{
+.loginPhoto {
     margin-top: 0px !important;
     margin-left: 209px;
-    
 }
-.avatarDefault{
+.avatarDefault {
     border-radius: 76px;
     margin-left: 250px;
 }
-.btnLog{
+.btnLog {
     width: 150px;
     margin-top: -9px;
     text-align: center;
     margin-left: 270px;
     border-radius: 10px 10px 10px 10px !important;
 }
-
-.submit{
+.submit {
     width: 150px;
     margin-top: -7px;
     text-align: center;
     margin-left: 280px;
     border-radius: 10px 10px 10px 10px !important;
-    
 }
 .btnSignup {
     width: 150px;
@@ -75,112 +68,142 @@
     margin-left: 300px !important;
     border-radius: 10px 10px 10px 10px !important;
 }
-
-.border-red{
+.border-red {
     border-bottom: 1px solid red;
-
 }
 .input-field input[type=text]:focus {
     border-bottom: 1px solid grey !important;
     box-shadow: 0 1px 0 0 rgb(117, 110, 110) !important;
-  }
-  .input-field input[type=password]:focus {
+}
+.input-field input[type=password]:focus {
     border-bottom: 1px solid grey !important;
     box-shadow: 0 1px 0 0 rgb(117, 110, 110) !important;
-  }
-  .input-field .prefix.active {
+}
+.input-field .prefix.active {
     color: grey !important;
-  }
-  .input-field .active {
+}
+.input-field .active {
     color: rgb(46, 42, 42) !important;
-  }
-  .box3{
-      margin-right: 107px;
-  }
-  .box2 img{
-      width: 70%;
-      height: 100vh;
-      -webkit-transition: width 2s;
-    transition: width 2s;
+}
 
-  }
-  .izq{
-    padding-right: 0px;
-  }
-  .box3 img {
-      position: absolute;
-      right: 0px;
-      width: 26%;
-      height: 100vh;
-      -webkit-transition: right 2s, width 2s;
+.box2 img {
+    width: 111%;
+    height: 100vh;
+    -webkit-transition: width 2s;
     transition: width 2s;
-      
-  }
-  .principal:hover .box2 img{
-      width: 500px;
-  }
-  .principal:hover .box3 img{
-      width: 300px;
-  }
-  .camera{
-      position:fixed;
-      width: 100%;
-      height: 100%;
-      z-index: 9;
-  }
-  .camera{
-      z-index: 8;
-  }
-  .carta{
+}
+.izq {
+    padding-right: 0px;
+}
+/* .box3 img {
+    position: absolute;
+    right: 0px;
+    width: 26%;
+    height: 100vh;
+    -webkit-transition: right 2s, width 2s;
+    transition: width 2s;
+} */
+/* .box3 img {
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    -webkit-transition: right 2s, width 2s;
+    transition: width 2s;
+} */
+/* .box3 img {
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    -webkit-transition: left 2s, width 2s;
+    transition: width 2s;
+} */
+.derech{
+    padding: 0 !important;
+}
+.izq{
+    padding: 0 !important;
+}
+.box3 img {
+    /* position: absolute; */
+    right: 0;
+    width: 89%;
+    float: right;
+    height: 100vh;
+    -webkit-transition: right 2s, width 2s;
+    transition: width 2s;
+    transition-delay: width 2s;
+}
+.container-fluid:hover .box2 img {
+    width: 68%;
+}
+.container-fluid:hover .box3 img {
+    width: 68%;
+}
+.camera {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+}
+.camera {
+    z-index: 8;
+}
+.carta {
     margin: auto;
     z-index: 9;
 }
-.carta-container{
+.carta-container {
     width: 100%;
     height: 100%;
 }
 .thumb {
     width: 0%;
     height: 0%;
-    margin: 117px auto;
+    margin-left: 40%;
+    margin-top: 10%;
     perspective: 1000px;
     /* transform: rotateX(80deg); 
     transform-origin: bottom; */
     position: absolute;
-    margin-left: 752px;
+    /* margin-left: 752px; */
     -webkit-transition: right 2s, width 2s;
     transition: width 2s;
 }
-.thumb button{
+.thumb button {
     width: 0px;
     height: 0px;
     -webkit-transition: right 2s, width 2s;
     transition: width 2s;
 }
-.principal:hover .thumb{
+.principal {
+    background-image: url("/image/trigal.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    background-position: center;
+}
+.principal:hover .thumb {
     transition-delay: 2s;
 }
 .principal:hover .thumb {
     width: 300px;
-height: 300px;
-transition-delay: 2s;
-
+    height: 300px;
+    transition-delay: 2s;
 }
 .thumb a {
     display: block;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-		url("/image/polaroid.jpg");
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/image/polaroid.jpg");
     background-size: 0, cover;
     transform-style: preserve-3d;
     transition: all 0.5s;
 }
-.principal:hover .thumb button{
+.principal:hover .thumb button {
     width: 95px;
     height: 25px;
     transition-delay: 2.5s;
-
 }
 .thumb a span {
     color: white;
@@ -212,16 +235,22 @@ transition-delay: 2s;
 .thumb:hover a:before {
     opacity: 1;
     box-shadow: 0 0 25px 25px rgba(0, 0, 0, 0.5);
-    transform: rotateX(0) translateZ(-60px) ;
+    transform: rotateX(0) translateZ(-60px);
 }
-
-
-
-
-  @media screen and (max-width: 580px){
-      .loginPhoto{margin-left: 0px}
-      .btnLog{margin-left: 55px}
-      .avatarDefault{margin-left: 40px}
-      .submit{margin-left: 60px}
-      .btnSignup1{margin-left: 50px}
-  }
+@media screen and (max-width: 580px) {
+    .loginPhoto {
+        margin-left: 0px
+    }
+    .btnLog {
+        margin-left: 55px
+    }
+    .avatarDefault {
+        margin-left: 40px
+    }
+    .submit {
+        margin-left: 60px
+    }
+    .btnSignup1 {
+        margin-left: 50px
+    }
+}

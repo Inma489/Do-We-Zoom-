@@ -1,5 +1,9 @@
 .btnaddEvent{
-    margin-left: 270px !important;
+    margin-left: 250px;
+}
+.btncancelAdd{
+    margin-left: 5px;
+
 }
 .contAdd{
     margin-left: 300px !important;
@@ -7,4 +11,8 @@
 }
 .card-panel{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+@media screen and (max-width: 580px){
+    .contAdd{margin-left: 20px !important}
+    .btnaddEvent{margin-left: 50px}
 }

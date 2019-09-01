@@ -85,7 +85,7 @@ const UserDetail: React.FC<
           </div>
           <div id="profile-page-content" className="row">
             {myphotos.map(p => (
-              <div className="col s6 m4" key={p._id}>
+              <div className="col s4 m4" key={p._id}>
                 <div className="card">
                   <div className="card-image">
                     <Link to={"/posts/" + p._id + "/userPhotoDetail"}>

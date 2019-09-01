@@ -50,7 +50,7 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
               return null;
             }
             return (
-              <div className="col s6 m4 box" key={p._id}>
+              <div className="col s12 m4 box" key={p._id}>
                 <div className="card">
                   <div className="card-image photolist">
                     <Link to={"/posts/" + p._id + "/photoUserDetail"}>
@@ -65,7 +65,7 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                       />
                     </Link>
                   </div>
-                  {/*HACER EL OVERLy por cojonoes pARA cada una de las fotos*/}
+                  
                   <div className="overlay">
                     <Link
                       className="word"

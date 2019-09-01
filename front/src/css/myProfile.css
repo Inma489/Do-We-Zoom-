@@ -55,7 +55,7 @@
     height: 364px !important;
 }
 .btneditprofile{
-    margin-left: 830px !important;
+    margin-left: 830px;
     margin-bottom: 5px;
     background-color: #424242  !important;
 }
@@ -63,4 +63,7 @@
     margin-left: 5px;
     margin-bottom: 5px;
     background-color: #424242 !important;
+}
+@media screen and (max-width:580px){
+    .btneditprofile{margin-left: 100px}
 }

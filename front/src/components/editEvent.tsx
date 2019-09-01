@@ -98,7 +98,7 @@ const EditEvent: React.FC<
   return (
     <div className=" section container contEdit">
       <div className="row">
-        <div className="col s12 m9">
+        <div className="col s11 m4">
           <div className="row card-panel">
             <div className="input-field col s11">
               <img
@@ -210,7 +210,7 @@ const EditEvent: React.FC<
           <Icon>save</Icon>
         </Link>
 
-        <Link to={"/events"} className="waves-effect waves-light btn">
+        <Link to={"/events"} className="waves-effect waves-light btn btncancelEvent">
           <Icon>cancel</Icon>
         </Link>
           </div>

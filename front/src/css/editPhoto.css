@@ -7,3 +7,7 @@
 .contPhoto{
     margin-left: 392px !important;
 }
+@media screen and (max-width: 580px){
+    .contPhoto{margin-left: 20px !important}
+    .btnsavePhoto{margin-left: 92px}
+}

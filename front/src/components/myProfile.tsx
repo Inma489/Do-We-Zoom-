@@ -41,7 +41,7 @@ const MyProfile: React.FC<
   }
 
   return (
-    // aqui voy a poner el nuevo o intentarlo
+    
 
     <section id="content">
       <div className="container">

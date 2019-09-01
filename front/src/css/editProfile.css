@@ -1,15 +1,15 @@
 .editProfile{
-    margin-left: 84px;
+    margin-left: 93px;
 }
 .coleditProfile{
     margin-left: 55px !important;
 }
 .btneditPerfil{
-    margin-left: 160px;
+    margin-left: 200px;
     background-color: #424242  !important;
 }
 .btnfileProfile{
-    margin-left: 142px;
+    margin-left: 160px;
     background-color: #424242  !important;
 }
 .contEditProfile{
@@ -18,4 +18,12 @@
 .btncancelProfile{
     background-color: #424242 !important;
     margin-left: 5px;
+}
+@media screen and (max-width: 580px){
+    .contEditProfile{margin-left: 20px !important}
+    .coleditProfile{margin-left: 20px !important}
+    .btnfileProfile{margin-left: 55px}
+    .editProfile{margin-left: 0px}
+    .btneditPerfil{margin-left: 80px}
+
 }

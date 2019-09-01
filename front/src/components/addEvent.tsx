@@ -79,7 +79,7 @@ const AddEvent: React.FC<IPropsGlobal & RouteComponentProps> = props => {
   return (
     <div className=" section container contAdd">
       <div className="row">
-        <div className="col s12 m9">
+        <div className="col s10 m9">
           <div className="row card-panel">
             <div className="input-field col s12">
               <div className="file-field input-field">
@@ -167,7 +167,7 @@ const AddEvent: React.FC<IPropsGlobal & RouteComponentProps> = props => {
             >
               <Icon>save</Icon>
             </Link>
-            <Link to="/events" className="waves-effect waves-light btn">
+            <Link to="/events" className="waves-effect waves-light btn btncancelAdd">
               <Icon>cancel</Icon>
             </Link>
           </div>

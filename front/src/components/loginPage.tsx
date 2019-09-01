@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, Fragment } from "react";
 import jwt from "jsonwebtoken";
 // import imgs from '../../public/image/foto.jpg'
 import { RouteComponentProps } from "react-router";
@@ -7,6 +7,8 @@ import { IDecoded, IUser } from "../interfaces";
 import * as actions from "../actions";
 import { IGlobalState } from "../reducers";
 import { connect } from "react-redux";
+
+
 
 const { Carousel } = require("react-materialize");
 const { Modal, Button } = require("react-materialize");
@@ -162,6 +164,7 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
   };
 
   return (
+    
     <div className="container-fluid responsive-img principal">
       <div className="modal-content center">
         <Button id="btnLogin" href="#modal1" className="modal-trigger">
@@ -293,7 +296,7 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
           <div className="col s6 izq">
             <div className="box2">
               <img
-                className="responsive-img"
+                className=""
                 src="/image/Camara Inma 1.png"
                 alt="camera left"
               />
@@ -302,7 +305,7 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
           <div className="col s6 derech">
             <div className="box3">
               <img
-                className="responsive-img"
+                className=""
                 src="/image/Camara Inma 2.png"
                 alt="camera right"
               />
