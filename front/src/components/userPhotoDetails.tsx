@@ -28,6 +28,7 @@ const UserPhotoDetails: React.FC<
   }
 
   return (
+    <div className="usersBackground">
     <div className="section container">
       <Link to={"/users/" + myPhoto.owner + "/userDetails"}>
         <Icon className="x">close</Icon>
@@ -51,6 +52,7 @@ const UserPhotoDetails: React.FC<
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -8,6 +8,14 @@
 .btnEditPhoto{
     margin-left: 80px;
 }
+.usersBackground{
+    background-image: url("/image/fondo-4.jpg");
+     background-repeat: no-repeat; 
+       background-size: cover; 
+      background-position: center; 
+      min-height: 100vh
+  
+  }
 @media screen and (max-width: 580px){
     .btnEditPhoto{margin-left: 99px}
 }

@@ -7,12 +7,20 @@
 }
 .contAdd{
     margin-left: 300px !important;
-    margin-top: 10px !important;
+   
 }
 .card-panel{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
 }
+.usersBackground{
+    background-image: url("/image/fondo-4.jpg");
+     background-repeat: no-repeat; 
+       background-size: cover; 
+      background-position: center; 
+      min-height: 100vh
+  
+  }
 @media screen and (max-width: 580px){
-    .contAdd{margin-left: 20px !important}
-    .btnaddEvent{margin-left: 50px}
+    .contAdd{margin-left: 45px !important}
+    .btnaddEvent{margin-left: 65px}
 }

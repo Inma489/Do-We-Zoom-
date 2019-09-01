@@ -89,7 +89,8 @@ const EditPhoto: React.FC<
   };
 
   return (
-    <div className=" section container contPhoto">
+    <div className="usersBackground">
+    <div className="section container contPhoto">
       <div className="row">
         <div className="col s12 m7">
           <div className="row card-panel">
@@ -178,6 +179,7 @@ const EditPhoto: React.FC<
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

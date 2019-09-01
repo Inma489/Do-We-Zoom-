@@ -1,6 +1,14 @@
 .detailsevent{
     margin-top: -20px !important;
 }
+.usersBackground{
+    background-image: url("/image/fondo-4.jpg");
+     background-repeat: no-repeat; 
+       background-size: cover; 
+      background-position: center; 
+      min-height: 100vh
+  
+  }
 .btnevents{
     margin-left: 176px;
 }

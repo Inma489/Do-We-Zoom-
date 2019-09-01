@@ -139,6 +139,7 @@ const EditProfile: React.FC<
   };
 
   return (
+    <div className="usersBackground">
     <div className="section container contEditProfile">
       <div className="row">
         <div className="col s12 m7">
@@ -230,6 +231,7 @@ const EditProfile: React.FC<
       </div>
       </div>
       </div>
+    </div>
     </div>
   );
 };

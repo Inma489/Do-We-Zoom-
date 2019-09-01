@@ -51,6 +51,7 @@ const ShowEvents: React.FC<IPropsGlobal & RouteComponentProps> = props => {
 
   React.useEffect(listEvents, []);
   return (
+    <div className="usersBackground">
     <div className="section container">
       <div className="row">
         <div className="col s6">
@@ -116,6 +117,7 @@ const ShowEvents: React.FC<IPropsGlobal & RouteComponentProps> = props => {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };

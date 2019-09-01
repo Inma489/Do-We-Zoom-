@@ -96,9 +96,10 @@ const EditEvent: React.FC<
   };
 
   return (
+    <div className="editBackground">
     <div className=" section container contEdit">
       <div className="row">
-        <div className="col s11 m4">
+        <div className="col s9 m8">
           <div className="row card-panel">
             <div className="input-field col s11">
               <img
@@ -218,6 +219,7 @@ const EditEvent: React.FC<
         </div>
        
       </div>
+    </div>
     </div>
   );
 };

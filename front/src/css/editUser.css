@@ -5,6 +5,14 @@
     
     
 }
+.usersBackground{
+    background-image: url("/image/fondo-4.jpg");
+     background-repeat: no-repeat; 
+       background-size: cover; 
+      background-position: center; 
+      min-height: 100vh
+  
+  }
 .left{
     margin-left: 247px;
 

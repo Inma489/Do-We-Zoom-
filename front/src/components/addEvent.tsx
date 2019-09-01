@@ -77,6 +77,7 @@ const AddEvent: React.FC<IPropsGlobal & RouteComponentProps> = props => {
   };
 
   return (
+    <div className="usersBackground">
     <div className=" section container contAdd">
       <div className="row">
         <div className="col s10 m9">
@@ -175,6 +176,7 @@ const AddEvent: React.FC<IPropsGlobal & RouteComponentProps> = props => {
 
         <div></div>
       </div>
+    </div>
     </div>
   );
 };

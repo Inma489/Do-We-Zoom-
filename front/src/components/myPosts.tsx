@@ -46,6 +46,7 @@ const MyPosts: React.FC<
   // }
 
   return (
+    <div className="usersBackground">
     <div className="section container">
       <div className="row">
         <div className="col s6">
@@ -93,6 +94,7 @@ const MyPosts: React.FC<
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };

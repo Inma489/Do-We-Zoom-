@@ -40,6 +40,7 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
   }
 
   return (
+    <div className="usersBackground">
     <div className="section container">
       <div className="row">
         {props.photos
@@ -101,6 +102,7 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
             );
           })}
       </div>
+    </div>
     </div>
   );
 };

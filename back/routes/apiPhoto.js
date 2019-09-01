@@ -60,34 +60,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-//PREGUNTAR A ANGELLLLL SUPER IMPORTANTEEEEEEEEEE
-
-//MOSTRAR UNA PHOTO POR EL ID
-// router.get("/:id", async (req, res) => {
-
-//   try {
-//     const token = req.headers.authorization.replace("Bearer ", ""); // esto es para que nos quite del console el Bearer que nos aparece al lado del token
-//     const verification = jwt.verify(token, "mysecret"); // verificacion token
-
-//     // console.log(token);
-//     console.log(verification);
-//     const userId = req.params.id;
-//     console.log(userId);
-//     console.log(typeof(userId));
-
-//     // aqui es donde no me muestra la foto si le pongo un find()
-//     //lo que tenia puesto es findbyid
-//     //no me meuistra la foto del id del usuario
-//     //PREGUNTAR A ANGEL
-//     //cuando cambio photoModel por userModel que es como debería ser me trae el array vacio de fotos
-//     // PREGUNTAR A ANGELLLL IMPORTANTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!!!!!!!
-//     const photo = await photoModel.findById({userId});
-//     console.log(photo);
-//     res.send(photo); // me imprime esa photo correctamente
-//   } catch (e) {
-//     res.status(401).send("You don't have permission to show this photo " + e);
-//   }
-// });
 
 // las fotos que suban los usuarios si las voy a gaurdar en la base de datos con
 //el filename

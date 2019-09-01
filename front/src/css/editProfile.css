@@ -19,6 +19,14 @@
     background-color: #424242 !important;
     margin-left: 5px;
 }
+.usersBackground{
+    background-image: url("/image/fondo-4.jpg");
+     background-repeat: no-repeat; 
+       background-size: cover; 
+      background-position: center; 
+      min-height: 100vh
+  
+  }
 @media screen and (max-width: 580px){
     .contEditProfile{margin-left: 20px !important}
     .coleditProfile{margin-left: 20px !important}

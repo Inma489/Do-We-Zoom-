@@ -1,16 +1,26 @@
 .btnevent{
-    margin-left: 80px;
+    margin-left: 220px;
 }
 .btncancelEvent{
     margin-left: 5px;
 }
 .contEdit{
-    margin-left: 508px !important;
-    margin-top: 6px !important;
+    margin-left: 350px !important;
+    margin-top: 0px !important;
 }
 .card-panel{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
 }
+.editBackground{
+    background-image: url("/image/fondo-4.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-width: 100vh;
+    background-position: center
+  
+  }
 @media screen and (max-width: 580px){
-    .contEdit{margin-left: 35px !important}
+    .contEdit{margin-left: 50px !important}
+    .btnevent{margin-left: 200px}
+    
 }

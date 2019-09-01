@@ -69,7 +69,8 @@ const AddPhoto: React.FC<IPropsGlobal & RouteComponentProps> = props => {
   };
 
   return (
-    <div className=" section container contaddphoto">
+    <div className="usersBackground">
+    <div className="section container contaddphoto">
       <div className="row">
         <div className="col s12 m7">
           <div className="row card-panel">
@@ -147,6 +148,7 @@ const AddPhoto: React.FC<IPropsGlobal & RouteComponentProps> = props => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

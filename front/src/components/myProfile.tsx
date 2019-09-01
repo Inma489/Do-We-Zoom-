@@ -42,7 +42,7 @@ const MyProfile: React.FC<
 
   return (
     
-
+<div className="usersBackground">
     <section id="content">
       <div className="container">
         <div id="profile-page" className="section">
@@ -98,43 +98,7 @@ const MyProfile: React.FC<
         </div>
       </div>
     </section>
-
-    /*AQUI EL OTRO PERFIL*/
-
-    // <div className="section content">
-    //   <div className="row">
-    //   <div className="col s12 m8">
-    //     <div className="card horizontal">
-    //       <div className="card-image responsive-img">
-
-    //       <img
-    //         width="500"
-    //         className="circle responsive-img"
-    //         src={
-    //           user.avatar
-    //             ? "http://localhost:8080/uploads/avatars/" + user.avatar + "?" + Date()
-    //             : "/image/avatar-default.png"
-    //         }
-    //       />
-    //       </div>
-
-    //         <div className="card-stacked">
-    //           <div className="card-content">
-    //           <h3 className="header">{user.username}</h3>
-    //             <p>{user.email}</p>
-    //           </div>
-
-    //           <div className="card-action">
-    //             <Link to={"/users/" + props.decoded._id + "/edit"}className="waves-effect waves-light btn"><Icon>edit</Icon></Link>
-    //             <Link to="/" className="waves-effect waves-light btn"onClick={() => {
-    //               Delete(user._id)
-    //             }}><Icon>delete_forever</Icon></Link>
-    //           </div>
-    //         </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //     </div>
+    </div>
   );
 };
 const mapStateToProps = (state: IGlobalState) => ({

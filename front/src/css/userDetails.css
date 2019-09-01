@@ -3,6 +3,14 @@
     margin-left: -0.75rem;
     margin-right: -0.75rem;
 } */
+.usersBackground{
+    background-image: url("/image/fondo-4.jpg");
+     background-repeat: no-repeat; 
+       background-size: cover; 
+      background-position: center; 
+      min-height: 100vh
+  
+  }
 .section {
     padding-top: 1rem;
     padding-bottom: 1rem;

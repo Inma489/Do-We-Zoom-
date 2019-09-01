@@ -22,6 +22,7 @@ const PhotoDetail: React.FC<
     return null;
   }
   return (
+    <div className="usersBackground">
     <div className="section container">
       <Link to={"/myPosts/" + props.decoded._id}>
         <Icon className="x">close</Icon>
@@ -45,6 +46,7 @@ const PhotoDetail: React.FC<
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -45,7 +45,7 @@ const ShowUsers: React.FC<
         {props.users
           .filter(u => u._id != props.decoded._id)
           .map(u => (
-            <div className="col s6 m4" key={u.username}>
+            <div className="col s11 m4" key={u.username}>
               <Link to={"/users/" + u._id + "/userDetails"}>
                 <div className="card">
                   <div className="card-image">

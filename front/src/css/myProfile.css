@@ -11,6 +11,14 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
+.usersBackground{
+    background-image: url("/image/fondo-4.jpg");
+     background-repeat: no-repeat; 
+       background-size: cover; 
+      background-position: center; 
+      min-height: 100vh
+  
+  }
 .card1 {
     position: relative;
     overflow: hidden;
@@ -55,7 +63,7 @@
     height: 364px !important;
 }
 .btneditprofile{
-    margin-left: 830px;
+    margin-left: 815px;
     margin-bottom: 5px;
     background-color: #424242  !important;
 }
@@ -65,5 +73,5 @@
     background-color: #424242 !important;
 }
 @media screen and (max-width:580px){
-    .btneditprofile{margin-left: 100px}
+    .btneditprofile{margin-left: 212px}
 }

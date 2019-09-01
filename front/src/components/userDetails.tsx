@@ -47,6 +47,7 @@ const UserDetails: React.FC<
     return null;
   }
   return (
+    <div className="usersBackground">
     <section id="content">
       <div className="container">
         <div id="profile-page" className="section">
@@ -110,6 +111,7 @@ const UserDetails: React.FC<
       </div>
       
     </section>
+    </div>
   );
 };
 const mapStateToProps = (state: IGlobalState) => ({

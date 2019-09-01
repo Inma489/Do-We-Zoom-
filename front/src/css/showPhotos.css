@@ -1,6 +1,14 @@
 .users{
     height: 55px !important;
 }
+.usersBackground{
+  background-image: url("/image/fondo-4.jpg");
+   background-repeat: no-repeat; 
+     background-size: cover; 
+    background-position: center; 
+    min-height: 100vh
+
+}
 .photo {
     display: block;
     width: 100%;
