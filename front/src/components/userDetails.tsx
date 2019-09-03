@@ -86,8 +86,16 @@ const UserDetails: React.FC<
               </div>
             </div>
           </div>
-          <div id="profile-page-content"className="row">
-          {myphotos.map(p => (
+          
+          {myphotos
+          .map(
+            (_,i1) =>
+            i1 % 3 === 0 && (
+            <div id="profile-page-content"className="row">
+              {myphotos
+              .slice(i1,i1 + 3)
+              .map(p => (
+
             <div className="col s4 m4" key={p._id}>
               <div className="card">
                 <div className="card-image">
@@ -104,8 +112,10 @@ const UserDetails: React.FC<
                 </div>
               </div>
             </div>
+            ))}
+            </div>
           ))}
-        </div>
+        
         </div>
         
       </div>

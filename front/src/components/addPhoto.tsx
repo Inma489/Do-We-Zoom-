@@ -100,7 +100,7 @@ const AddPhoto: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                 required
               /> */}
               <div className="row">
-                <label className="letters">Title</label>
+                <label className="letterss">Title</label>
                 <input
                   type="text"
                   onChange={updateName}
@@ -111,7 +111,7 @@ const AddPhoto: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                 />
               </div>
               <div className="row">
-                <label className="letters">Camera</label>
+                <label className="letterss">Camera</label>
                 <input
                   type="text"
                   onChange={updateCamera}
@@ -122,7 +122,7 @@ const AddPhoto: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                 />
               </div>
               <div className="row">
-                <label className="letters">Location</label>
+                <label className="letterss">Location</label>
                 <input
                   type="text"
                   onChange={updateLocalization}

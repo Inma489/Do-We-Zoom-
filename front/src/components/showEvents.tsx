@@ -12,6 +12,7 @@ interface IPropsGlobal {
   decoded: IDecoded;
   setEvent: (events: IEvent[]) => void;
   removeEvent: (event_id: string) => void;
+  search:string;
 }
 
 const ShowEvents: React.FC<IPropsGlobal & RouteComponentProps> = props => {
@@ -65,12 +66,26 @@ const ShowEvents: React.FC<IPropsGlobal & RouteComponentProps> = props => {
           )}
         </div>
       </div>
-      <div className="row">
-        {props.events.map(e => (
+      
+        {props.events
+        .filter(e =>
+          (e.name && e.place)
+          .toLowerCase().startsWith(props.search.toLowerCase()))
+        .map(
+          (_,i1) => 
+          i1 % 2 === 0 &&(
+          <div className="row">
+            {props.events
+            .filter(e =>
+              (e.name && e.place)
+              .toLowerCase().startsWith(props.search.toLowerCase()))
+            .slice(i1, i1 + 2)
+            .map(e => (
           <div className="col s11 m6 hoverable" key={e._id}>
             <div className="card horizontal small">
               <div className="card-image responsive-img">
                 <img
+                width="200"
                   src={
                     e.filename
                       ? "http://localhost:8080/uploads/events/" + e.filename
@@ -80,15 +95,15 @@ const ShowEvents: React.FC<IPropsGlobal & RouteComponentProps> = props => {
               </div>
               <div className="card-stacked hoverable">
                 <div className="card-content detailsevent">
-                  <h6>Event</h6>
+                  <h6 className="letterss">Event</h6>
                   <p>{e.name}</p>
-                  <h6>Date</h6>
+                  <h6 className="letterss">Date</h6>
                   <p>{new Date(e.date).toLocaleDateString()}</p>
-                  <h6>Place</h6>
+                  <h6 className="letterss">Place</h6>
                   <p>{e.place}</p>
-                  <h6>Time</h6>
+                  <h6 className="letterss">Time</h6>
                   <p>{e.time}</p>
-                  <h6>Description</h6>
+                  <h6 className="letterss">Description</h6>
                   <p>{e.description}</p>
                 </div>
               </div>
@@ -115,16 +130,19 @@ const ShowEvents: React.FC<IPropsGlobal & RouteComponentProps> = props => {
               )}
             </div>
           </div>
+          ))}
+          </div>
         ))}
       </div>
-    </div>
+    
     </div>
   );
 };
 const mapStateToProps = (state: IGlobalState) => ({
   token: state.token,
   decoded: state.decoded,
-  events: state.events
+  events: state.events,
+  search: state.search
 });
 
 const mapDispatchToProps = {

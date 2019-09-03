@@ -130,7 +130,7 @@ const EditPhoto: React.FC<
                 required
               /> */}
               <div className="row">
-                <label>Title</label>
+                <label className="letterss">Title</label>
                 <input
                   type="text"
                   onChange={updateName}
@@ -141,7 +141,7 @@ const EditPhoto: React.FC<
                 />
               </div>
               <div className="row">
-                <label>Camera</label>
+                <label className="letterss">Camera</label>
                 <input
                   type="text"
                   onChange={updateCamera}
@@ -152,7 +152,7 @@ const EditPhoto: React.FC<
                 />
               </div>
               <div className="row">
-                <label>Location</label>
+                <label className="letterss">Location</label>
                 <input
                   type="text"
                   onChange={updateLocalization}

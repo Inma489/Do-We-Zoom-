@@ -1,6 +1,8 @@
 
 .formulario {
     margin-top: 90px;
+    background-color: rgba(255, 255, 255, 0.788) !important;
+    border-radius: 20px 20px 20px 20px !important;
     
     
     
@@ -23,6 +25,7 @@
 }
 .caja1{
     margin-right: 40px !important;
+
 }
 @media screen and (max-width: 580px){
     .left{margin-left: 85px}

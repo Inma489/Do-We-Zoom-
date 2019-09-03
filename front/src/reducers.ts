@@ -5,6 +5,7 @@ import { IDecoded, IUser, IPhoto, IEvent} from "./interfaces";
 import { usersReducer } from "./reducer/usersReducer";
 import { photosReducer } from './reducer/photosReducer';
 import { eventReducer } from "./reducer/eventsReducer";
+import { searchReducer } from './reducer/searchReducer';
 
 
 export interface IGlobalState {
@@ -13,6 +14,7 @@ export interface IGlobalState {
   users: IUser[];
   photos: IPhoto[];
   events: IEvent[];
+  search: string;
   
 }
 
@@ -21,6 +23,7 @@ export const reducers = combineReducers({
   decoded: decodedReducer,
   users: usersReducer,
   photos: photosReducer,
-  events: eventReducer
+  events: eventReducer,
+  search: searchReducer
   
 });

@@ -24,7 +24,9 @@ import UserDetail from "./userDetail";
 import UserDetails from "./userDetails";
 import "../css/layoutBackGround.css";
 // import "../css/navbar.css";
-import LayoutBackGround from './layoutBackGround';
+import LayoutBackGround from "./layoutBackGround";
+import { setSearch } from '../actions';
+
 
 interface IPropsGlobal {
   setUsers: (users: IUser[]) => void;
@@ -32,11 +34,12 @@ interface IPropsGlobal {
   users: IUser[];
   photos: IPhoto[];
   decoded: IDecoded;
+  setSearch: (search:string) => void
   setPhotos: (photos: IPhoto[]) => void;
 }
 // los componeentes siempre poner la primera letra en mayusculas
 const LayoutPage: React.FC<
-  IPropsGlobal & RouteComponentProps<{ userId: string, photoId: string }>
+  IPropsGlobal & RouteComponentProps<{ userId: string; photoId: string }>
 > = props => {
   // esto es lo que habia antes en el post que me genera todos las fotos,
   // pero me las filtra por el id de usuario
@@ -77,52 +80,64 @@ const LayoutPage: React.FC<
   React.useEffect(listUsers, []);
   React.useEffect(listPhotos, []);
 
+  React.useEffect(() => {
+    props.setSearch("");
+  }, [props.location.pathname]);
+
   return (
-      <Fragment>
-      <Navbar />
-      <Route path="/" exact component={LayoutBackGround}/>
+    <Fragment>
+      {/* <Navbar /> */}
+      <Route component={Navbar} />
+      <Route path="/" exact component={LayoutBackGround} />
       <div className="routes">
-      <Switch>
-        <Route path="/users/:userId/edit" exact component={EditProfile} />
-        <Route path="/users/:userId/editUser" exact component={EditUser} />
-        <Route path="/myPosts/:photoId/edit" exact component={EditPhoto} />
-        <Route path="/events/:eventId/edit" exact component={EditEvent} />
-        <Route
-          path="/myPosts/:photoId/photoDetail"
-          exact
-          component={PhotoDetail}
-        />
-        <Route
-          path="/posts/:photoId/userPhotoDetail"
-          exact
-          component={UserPhotoDetail}
-        />
-        <Route
-          path="/posts/:photoId/userPhotoDetails"
-          exact
-          component={UserPhotoDetails}
-        />
-        <Route
-          path="/posts/:photoId/photoUserDetail"
-          exact
-          component={PhotoUserDetail}
-        />
-        
-        <Route path="/users/:userId/userDetail" exact component={UserDetail}/>
-        <Route path="/users/:userId/userDetails" exact component={UserDetails}/>
-        
-        <Route path="/myPosts/:userId" exact component={MyPosts} />
-        <Route path="/users/:userId" exact component={MyProfile} />
-        <Route path="/users" exact component={ShowUsers} />
-        <Route path="/posts" exact component={ShowPhotos} />
-        <Route path="/events" exact component={ShowEvents} />
-        <Route path="/events/add/event" exact component={AddEvent} />
-        <Route path="/myPosts/add/photo" exact component={AddPhoto} />
-        <Redirect to="/" />
-      </Switch>
+        <Switch>
+          <Route path="/users/:userId/edit" exact component={EditProfile} />
+          <Route path="/users/:userId/editUser" exact component={EditUser} />
+          <Route path="/myPosts/:photoId/edit" exact component={EditPhoto} />
+          <Route path="/events/:eventId/edit" exact component={EditEvent} />
+          <Route
+            path="/myPosts/:photoId/photoDetail"
+            exact
+            component={PhotoDetail}
+          />
+          <Route
+            path="/posts/:photoId/userPhotoDetail"
+            exact
+            component={UserPhotoDetail}
+          />
+          <Route
+            path="/posts/:photoId/userPhotoDetails"
+            exact
+            component={UserPhotoDetails}
+          />
+          <Route
+            path="/posts/:photoId/photoUserDetail"
+            exact
+            component={PhotoUserDetail}
+          />
+
+          <Route
+            path="/users/:userId/userDetail"
+            exact
+            component={UserDetail}
+          />
+          <Route
+            path="/users/:userId/userDetails"
+            exact
+            component={UserDetails}
+          />
+
+          <Route path="/myPosts/:userId" exact component={MyPosts} />
+          <Route path="/users/:userId" exact component={MyProfile} />
+          <Route path="/users" exact component={ShowUsers} />
+          <Route path="/posts" exact component={ShowPhotos} />
+          <Route path="/events" exact component={ShowEvents} />
+          <Route path="/events/add/event" exact component={AddEvent} />
+          <Route path="/myPosts/add/photo" exact component={AddPhoto} />
+          <Redirect to="/" />
+        </Switch>
       </div>
-      </Fragment>
-      
+    </Fragment>
   );
 };
 const mapStateToProps = (state: IGlobalState) => ({
@@ -133,7 +148,8 @@ const mapStateToProps = (state: IGlobalState) => ({
 });
 const mapDispatchToProps = {
   setUsers: actions.setUsers,
-  setPhotos: actions.setPhotos
+  setPhotos: actions.setPhotos,
+  setSearch: actions.setSearch
 };
 export default connect(
   mapStateToProps,

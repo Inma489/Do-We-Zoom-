@@ -81,6 +81,10 @@ export const removeEvent: ActionCreator<TAction> = (event_id: string) => ({
   type: "REMOVE_EVENT",
   event_id
 });
+export const setSearch: ActionCreator<TAction> = (search:string) =>({
+  type: "SET_SEARCH",
+  search
+})
 // para borrar una cuenta
 export const Reset: ActionCreator<TAction> = () => ({
   type: "RESET"

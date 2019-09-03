@@ -24,20 +24,21 @@
 }
 .modal1 {
     width: 30%;
-    max-height: 98% !important;
+    max-height: 90% !important;
     overflow-y: hidden !important;
-    margin-top: -8px !important;
-    background-color: white !important;
+    margin-top: -5px !important;
+    background-color: rgba(255, 255, 255, 0.945) !important;
     opacity: 10px;
-    border-radius: 10px 10px 10px 10px !important;
+    border-radius: 40px 40px 40px 40px !important;
 }
 .modal2 {
     width: 30%;
     max-height: 98% !important;
     overflow-y: hidden !important;
-    margin-top: -8px !important;
-    background-color: white !important;
-    border-radius: 10px 10px 10px 10px !important;
+    top: 25px !important;
+    
+    background-color:rgba(255, 255, 255, 0.945) !important;
+    border-radius: 40px 40px 40px 40px !important;
 }
 .loginPhoto {
     margin-top: 0px !important;
@@ -86,46 +87,23 @@
     color: rgb(46, 42, 42) !important;
 }
 
-.box2 img {
+/* .box2 img {
     width: 111%;
     height: 100vh;
     -webkit-transition: width 2s;
     transition: width 2s;
-}
-.izq {
+} */
+/* .izq {
     padding-right: 0px;
-}
-/* .box3 img {
-    position: absolute;
-    right: 0px;
-    width: 26%;
-    height: 100vh;
-    -webkit-transition: right 2s, width 2s;
-    transition: width 2s;
 } */
-/* .box3 img {
-    position: absolute;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    -webkit-transition: right 2s, width 2s;
-    transition: width 2s;
-} */
-/* .box3 img {
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    -webkit-transition: left 2s, width 2s;
-    transition: width 2s;
-} */
+
 .derech{
     padding: 0 !important;
 }
 .izq{
     padding: 0 !important;
 }
-.box3 img {
-    /* position: absolute; */
+/* .box3 img {
     right: 0;
     width: 89%;
     float: right;
@@ -133,17 +111,17 @@
     -webkit-transition: right 2s, width 2s;
     transition: width 2s;
     transition-delay: width 2s;
-}
-.container-fluid:hover .box2 img {
+} */
+/* .container-fluid:hover .box2 img {
     width: 68%;
 }
 .container-fluid:hover .box3 img {
     width: 68%;
-}
+} */
 .camera {
     position: fixed;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     z-index: 9;
 }
 .camera {
@@ -155,7 +133,7 @@
 }
 .carta-container {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
 }
 .thumb {
     width: 0%;
@@ -177,35 +155,46 @@
     transition: width 2s;
 }
 .principal {
-    background-image: url("/image/trigal.jpg");
+    background-image: url("/image/camara11.jpg");
+    z-index: 1;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 100vh;
+    min-height: 99vh;
     background-position: center;
 }
-.principal:hover .thumb {
-    transition-delay: 2s;
+.responsive:hover{
+    background-image: url("/image/camera11.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    -webkit-transition: right 2s, width 2s;
+    transition: width 4s;
+    transition-delay: 4.5s;
+    transform-style: preserve-3d;
+    transition: all 3.5s;
+    
 }
+
 .principal:hover .thumb {
     width: 300px;
     height: 300px;
     transition-delay: 2s;
 }
-.thumb a {
+.thumb .boton-polaroid {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    /* height: 95%; */
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/image/polaroid-definitiva.jpg");
     background-size: 0, cover;
-    /* transform-style: preserve-3d; */
+    transform-style: preserve-3d;
     transition: all 0.5s;
 }
-.principal:hover .thumb button {
-    width: 95px;
-    height: 25px;
+.principal:hover .thumb .boton-polaroid {
+    width: 80% !important;
+    height: 100% !important;
     transition-delay: 2.5s;
 }
-.thumb a span {
+.thumb .boton-polaroid span {
     color: white;
     text-transform: uppercase;
     position: absolute;
@@ -218,7 +207,7 @@
     transform-origin: top;
     z-index: 1;
 }
-.thumb a:before {
+.thumb .boton-polaroid:before {
     content: '';
     position: absolute;
     top: 0;
@@ -232,7 +221,7 @@
     transform: rotateX(95deg) translateZ(-80px) scale(0.75);
     transform-origin: bottom;
 }
-.thumb:hover a:before {
+.thumb:hover .boton-polaroid:before {
     opacity: 1;
     box-shadow: 0 0 25px 25px rgba(0, 0, 0, 0.5);
     transform: rotateX(0) translateZ(-60px);
@@ -253,4 +242,5 @@
     .btnSignup1 {
         margin-left: 50px
     }
+    .modal1{margin-top: 0px !important}
 }

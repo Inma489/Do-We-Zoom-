@@ -9,9 +9,19 @@
     margin-left: 300px !important;
    
 }
-.card-panel{
+
+.card-panel .cp{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    background: rgba(255, 255, 255, 0.829)
 }
+.input-field ::placeholder{
+    color: rgb(165, 162, 162) !important
+}
+.letterss{
+    font-weight: bold;
+    color: rgb(41, 39, 39)
+}
+
 .usersBackground{
     background-image: url("/image/fondo-4.jpg");
      background-repeat: no-repeat; 

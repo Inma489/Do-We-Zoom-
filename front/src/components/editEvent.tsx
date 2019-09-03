@@ -41,7 +41,7 @@ const EditEvent: React.FC<
   const updateTime = (event: React.ChangeEvent<HTMLInputElement>) =>
     setTime(event.target.value);
 
-  const updateDescription = (event: React.ChangeEvent<HTMLInputElement>) =>
+  const updateDescription = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
     setDescription(event.target.value);
 
   const event = React.useMemo(
@@ -137,7 +137,7 @@ const EditEvent: React.FC<
                 required
               /> */}
               <div className="row">
-              <label className="letters">Title</label>
+              <label className="letterss">Title</label>
               <input
                 type="text"
                 onChange={updateName}
@@ -151,7 +151,7 @@ const EditEvent: React.FC<
               
               
               <div className="row">
-              <label className="letters">Date</label>
+              <label className="letterss">Date</label>
               <input
                 type="text"
                 onChange={updateDate}
@@ -165,7 +165,7 @@ const EditEvent: React.FC<
               
               
               <div className="row">
-              <label className="letters">Place</label>
+              <label className="letterss">Place</label>
               <input
                 type="text"
                 onChange={updatePlace}
@@ -177,7 +177,7 @@ const EditEvent: React.FC<
               </div>
               
               <div className="row">
-              <label className="letters">Time</label>
+              <label className="letterss">Time</label>
               <input
                 type="text"
                 onChange={updateTime}
@@ -190,13 +190,14 @@ const EditEvent: React.FC<
               
               
               <div className="row">
-              <label className="letters">Description</label>
-              <input
-                type="text"
+              <label className="letterss">Description</label>
+              <textarea
+                
                 onChange={updateDescription}
                 value={description}
                 placeholder="Description"
-                className="validate"
+                className="materialize-textarea"
+                data-length="120"
                 required
               />
               </div>

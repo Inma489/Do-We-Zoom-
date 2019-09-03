@@ -58,8 +58,15 @@ const MyPosts: React.FC<
           </Link>
         </div>
       </div>
-      <div className="row">
-        {myphotos.map(p => (
+      
+        {myphotos
+        .map(
+          (_,i1) => 
+          i1 % 3 === 0 && (
+          <div className="row">
+            {myphotos
+            .slice(i1, i1 + 3)
+            .map(p => (
           <div className="col s12 m4" key={p._id}>
             <div className="card">
               <div className="card-image">
@@ -92,9 +99,11 @@ const MyPosts: React.FC<
               <Icon>delete</Icon>
             </Link>
           </div>
+          ))}
+          </div>
         ))}
       </div>
-    </div>
+    
     </div>
   );
 };

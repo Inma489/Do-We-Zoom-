@@ -1,5 +1,6 @@
 .editProfile{
-    margin-left: 93px;
+    margin-left: 100px;
+    height: 202px;
 }
 .coleditProfile{
     margin-left: 55px !important;
@@ -32,6 +33,6 @@
     .coleditProfile{margin-left: 20px !important}
     .btnfileProfile{margin-left: 55px}
     .editProfile{margin-left: 0px}
-    .btneditPerfil{margin-left: 80px}
+    .btneditPerfil{margin-left: 95px}
 
 }

@@ -35,7 +35,7 @@ const AddEvent: React.FC<IPropsGlobal & RouteComponentProps> = props => {
   const updateTime = (event: React.ChangeEvent<HTMLInputElement>) =>
     setTime(event.target.value);
 
-  const updateDescription = (event: React.ChangeEvent<HTMLInputElement>) =>
+  const updateDescription = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
     setDescription(event.target.value);
 
   const add = () => {
@@ -81,7 +81,7 @@ const AddEvent: React.FC<IPropsGlobal & RouteComponentProps> = props => {
     <div className=" section container contAdd">
       <div className="row">
         <div className="col s10 m9">
-          <div className="row card-panel">
+          <div className="row card-panel cp">
             <div className="input-field col s12">
               <div className="file-field input-field">
                 <div className="btn">
@@ -105,18 +105,21 @@ const AddEvent: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                 required
               /> */}
               <div className="row">
-                <label className="letters">Title</label>
+                
+                <label className="letterss">Title</label>
                 <input
                   type="text"
                   onChange={updateName}
                   placeholder="Title"
                   value={name}
+                  data-length="10"
                   className="validate"
                   required
                 />
+              
               </div>
               <div className="row">
-              <label className="letters">Date</label>
+              <label className="letterss">Date</label>
               <input
                 type="text"
                 onChange={updateDate}
@@ -127,18 +130,19 @@ const AddEvent: React.FC<IPropsGlobal & RouteComponentProps> = props => {
               />
               </div>
               <div className="row">
-              <label className="letters">Place</label>
+              <label className="letterss">Place</label>
               <input
                 type="text"
                 onChange={updatePlace}
                 value={place}
                 placeholder="Place"
+                data-length="10"
                 className="validate"
                 required
               />
               </div>
               <div className="row">
-              <label className="letters">Time</label>
+              <label className="letterss">Time</label>
               <input
                 type="text"
                 onChange={updateTime}
@@ -149,13 +153,14 @@ const AddEvent: React.FC<IPropsGlobal & RouteComponentProps> = props => {
               />
               </div>
               <div className="row">
-              <label className="letters">Description</label>
-              <input
-                type="text"
+              <label className="letterss">Description</label>
+              <textarea
+                
                 onChange={updateDescription}
                 value={description}
                 placeholder="Description"
-                className="validate"
+                className="materialize-textarea"
+                data-length="120"
                 required
               />
               </div>

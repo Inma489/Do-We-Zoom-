@@ -8,7 +8,8 @@ const photoSchema = new Schema(
     name: { type: String},
     camera: String,
     dateAdded: {type: Date, default: Date.now},
-    localization: { type: String, required: true }
+    localization: { type: String}
+    //le he quitado a la localizacion el required true igual que al nombre de la foto
   },
   { collection: "photos" }
 );

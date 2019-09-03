@@ -10,6 +10,8 @@
 }
 .card-panel{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    background-color: rgba(255, 255, 255, 0.788) !important;
+    border-radius: 20px 20px 20px 20px !important;
 }
 .editBackground{
     background-image: url("/image/fondo-4.jpg");
@@ -19,6 +21,11 @@
     background-position: center
   
   }
+  .input-field textarea:focus {
+    border-bottom: 1px solid grey !important;
+    box-shadow: 0 1px 0 0 rgb(117, 110, 110) !important;
+  }
+
 @media screen and (max-width: 580px){
     .contEdit{margin-left: 50px !important}
     .btnevent{margin-left: 200px}

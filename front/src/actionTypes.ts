@@ -32,7 +32,6 @@ type TRemoveUserAction = {
   type: "REMOVE_USER";
   user_id: string;
 };
-// AQUI PONDREMOS TODOS LOS ALBUMS
 
 //AQUI PONDREMOS TODAS LAS PHOTOS
 type TSetPhotoAction = {
@@ -73,6 +72,11 @@ type TRemoveEventAction = {
   type: "REMOVE_EVENT";
   event_id : string;
 }
+
+type TSetSearchAction = {
+  type: 'SET_SEARCH';
+  search: string;
+}
 // haremos un reset cuando queramos borrar una cuenta de un usuario, que me borre todo
 //de redux
 type TReset = {
@@ -94,5 +98,6 @@ export type TAction =
   | TAddEventAction
   | TRemoveEventAction
   | TUpdateEventAction
+  |TSetSearchAction
   | TReset
   

@@ -185,7 +185,7 @@ const EditProfile: React.FC<
       
       <div className="row">
         <div className="col s10 coleditProfile">
-          <label>Username</label>
+          <label className="letterss">Username</label>
           <input
             value={username}
             onChange={updateUsername}
@@ -196,7 +196,7 @@ const EditProfile: React.FC<
         </div>
 
         <div className="col s10 coleditProfile">
-          <label>Email</label>
+          <label className="letterss">Email</label>
           <input
             value={email}
             onChange={updateEmail}
@@ -207,7 +207,7 @@ const EditProfile: React.FC<
         </div>
         {props.decoded._id === user._id && (
           <div className="col s10 coleditProfile">
-            <label>Password</label>
+            <label className="letterss">Password</label>
             <input
               value={password}
               onChange={updatePassword}

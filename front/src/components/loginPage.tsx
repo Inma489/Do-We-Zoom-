@@ -8,8 +8,6 @@ import * as actions from "../actions";
 import { IGlobalState } from "../reducers";
 import { connect } from "react-redux";
 
-
-
 const { Carousel } = require("react-materialize");
 const { Modal, Button } = require("react-materialize");
 
@@ -164,8 +162,7 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
   };
 
   return (
-    
-    <div className="container-fluid responsive-img principal">
+    <div className="container-fluid responsive principal">
       <div className="modal-content center">
         <Button id="btnLogin" href="#modal1" className="modal-trigger">
           Signin
@@ -289,29 +286,11 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
         </Modal>
       </div>
       <div className="thumb carta">
-        <a href="#"></a>
-      </div>
-      <div className="camera">
-        <div className="row">
-          <div className="col s6 izq">
-            <div className="box2">
-              <img
-                className=""
-                src="/image/Camara Inma 1.png"
-                alt="camera left"
-              />
-            </div>
-          </div>
-          <div className="col s6 derech">
-            <div className="box3">
-              <img
-                className=""
-                src="/image/Camara Inma 2.png"
-                alt="camera right"
-              />
-            </div>
-          </div>
-        </div>
+        <Button
+          id="btnSignUp"
+          href="#modal2"
+          className="modal-trigger boton-polaroid"
+        ></Button>
       </div>
     </div>
   );
