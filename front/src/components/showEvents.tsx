@@ -12,7 +12,7 @@ interface IPropsGlobal {
   decoded: IDecoded;
   setEvent: (events: IEvent[]) => void;
   removeEvent: (event_id: string) => void;
-  search:string;
+  search: string;
 }
 
 const ShowEvents: React.FC<IPropsGlobal & RouteComponentProps> = props => {
@@ -53,88 +53,99 @@ const ShowEvents: React.FC<IPropsGlobal & RouteComponentProps> = props => {
   React.useEffect(listEvents, []);
   return (
     <div className="usersBackground">
-    <div className="section container">
-      <div className="row">
-        <div className="col s6">
-          {props.decoded.admin && (
-            <Link
-              to="/events/add/event"
-              className="waves-effect waves-light btn"
-            >
-              + Event
-            </Link>
-          )}
+      <div className="section container">
+        <div className="row">
+          <div className="col s6">
+            {props.decoded.admin && (
+              <Link
+                to="/events/add/event"
+                className="waves-effect waves-light btn"
+              >
+                + Event
+              </Link>
+            )}
+          </div>
         </div>
-      </div>
-      
+
         {props.events
-        .filter(e =>
-          (e.name && e.place)
-          .toLowerCase().startsWith(props.search.toLowerCase()))
-        .map(
-          (_,i1) => 
-          i1 % 2 === 0 &&(
-          <div className="row">
-            {props.events
-            .filter(e =>
-              (e.name && e.place)
-              .toLowerCase().startsWith(props.search.toLowerCase()))
-            .slice(i1, i1 + 2)
-            .map(e => (
-          <div className="col s11 m6 hoverable" key={e._id}>
-            <div className="card horizontal small">
-              <div className="card-image responsive-img">
-                <img
-                width="200"
-                  src={
-                    e.filename
-                      ? "http://localhost:8080/uploads/events/" + e.filename
-                      : "/image/largee.gif"
-                  }
-                />
-              </div>
-              <div className="card-stacked hoverable">
-                <div className="card-content detailsevent">
-                  <h6 className="letterss">Event</h6>
-                  <p>{e.name}</p>
-                  <h6 className="letterss">Date</h6>
-                  <p>{new Date(e.date).toLocaleDateString()}</p>
-                  <h6 className="letterss">Place</h6>
-                  <p>{e.place}</p>
-                  <h6 className="letterss">Time</h6>
-                  <p>{e.time}</p>
-                  <h6 className="letterss">Description</h6>
-                  <p>{e.description}</p>
+          .filter(e =>
+            (e.name && e.place)
+              .toLowerCase()
+              .startsWith(props.search.toLowerCase())
+          )
+          .reverse()
+          .map(
+            (_, i1) =>
+              i1 % 2 === 0 && (
+                <div className="row">
+                  {props.events
+                    .filter(
+                      e =>
+                        e.name
+                          .toLowerCase()
+                          .startsWith(props.search.toLowerCase()) ||
+                        e.place
+                          .toLowerCase()
+                          .startsWith(props.search.toLowerCase())
+                    )
+                    .reverse()
+                    .slice(i1, i1 + 2)
+                    .map(e => (
+                      <div className="col s11 m6 hoverable" key={e._id}>
+                        <div className="card horizontal small">
+                          <div className="card-image responsive-img">
+                            <img
+                              width="200"
+                              src={
+                                e.filename
+                                  ? "http://localhost:8080/uploads/events/" +
+                                    e.filename
+                                  : "/image/largee.gif"
+                              }
+                            />
+                          </div>
+                          <div className="card-stacked hoverable">
+                            <div className="card-content detailsevent">
+                              <h6 className="letterss">Event</h6>
+                              <p>{e.name}</p>
+                              <h6 className="letterss">Date</h6>
+                              <p>{new Date(e.date).toLocaleDateString()}</p>
+                              <h6 className="letterss">Place</h6>
+                              <p>{e.place}</p>
+                              <h6 className="letterss">Time</h6>
+                              <p>{e.time}</p>
+                              <h6 className="letterss">Description</h6>
+                              <p>{e.description}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="btnevents">
+                          {props.decoded.admin && (
+                            <Link
+                              to={"/events/" + e._id + "/edit"}
+                              className="waves-effect waves-light btn ml-4"
+                            >
+                              <Icon>edit</Icon>
+                            </Link>
+                          )}
+                          {props.decoded.admin && (
+                            <Link
+                              onClick={() => {
+                                deleteEvent(e._id);
+                              }}
+                              to="/events"
+                              className="waves-effect waves-light btn btndeleteEvent"
+                            >
+                              <Icon>delete</Icon>
+                            </Link>
+                          )}
+                        </div>
+                      </div>
+                    ))}
                 </div>
-              </div>
-            </div>
-            <div className="btnevents">
-              {props.decoded.admin && (
-                <Link
-                  to={"/events/" + e._id + "/edit"}
-                  className="waves-effect waves-light btn ml-4"
-                >
-                  <Icon>edit</Icon>
-                </Link>
-              )}
-              {props.decoded.admin && (
-                <Link
-                  onClick={() => {
-                    deleteEvent(e._id);
-                  }}
-                  to="/events"
-                  className="waves-effect waves-light btn btndeleteEvent"
-                >
-                  <Icon>delete</Icon>
-                </Link>
-              )}
-            </div>
-          </div>
-          ))}
-          </div>
-        ))}
+              )
+          )}
       </div>
-    
     </div>
   );
 };

@@ -1,84 +1,131 @@
+.nav {
+  background: rgba(0, 0, 0, 0.459) !important;
+  height: 64px !important;
+  /* top: 0 !important; */
+}
+.object {
+  margin-top: -3px !important;
+}
+.arrow {
+  margin-top: -16px;
+  margin-right: 10px;
+}
+.searcha {
+  width: 275px;
+}
 
-.nav{
-    background:rgba(0, 0, 0, 0.459) !important; 
-    height: 64px !important;
-    /* top: 0 !important; */
+#search {
+  background: rgba(255, 255, 255, 0.514);
+  border-radius: 10px 10px 10px 10px;
+  height: 30px;
+  border: none !important;
+  box-shadow: none !important;
 }
-.object{
-    margin-top: -3px !important;
+.iss {
+  margin-left: 54px !important;
+  color: black !important;
 }
-.arrow{
-    margin-top:-16px;
-    margin-right: 10px;
+.iconsearch {
+  margin-left: -35px;
+  margin-top: -65px;
 }
-.searcha{
-    width: 275px;  
-}
-
-#search{
-    background: rgba(255, 255, 255, 0.514);
-    border-radius: 10px 10px 10px 10px;
-    height: 30px;
-    border: none !important;
-    box-shadow: none !important
-    
-}
-.iss{
-    margin-left: 54px !important;
-    color: black !important;
-}
-.iconsearch{
-    margin-left: -35px;
-    margin-top: -65px;
-}
-.username{
-    margin-left: -38px;
+.username {
+  margin-left: -38px;
 }
 
 #dropdown2 {
-    top: 63px !important;
-    margin: 0px !important;
-    border-radius: 5px 5px 5px 5px !important;
-    background: transparent;
-    width: 158px !important;
+  top: 63px !important;
+  margin: 0px !important;
+  border-radius: 5px 5px 5px 5px !important;
+  background: rgba(128, 128, 128, 0.253);
+  width: 158px !important;
 }
-#btnDrop{
-    background-color: transparent !important;
-    border-radius: 10px 10px 10px 10px !important;
-    width: 71px;
-    margin-left: -35px;
+#btnDrop {
+  background-color: transparent !important;
+  border-radius: 10px 10px 10px 10px !important;
+  width: 71px;
+  margin-left: -35px;
 }
- .dropdown-trigger{
-    width: 102px;
-} 
- .i{
-    margin-top: -51px;
-    margin-right: -82px;
+.dropdown-trigger {
+  width: 102px;
 }
-.is{
-    color:black;
-    margin-left: 10px !important;
+.i {
+  margin-top: -51px;
+  margin-right: -82px;
 }
-.text{
-    color:black !important;
+.is {
+  color: black;
+  margin-left: 10px !important;
+}
+.text {
+  color: black !important;
+  font-weight: bold;
+}
+.list {
+  margin-right: 10px !important;
+}
+.avatar {
+  height: 55px !important;
+  margin-right: 11px !important;
+  margin-top: 5px !important;
+  /* border-radius: 40% !important; */
+}
+@media screen and (max-width: 994px) {
+  .media {
+    color: black;
     font-weight: bold;
-}
-.list{
-    margin-right: 10px !important;
-}
-.avatar{
-    height: 55px !important;
-    margin-right: 11px !important;
-    margin-top: 5px !important;
-    /* border-radius: 40% !important; */
-}
-@media screen and (max-width: 850px){
-    .media{color: black;
-    font-weight: bold;
-    font-size: 18px;}
-    .username{
+    font-size: 15px;
+  }
+  .username {
     font-weight: bold;
     font-size: 18px;
-    margin-left:5px;
-}
+    margin-left: 5px;
+  }
+  .searcha {
+    display: none !important;
+  }
+  .arrow {
+    color: black !important;
+    margin-left: -7px !important;
+  }
+  #btnDrop {
+    margin-left: 8px !important;
+    width: 16px !important;
+    height: 27px !important;
+    background-color:rgba(201, 80, 10, 0.288) !important;
+  }
+  .sidenav > li:last-child {
+    margin-top: -89px;
+    margin-left: 87px;
+    height: 449px !important;
+    border-radius: 0px 5px 5px 0px !important;
+  }
+  .sidenav{
+    width: 280px !important;
+    background-color: rgba(245, 190, 146, 0.925) !important;
+    height: 449px !important;
+  }
+  .dropdown-content{
+    top:280px !important;
+    margin-left: 1px !important;
+    width: 277px !important;
+    height: 168px !important;
+    background-color: rgba(201, 80, 10, 0.288) !important;
+    left: 0px !important;
+    
+  }
+  .dropdown-content .text{
+      font-weight: bold !important;
+      margin-left: 20px !important
+  }
+  .dropdown-content:hover{
+    background-color:rgba(0,0,0,0.05) !important;
+  }
+  .is{
+    color: black !important;
+    width: 10px !important;
+  }
+  .iss{
+    margin-left: 80px !important;
+  }
 }

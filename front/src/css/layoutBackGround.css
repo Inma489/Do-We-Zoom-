@@ -5,3 +5,8 @@
     min-height: 89.83vh;
     background-position: center
 }
+.header{
+    color : white;
+    display: flex;
+    
+}

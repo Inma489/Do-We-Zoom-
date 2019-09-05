@@ -20,7 +20,7 @@ interface IPropsGlobal {
 const Navbar: React.FC<IPropsGlobal & RouteComponentProps> = props => {
   // const Navbar: React.FC<IPropsGlobal> = props => {
 
-// const { Button, Icon, Divider, Dropdown } = require("react-materialize");
+  // const { Button, Icon, Divider, Dropdown } = require("react-materialize");
   const user = props.users.find(u => u._id === props.decoded._id);
   const param = props.location.pathname;
   const onSearchChange = (e: any) => {
@@ -57,9 +57,15 @@ const Navbar: React.FC<IPropsGlobal & RouteComponentProps> = props => {
         fixed={true}
         alignLinks="right"
       >
-        
-        <materialize.NavItem className="searcha" hidden={param === "/posts" || param === "/users"|| param === "/events" ? false:true}>
-        {/* <materialize.NavItem className="searcha"> */}
+        <materialize.NavItem
+          className="searcha"
+          hidden={
+            param === "/posts" || param === "/users" || param === "/events"
+              ? false
+              : true
+          }
+        >
+          {/* <materialize.NavItem className="searcha"> */}
 
           <input
             id="search"

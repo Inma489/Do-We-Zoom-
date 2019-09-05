@@ -23,43 +23,44 @@
     border-radius: 10px 10px 10px 10px !important;
 }
 .modal1 {
-    width: 30%;
+    
+    width: 30% !important;
     max-height: 90% !important;
     overflow-y: hidden !important;
     margin-top: -5px !important;
-    background-color: rgba(255, 255, 255, 0.945) !important;
+    background-color: rgba(255, 255, 255, 0.884) !important;
     opacity: 10px;
     border-radius: 40px 40px 40px 40px !important;
 }
 .modal2 {
-    width: 30%;
+    width: 30% !important;
     max-height: 98% !important;
     overflow-y: hidden !important;
-    top: 25px !important;
-    
-    background-color:rgba(255, 255, 255, 0.945) !important;
+    top: 10px !important;
+    background-color:rgba(255, 255, 255, 0.884)  !important;
     border-radius: 40px 40px 40px 40px !important;
 }
 .loginPhoto {
     margin-top: 0px !important;
-    margin-left: 209px;
+    margin-left: 70px;
 }
 .avatarDefault {
     border-radius: 76px;
-    margin-left: 250px;
+    margin-left: 90px;
+    margin-top: -32px;
 }
 .btnLog {
     width: 150px;
     margin-top: -9px;
     text-align: center;
-    margin-left: 270px;
+    margin-left: 100px;
     border-radius: 10px 10px 10px 10px !important;
 }
 .submit {
     width: 150px;
-    margin-top: -7px;
+    margin-top: -20px !important;
     text-align: center;
-    margin-left: 280px;
+    margin-left: 110px;
     border-radius: 10px 10px 10px 10px !important;
 }
 .btnSignup {
@@ -69,8 +70,11 @@
     margin-left: 300px !important;
     border-radius: 10px 10px 10px 10px !important;
 }
+.btnSignup1{
+    margin-left: 95px
+}
 .border-red {
-    border-bottom: 1px solid red;
+    border: 1px solid red;
 }
 .input-field input[type=text]:focus {
     border-bottom: 1px solid grey !important;
@@ -138,7 +142,7 @@
 .thumb {
     width: 0%;
     height: 0%;
-    margin-left: 40%;
+    margin-left: 35%;
     margin-top: 10%;
     perspective: 1000px;
     /* transform: rotateX(80deg); 
@@ -159,11 +163,11 @@
     z-index: 1;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 99vh;
+    min-height: 100vh;
     background-position: center;
 }
 .responsive:hover{
-    background-image: url("/image/camera11.jpg");
+    background-image: url("/image/camara24.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -180,18 +184,22 @@
     height: 300px;
     transition-delay: 2s;
 }
+.boton-polaroid{
+    margin-left: 450px !important;
+    margin-top: -125px !important;
+}
 .thumb .boton-polaroid {
     display: block;
     width: 80%;
     /* height: 95%; */
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/image/polaroid-definitiva.jpg");
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/image/polaroid-definitiva5.jpg");
     background-size: 0, cover;
     transform-style: preserve-3d;
     transition: all 0.5s;
 }
 .principal:hover .thumb .boton-polaroid {
-    width: 80% !important;
-    height: 100% !important;
+    width: 324px;
+    height: 400px;
     transition-delay: 2.5s;
 }
 .thumb .boton-polaroid span {
@@ -237,10 +245,24 @@
         margin-left: 40px
     }
     .submit {
-        margin-left: 60px
-    }
-    .btnSignup1 {
         margin-left: 50px
     }
-    .modal1{margin-top: 0px !important}
+    .btnSignup1 {
+        margin-left: 40px;
+        margin-top: -12px;
+    }
+    .modal1{
+        margin-top: 0px !important;
+        width: 48% !important;
+        margin-left: 1px !important;
+    }
+    .modal2{
+        width: 47.8% !important;
+        margin-left: 2px !important;
+        top: 50px !important;
+    }
+    .principal{
+        height: 100%;
+        width: 100%
+    }
 }

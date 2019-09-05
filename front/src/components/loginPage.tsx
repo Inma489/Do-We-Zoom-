@@ -8,7 +8,6 @@ import * as actions from "../actions";
 import { IGlobalState } from "../reducers";
 import { connect } from "react-redux";
 
-const { Carousel } = require("react-materialize");
 const { Modal, Button } = require("react-materialize");
 
 interface IPropsGlobal {
@@ -28,13 +27,14 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
   const [errorUser, setErrorUser] = React.useState("");
   const [errorEmail, setErrorEmail] = React.useState("");
   const [errorPassword, setErrorPassword] = React.useState("");
+
   // const [updated, setUpdated] = React.useState(false);
   // const inputFileRef = React.createRef<any>();
   const handleFileUpload = (event: any) => setFile(event.target.files[0]);
   const updateFile = (event: React.ChangeEvent<HTMLInputElement>) =>
     setFile(event.target.files![0]);
 
-  const updateUsername = (event: ChangeEvent<HTMLInputElement>) => {
+  const updateUsername = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
     setErrorUser("");
   };
@@ -47,7 +47,21 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
     setPassword(event.target.value);
     setErrorPassword("");
   };
-  // para mandar la foto en el formulario de registrar a un usuario
+
+  // validar email,contraseña y nombre de usuario
+  const validEmailRegex = RegExp(
+    /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i //eslint-disable-line
+  );
+  const validateEmail = (e: string) => validEmailRegex.test(e);
+
+  const mediumRegex = new RegExp(
+    "^(((?=.*[a-z])(?=.*[A-Z]))((?=.*[a-z])(?=.*[0-9]))((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})" //eslint-disable-line
+  );
+  const validatePassword = (p:string) =>  mediumRegex.test(p);
+
+  const validateusernameRegex = new RegExp(/^([a-zA-Z0-9' ]+)$/);
+    
+  const validateusername = (u:string) =>  validateusernameRegex.test(u);//eslint-disable-line
 
   // para que se loguee el usuario y acceda a su pagina
   const getToken = () => {
@@ -92,62 +106,75 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
   // para mandar la foto en el formulario de registrar a un usuario
   const addUser = () => {
     if (username && email && password) {
-      const data = new FormData();
-      if (file) {
-        data.append("file", file);
-      } else {
-        data.append("file", "");
-      }
-      data.append("_id", "");
-      data.append("username", username);
-      data.append("email", email);
-      data.append("password", password);
-      fetch("http://localhost:8080/api/users/add", {
-        method: "POST",
-        body: data
-      })
-        .then(res => {
-          if (res.ok) {
-            // poner siempre porque es el usuario nuevo que voy a crear
-            res.json().then(u => {
-              props.addUser(u);
-              const a: any = document.getElementsByClassName(
-                "modal-overlay"
-              )[0];
-              a.click();
-              document.getElementById("btnLogin")!.click();
-
-              // me refresca la pagina que le estoy diciendo
-              //aqui me  gustaria poner que cuando el usuario se haya registrado correctamente
-              // que le saliera un texto que le pusiera: usuario resgistrado o algo asi
-            });
-          } else {
-            res
-              .json()
-              .then(({ e }) => {
-                if (e.code === 11000) {
-                  let err = e.errmsg.split("{")[1];
-                  console.log(err);
-                  err = err.split('"')[1];
-                  console.log(err);
-                  if (err === username) {
-                    setErrorUser(" that username already exist");
-                  } else if (err === email) {
-                    setErrorEmail(" that email already exist");
-                  }
-                }
-
-                console.log(e);
-              })
-              .catch(err => {
-                console.log(err);
-              });
-          }
+      if (validateEmail(email) && validatePassword(password) && validateusername(username)){
+        const data = new FormData();
+        if (file) {
+          data.append("file", file);
+        } else {
+          data.append("file", "");
+        }
+        data.append("_id", "");
+        data.append("username", username);
+        data.append("email", email);
+        data.append("password", password);
+        fetch("http://localhost:8080/api/users/add", {
+          method: "POST",
+          body: data
         })
-        .catch(err => {
-          // res.status(400).send("error add ," + err);
-          console.log("error al add user," + err);
-        });
+          .then(res => {
+            if (res.ok) {
+              // poner siempre porque es el usuario nuevo que voy a crear
+              res.json().then(u => {
+                props.addUser(u);
+                const a: any = document.getElementsByClassName(
+                  "modal-overlay"
+                )[0];
+                a.click();
+                document.getElementById("btnLogin")!.click();
+
+                // me refresca la pagina que le estoy diciendo
+                //aqui me  gustaria poner que cuando el usuario se haya registrado correctamente
+                // que le saliera un texto que le pusiera: usuario resgistrado o algo asi
+              });
+            } else {
+              res
+                .json()
+                .then(({ e }) => {
+                  if (e.code === 11000) {
+                    let err = e.errmsg.split("{")[1];
+                    console.log(err);
+                    err = err.split('"')[1];
+                    console.log(err);
+                    if (err === username) {
+                      setErrorUser("that username already exist");
+                    } else if (err === email) {
+                      setErrorEmail("that email already exist");
+                    }
+                  }
+
+                  console.log(e);
+                })
+                .catch(err => {
+                  console.log(err);
+                });
+            }
+          })
+          .catch(err => {
+            // res.status(400).send("error add ," + err);
+            console.log("error al add user," + err);
+          });
+      } else {
+        if(!validateusername(username)){
+          setErrorUser("Username must contain only words and numbers.")
+
+        }
+        if(!validateEmail(email)){
+          setErrorEmail("This email is not valid.");
+        }
+        if(!validatePassword(password)){
+          setErrorPassword("Password must contain 8 characters, 1 Uppercase, 1 Lowercase, 1 number at least.");
+        }
+      }
     } else {
       if (!username) {
         setErrorUser("you must to complete this field");
@@ -165,7 +192,7 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
     <div className="container-fluid responsive principal">
       <div className="modal-content center">
         <Button id="btnLogin" href="#modal1" className="modal-trigger">
-          Signin
+          Sign in
         </Button>
         <Modal id="modal1" className="modal1">
           <div className="section center">
@@ -181,8 +208,13 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
               <div className="col s12">
                 <div className="input-field inputLogin">
                   <i className="material-icons prefix">email</i>
-                  <input type="text" value={email} onChange={updateEmail} />
-                  <label>Email</label>
+                  <input
+                    type="text"
+                    value={email}
+                    onChange={updateEmail}
+                    maxLength={50}
+                  />
+                  <label className={email ? "active" : ""}>Email</label>
                 </div>
               </div>
               <div className="col s12">
@@ -193,8 +225,9 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                     value={password}
                     onChange={updatePassword}
                     id="password"
+                    maxLength={8}
                   />
-                  <label>Password</label>
+                  <label className={password ? "active" : ""}>Password</label>
                   <div>{errorEmail}</div>
                 </div>
               </div>
@@ -211,7 +244,7 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
       </div>
       <div className="modal-content center">
         <Button id="btnSignUp" href="#modal2" className="modal-trigger">
-          SignUp
+          Sign Up
         </Button>
         <Modal id="modal2" className="modal2">
           <div className="section content">
@@ -247,6 +280,7 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                   <input
                     className={errorUser ? "border-red" : ""}
                     type="text"
+                    maxLength={40}
                     value={username}
                     onChange={updateUsername}
                   />
@@ -256,8 +290,14 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                 <div className="col s12">
                   <div className="input-field">
                     <i className="material-icons prefix">email</i>
-                    <input type="text" value={email} onChange={updateEmail} />
-                    <label>Email</label>
+                    <input
+                      type="text"
+                      value={email}
+                      onChange={updateEmail}
+                      maxLength={50}
+                    />
+                    <label className={email ? "active" : ""}>Email</label>
+                    {/* <span className="helper-text" data-error="wrong" data-success="right">Helper text</span> */}
                     <div>{errorEmail}</div>
                   </div>
                 </div>
@@ -268,8 +308,9 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                       type="password"
                       value={password}
                       onChange={updatePassword}
+                      maxLength={8}
                     />
-                    <label>Password</label>
+                    <label className={password ? "active" : ""}>Password</label>
                     <div>{errorPassword}</div>
                   </div>
                 </div>

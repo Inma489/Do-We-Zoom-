@@ -25,7 +25,17 @@
   />
     <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
-    
+   <script>
+      var sMensaje = '   Copyright©2019 Do We Zoom? Tiene todos los derechos reservados';
+
+      function anularBotonDerecho(e) {
+    if (navigator.appName == 'Netscape'       && (e.which == 3 || e.which ==    2)){       alert(sMensaje);       return false;     } 
+    else if (navigator.appName == 'Microsoft Internet Explorer'         && (event.button    == 2)) {       alert(sMensaje);     }   }
+    document.onmousedown=anularBotonDerecho;   document.oncontextmenu=new Function('return false');
+
+
+
+   </script>
 
 
     <title>Do We Zoom?</title>
@@ -36,6 +46,7 @@
   
     <!-- <noscript>You need to enable JavaScript to run this app.</noscript> -->
     <div id="root"></div>
+    
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

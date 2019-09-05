@@ -45,6 +45,7 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
     <div className="usersBackground">
       <div className="section container">
         {props.photos
+        .reverse()
           .filter(p => {
             const u1 = props.users.find(u => u._id === p.owner);
             if (u1) {
@@ -54,6 +55,7 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
             }
             return false;
           })
+          .reverse()
           .filter(p => p.owner != props.decoded._id)
           .map(
             (_, i1) =>
