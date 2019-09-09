@@ -68,12 +68,12 @@ const ShowEvents: React.FC<IPropsGlobal & RouteComponentProps> = props => {
         </div>
 
         {props.events
-          .filter(e =>
-            (e.name && e.place)
-              .toLowerCase()
-              .startsWith(props.search.toLowerCase())
+          .filter(
+            e =>
+              e.name ||
+              e.place.toLowerCase().startsWith(props.search.toLowerCase())
           )
-          .reverse()
+
           .map(
             (_, i1) =>
               i1 % 2 === 0 && (
@@ -88,14 +88,13 @@ const ShowEvents: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                           .toLowerCase()
                           .startsWith(props.search.toLowerCase())
                     )
-                    .reverse()
+
                     .slice(i1, i1 + 2)
                     .map(e => (
-                      <div className="col s11 m6 hoverable" key={e._id}>
-                        <div className="card horizontal small">
+                      <div className="col s12 m12" key={e._id}>
+                        <div className="card horizontal medium">
                           <div className="card-image responsive-img">
                             <img
-                              width="200"
                               src={
                                 e.filename
                                   ? "http://localhost:8080/uploads/events/" +

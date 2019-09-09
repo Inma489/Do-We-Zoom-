@@ -25,7 +25,7 @@ import UserDetails from "./userDetails";
 import "../css/layoutBackGround.css";
 // import "../css/navbar.css";
 import LayoutBackGround from "./layoutBackGround";
-import { setSearch } from "../actions";
+
 
 interface IPropsGlobal {
   setUsers: (users: IUser[]) => void;

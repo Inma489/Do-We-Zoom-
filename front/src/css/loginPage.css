@@ -74,7 +74,7 @@
     margin-left: 95px
 }
 .border-red {
-    border: 1px solid red;
+    border-bottom: 1px solid red !important;
 }
 .input-field input[type=text]:focus {
     border-bottom: 1px solid grey !important;

@@ -91,6 +91,9 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
 
             props.history.push("/");
           });
+        }else{
+              setErrorEmail("email or password incorret")
+               
         }
       });
     } else {
@@ -209,28 +212,33 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                 <div className="input-field inputLogin">
                   <i className="material-icons prefix">email</i>
                   <input
+                  className={errorEmail ? "border-red" : ""}
                     type="text"
                     value={email}
                     onChange={updateEmail}
-                    maxLength={50}
+                    maxLength={30}
                   />
                   <label className={email ? "active" : ""}>Email</label>
+                  
                 </div>
               </div>
               <div className="col s12">
                 <div className="input-field">
                   <i className="material-icons prefix">lock</i>
                   <input
+                  className={errorEmail ? "border-red" : ""}
                     type="password"
                     value={password}
                     onChange={updatePassword}
                     id="password"
-                    maxLength={8}
+                    maxLength={12}
                   />
                   <label className={password ? "active" : ""}>Password</label>
-                  <div>{errorEmail}</div>
+                  
                 </div>
+                <div>{errorEmail}</div>
               </div>
+              
             </div>
           </div>
 
@@ -280,7 +288,7 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                   <input
                     className={errorUser ? "border-red" : ""}
                     type="text"
-                    maxLength={40}
+                    maxLength={12}
                     value={username}
                     onChange={updateUsername}
                   />
@@ -291,10 +299,11 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                   <div className="input-field">
                     <i className="material-icons prefix">email</i>
                     <input
+                    className={errorEmail ? "border-red" : ""}
                       type="text"
                       value={email}
                       onChange={updateEmail}
-                      maxLength={50}
+                      maxLength={30}
                     />
                     <label className={email ? "active" : ""}>Email</label>
                     {/* <span className="helper-text" data-error="wrong" data-success="right">Helper text</span> */}
@@ -305,10 +314,11 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                   <div className="input-field">
                     <i className="material-icons prefix">lock</i>
                     <input
+                    className={errorPassword ? "border-red" : ""}
                       type="password"
                       value={password}
                       onChange={updatePassword}
-                      maxLength={8}
+                      maxLength={12}
                     />
                     <label className={password ? "active" : ""}>Password</label>
                     <div>{errorPassword}</div>

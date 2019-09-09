@@ -26,11 +26,11 @@
     <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
    <script>
-      var sMensaje = '   Copyright©2019 Do We Zoom? Tiene todos los derechos reservados';
+      var sMensaje = 'Copyright©2019 Do We Zoom? You have all the rights reserved';
 
       function anularBotonDerecho(e) {
     if (navigator.appName == 'Netscape'       && (e.which == 3 || e.which ==    2)){       alert(sMensaje);       return false;     } 
-    else if (navigator.appName == 'Microsoft Internet Explorer'         && (event.button    == 2)) {       alert(sMensaje);     }   }
+    else if (navigator.appName == 'Google Chrome'         && (event.button    == 2)) {       alert(sMensaje);     }   }
     document.onmousedown=anularBotonDerecho;   document.oncontextmenu=new Function('return false');
 
 

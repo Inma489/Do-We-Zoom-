@@ -53,15 +53,21 @@
     margin: 0;
 }
  .foto-perfil{
-     /* width: 300px !important; */
+     /* width: 150px !important; */
     max-width: 100%;
-    height: 80px !important;
+    height: 103px !important;
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     
 }
 
 .fondo-perfil{
     height: 364px !important;
+}
+.title1{
+    margin-left: 21px;
+}
+.title2{
+    margin-left: 13px;
 }
 .btneditprofile{
     margin-left: 815px;
@@ -75,4 +81,12 @@
 }
 @media screen and (max-width:580px){
     .btneditprofile{margin-left: 212px}
+    .title1{
+        margin-left: 0px;
+        margin-bottom: 21px;
+        margin-top: 58px;
+    }
+    .title2{
+        margin-left: -24px;
+    }
 }

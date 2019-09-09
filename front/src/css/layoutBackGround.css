@@ -9,4 +9,14 @@
     color : white;
     display: flex;
     
+    
+    
+    
+}
+.titleback{
+    font-size: 50px;
+    margin-top: 436px;
+    margin-left: 300px;
+    box-shadow: 10%
+    
 }

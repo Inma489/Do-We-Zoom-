@@ -70,10 +70,10 @@ const MyProfile: React.FC<
             <div className="card-content">
               <div className="row">
                 <div className="col s3 offset-s2">
-                  <h4 className="card-title grey-text text-darken-4">
+                  <h4 className="card-title grey-text text-darken-4 title1">
                     {user.username}
                   </h4>
-                  <h6 className="medium-small grey-text text-darken-3">
+                  <h6 className="medium-small grey-text text-darken-3 title2">
                     {user.email}
                   </h6>
                 </div>

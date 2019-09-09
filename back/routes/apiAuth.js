@@ -26,19 +26,45 @@ router.post("/", function(req, res) {
           admin: document[0].admin ? true : false
         },
         "mysecret"
-        // {
-          //   expiresIn: 3600
-          // }
           );
           
       res.send(token);
     } else {
-      console.log(document)
       res.status(400).send("Invalid credentials");
+
     }
-  }).catch(err =>{
-    console.log(err)
   })
 });
 
+
+// modelo miguel angel
+
+// controller.auth = (req, res) => {
+//   userModel
+//     .find({
+//       email: req.body.email,
+//       password: md5(req.body.password)
+//     })
+//     .then(result => {
+//       if (result.length > 0) {
+//         var token = jwt.sign(
+//           {
+//             id: result[0]._id,
+//             email: result[0].email,
+//             name: result[0].name,
+//             isAdmin: result[0].isAdmin ? true : false
+//           },
+//           "mysecret"
+//         );
+//         res.send(token);
+//       } else {
+//         res.status(400).send("Invalid credentials");
+//       }
+//     });
+// };
+
 module.exports = router;
+
+
+
+
