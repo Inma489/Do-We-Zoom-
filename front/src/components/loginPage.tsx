@@ -1,6 +1,6 @@
-import React, { ChangeEvent, Fragment } from "react";
+import React, { ChangeEvent } from "react";
 import jwt from "jsonwebtoken";
-// import imgs from '../../public/image/foto.jpg'
+
 import { RouteComponentProps } from "react-router";
 import "../css/loginPage.css";
 import { IDecoded, IUser } from "../interfaces";
@@ -28,11 +28,9 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
   const [errorEmail, setErrorEmail] = React.useState("");
   const [errorPassword, setErrorPassword] = React.useState("");
 
-  // const [updated, setUpdated] = React.useState(false);
-  // const inputFileRef = React.createRef<any>();
   const handleFileUpload = (event: any) => setFile(event.target.files[0]);
-  const updateFile = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setFile(event.target.files![0]);
+  // const updateFile = (event: React.ChangeEvent<HTMLInputElement>) =>
+  //   setFile(event.target.files![0]);
 
   const updateUsername = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
@@ -57,17 +55,16 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
   const mediumRegex = new RegExp(
     "^(((?=.*[a-z])(?=.*[A-Z]))((?=.*[a-z])(?=.*[0-9]))((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})" //eslint-disable-line
   );
-  const validatePassword = (p:string) =>  mediumRegex.test(p);
+  const validatePassword = (p: string) => mediumRegex.test(p);
 
   const validateusernameRegex = new RegExp(/^([a-zA-Z0-9' ]+)$/);
-    
-  const validateusername = (u:string) =>  validateusernameRegex.test(u);//eslint-disable-line
 
-  // para que se loguee el usuario y acceda a su pagina
+  const validateusername = (u: string) => validateusernameRegex.test(u); //eslint-disable-line
+
+  // comprueba que el usuario que se está logeando conincida con el que hay en la base de datos
   const getToken = () => {
     if (email && password) {
       fetch("http://localhost:8080/api/auth", {
-        // es una funcion promesa, funcion que se ejecuta que puede esperar hasta que se obtenga la respuesta, devuelve una respuesta
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -76,24 +73,24 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
       }).then(res => {
         if (res.ok) {
           res.text().then(token => {
-            // nos pinta el token que llamamos del servidor, y me la imrpime en el html
-            console.log(token);
-            localStorage.setItem("token", token); // para que guarde la sesion en el session storage
+            localStorage.setItem("token", token); // para que guarde la sesion en el localstorage
+            // por si el usuario cierra sin querer la pestaña y cuando la vuelva a abrir tenga su
+            //sesión abierta.
 
-            props.setToken(token); // props settoken viene de redux
-            // aqui hare la constante decoded para ver lo que trae mi decode y poder verlo en la consola
+            props.setToken(token);
+
             const decoded = jwt.decode(token);
-            console.log(decoded); // aqui me muestra lo que trae el decode en consola
-            // aqui le decimos que si el decoded es disitinto de null o el tipo de decoded es distinto de un string que me lo descodifique
+
+            // aqui le decimos que si el decoded es disitinto de null o el tipo de decoded es distinto de un string
+            //que me lo descodifique
             if (decoded !== null && typeof decoded !== "string") {
-              props.setDecoded(decoded); // la decodificacion tambien viene de redux
+              props.setDecoded(decoded);
             }
 
             props.history.push("/");
           });
-        }else{
-              setErrorEmail("email or password incorret")
-               
+        } else {
+          setErrorEmail("email or password incorret");
         }
       });
     } else {
@@ -106,10 +103,14 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
     }
   };
   // registro de usuarios
-  // para mandar la foto en el formulario de registrar a un usuario
+
   const addUser = () => {
     if (username && email && password) {
-      if (validateEmail(email) && validatePassword(password) && validateusername(username)){
+      if (
+        validateEmail(email) &&
+        validatePassword(password) &&
+        validateusername(username)
+      ) {
         const data = new FormData();
         if (file) {
           data.append("file", file);
@@ -134,10 +135,6 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                 )[0];
                 a.click();
                 document.getElementById("btnLogin")!.click();
-
-                // me refresca la pagina que le estoy diciendo
-                //aqui me  gustaria poner que cuando el usuario se haya registrado correctamente
-                // que le saliera un texto que le pusiera: usuario resgistrado o algo asi
               });
             } else {
               res
@@ -145,9 +142,9 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                 .then(({ e }) => {
                   if (e.code === 11000) {
                     let err = e.errmsg.split("{")[1];
-                    console.log(err);
+                    // console.log(err);
                     err = err.split('"')[1];
-                    console.log(err);
+                    // console.log(err);
                     if (err === username) {
                       setErrorUser("that username already exist");
                     } else if (err === email) {
@@ -155,27 +152,27 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                     }
                   }
 
-                  console.log(e);
+                  // console.log(e);
                 })
                 .catch(err => {
-                  console.log(err);
+                  // console.log(err);
                 });
             }
           })
           .catch(err => {
-            // res.status(400).send("error add ," + err);
-            console.log("error al add user," + err);
+            // console.log("error al add user," + err);
           });
       } else {
-        if(!validateusername(username)){
-          setErrorUser("Username must contain only words and numbers.")
-
+        if (!validateusername(username)) {
+          setErrorUser("Username must contain only words and numbers.");
         }
-        if(!validateEmail(email)){
+        if (!validateEmail(email)) {
           setErrorEmail("This email is not valid.");
         }
-        if(!validatePassword(password)){
-          setErrorPassword("Password must contain 8 characters, 1 Uppercase, 1 Lowercase, 1 number at least.");
+        if (!validatePassword(password)) {
+          setErrorPassword(
+            "Password must contain 8 characters, 1 Uppercase, 1 Lowercase, 1 number at least."
+          );
         }
       }
     } else {
@@ -212,21 +209,20 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                 <div className="input-field inputLogin">
                   <i className="material-icons prefix">email</i>
                   <input
-                  className={errorEmail ? "border-red" : ""}
+                    className={errorEmail ? "border-red" : ""}
                     type="text"
                     value={email}
                     onChange={updateEmail}
                     maxLength={30}
                   />
                   <label className={email ? "active" : ""}>Email</label>
-                  
                 </div>
               </div>
               <div className="col s12">
                 <div className="input-field">
                   <i className="material-icons prefix">lock</i>
                   <input
-                  className={errorEmail ? "border-red" : ""}
+                    className={errorEmail ? "border-red" : ""}
                     type="password"
                     value={password}
                     onChange={updatePassword}
@@ -234,11 +230,9 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                     maxLength={12}
                   />
                   <label className={password ? "active" : ""}>Password</label>
-                  
                 </div>
                 <div>{errorEmail}</div>
               </div>
-              
             </div>
           </div>
 
@@ -299,14 +293,14 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                   <div className="input-field">
                     <i className="material-icons prefix">email</i>
                     <input
-                    className={errorEmail ? "border-red" : ""}
+                      className={errorEmail ? "border-red" : ""}
                       type="text"
                       value={email}
                       onChange={updateEmail}
                       maxLength={30}
                     />
                     <label className={email ? "active" : ""}>Email</label>
-                    {/* <span className="helper-text" data-error="wrong" data-success="right">Helper text</span> */}
+
                     <div>{errorEmail}</div>
                   </div>
                 </div>
@@ -314,7 +308,7 @@ const LoginPage: React.FC<IPropsGlobal & RouteComponentProps<any>> = props => {
                   <div className="input-field">
                     <i className="material-icons prefix">lock</i>
                     <input
-                    className={errorPassword ? "border-red" : ""}
+                      className={errorPassword ? "border-red" : ""}
                       type="password"
                       value={password}
                       onChange={updatePassword}

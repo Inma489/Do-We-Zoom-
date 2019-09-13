@@ -56,132 +56,120 @@ const AddEvent: React.FC<IPropsGlobal & RouteComponentProps> = props => {
     })
       .then(res => {
         if (res.ok) {
-          // poner siempre porque es el usuario nuevo que voy a crear
+          // poner siempre porque es el event nuevo que voy a crear
           res.json().then(a => {
             props.addEvent(a);
-            props.history.push("/events"); // me redirije a mi pagina de login en este caso
-
-            // me refresca la pagina que le estoy diciendo
-            //aqui me  gustaria poner que cuando el usuario se haya registrado correctamente
-            // que le saliera un texto que le pusiera: usuario resgistrado o algo asi
+            props.history.push("/events");
           });
         } else {
-          //   res.send("error");
-          console.log("error");
+          // console.log("error");
         }
       })
       .catch(err => {
-        // res.status(400).send("error add ," + err);
-        console.log("error al add photo," + err);
+        // console.log("error al add photo," + err);
       });
   };
 
   return (
     <div className="usersBackground">
-    <div className=" section container contAdd">
-      <div className="row">
-        <div className="col s10 m9">
-          <div className="row card-panel cp">
-            <div className="input-field col s12">
-              <div className="file-field input-field">
-                <div className="btn">
-                  <Icon>add_a_photo</Icon>
+      <div className=" section container contAdd">
+        <div className="row">
+          <div className="col s10 m9">
+            <div className="row card-panel cp">
+              <div className="input-field col s12">
+                <div className="file-field input-field">
+                  <div className="btn">
+                    <Icon>add_a_photo</Icon>
+                    <input
+                      type="file"
+                      onChange={updateFile}
+                      accept=".jpg"
+                      required
+                    />
+                  </div>
+                  <div className="file-path-wrapper">
+                    <input className="file-path validate" type="text" />
+                  </div>
+                </div>
+
+                <div className="row">
+                  <label className="letterss">Title</label>
                   <input
-                    type="file"
-                    onChange={updateFile}
-                    accept=".jpg"
+                    type="text"
+                    onChange={updateName}
+                    placeholder="Title"
+                    value={name}
+                    data-length="10"
+                    className="validate"
                     required
                   />
                 </div>
-                <div className="file-path-wrapper">
-                  <input className="file-path validate" type="text" />
+                <div className="row">
+                  <label className="letterss">Date</label>
+                  <input
+                    type="text"
+                    onChange={updateDate}
+                    value={date}
+                    placeholder="Date"
+                    className="validate"
+                    required
+                  />
+                </div>
+                <div className="row">
+                  <label className="letterss">Place</label>
+                  <input
+                    type="text"
+                    onChange={updatePlace}
+                    value={place}
+                    placeholder="Place"
+                    data-length="10"
+                    className="validate"
+                    required
+                  />
+                </div>
+                <div className="row">
+                  <label className="letterss">Time</label>
+                  <input
+                    type="text"
+                    onChange={updateTime}
+                    value={time}
+                    placeholder="Time"
+                    className="validate"
+                    required
+                  />
+                </div>
+                <div className="row">
+                  <label className="letterss">Description</label>
+                  <textarea
+                    onChange={updateDescription}
+                    value={description}
+                    placeholder="Description"
+                    className="materialize-textarea"
+                    data-length="120"
+                    required
+                  />
                 </div>
               </div>
-              {/* <input
-                type="file"
-                onChange={updateFile}
-                className="validate"
-                accept=".jpg"
-                required
-              /> */}
-              <div className="row">
-                
-                <label className="letterss">Title</label>
-                <input
-                  type="text"
-                  onChange={updateName}
-                  placeholder="Title"
-                  value={name}
-                  data-length="10"
-                  className="validate"
-                  required
-                />
-              
-              </div>
-              <div className="row">
-              <label className="letterss">Date</label>
-              <input
-                type="text"
-                onChange={updateDate}
-                value={date}
-                placeholder="Date"
-                className="validate"
-                required
-              />
-              </div>
-              <div className="row">
-              <label className="letterss">Place</label>
-              <input
-                type="text"
-                onChange={updatePlace}
-                value={place}
-                placeholder="Place"
-                data-length="10"
-                className="validate"
-                required
-              />
-              </div>
-              <div className="row">
-              <label className="letterss">Time</label>
-              <input
-                type="text"
-                onChange={updateTime}
-                value={time}
-                placeholder="Time"
-                className="validate"
-                required
-              />
-              </div>
-              <div className="row">
-              <label className="letterss">Description</label>
-              <textarea
-                
-                onChange={updateDescription}
-                value={description}
-                placeholder="Description"
-                className="materialize-textarea"
-                data-length="120"
-                required
-              />
-              </div>
+
+              <Link
+                onClick={add}
+                to="/events"
+                className="waves-effect waves-light btn btnaddEvent"
+              >
+                <Icon>save</Icon>
+              </Link>
+              <Link
+                to="/events"
+                className="waves-effect waves-light btn btncancelAdd"
+              >
+                <Icon>cancel</Icon>
+              </Link>
             </div>
-
-            <Link
-              onClick={add}
-              to="/events"
-              className="waves-effect waves-light btn btnaddEvent"
-            >
-              <Icon>save</Icon>
-            </Link>
-            <Link to="/events" className="waves-effect waves-light btn btncancelAdd">
-              <Icon>cancel</Icon>
-            </Link>
           </div>
-        </div>
 
-        <div></div>
+          <div></div>
+        </div>
       </div>
-    </div>
     </div>
   );
 };

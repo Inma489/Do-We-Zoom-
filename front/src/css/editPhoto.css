@@ -1,21 +1,24 @@
-.btnsavePhoto{
-    margin-left: 190px;
+.btnsavePhoto {
+  margin-left: 190px;
 }
-.btnCancelPhoto{
-    margin-left: 5px;
+.btnCancelPhoto {
+  margin-left: 5px;
 }
-.contPhoto{
-    margin-left: 392px !important;
+.contPhoto {
+  margin-left: 392px !important;
 }
-.usersBackground{
-    background-image: url("/image/fondo-4.jpg");
-     background-repeat: no-repeat; 
-       background-size: cover; 
-      background-position: center; 
-      min-height: 100vh
-  
+.usersBackground {
+  background-image: url("/image/fondo-4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+@media screen and (max-width: 580px) {
+  .contPhoto {
+    margin-left: 20px !important;
   }
-@media screen and (max-width: 580px){
-    .contPhoto{margin-left: 20px !important}
-    .btnsavePhoto{margin-left: 92px}
+  .btnsavePhoto {
+    margin-left: 92px;
+  }
 }

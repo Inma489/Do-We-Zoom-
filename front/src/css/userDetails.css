@@ -1,8 +1,4 @@
-/* .row{
-    margin-bottom: 0;
-    margin-left: -0.75rem;
-    margin-right: -0.75rem;
-} */
+
 .usersBackground{
     background-image: url("/image/fondo-4.jpg");
      background-repeat: no-repeat; 
@@ -11,6 +7,11 @@
       min-height: 100vh
   
   }
+  .title1 {
+    margin-left: 0px;
+    margin-bottom: 21px;
+    margin-top: 58px;
+}
 .section {
     padding-top: 1rem;
     padding-bottom: 1rem;

@@ -7,12 +7,10 @@ export const setToken: ActionCreator<TAction> = (token: string) => ({
   token
 });
 
-
 export const setDecoded: ActionCreator<TAction> = (decoded: IDecoded) => ({
   type: "SET_DECODED",
   decoded
 });
-
 
 // pondremos los usuarios
 export const setUsers: ActionCreator<TAction> = (users: IUser[]) => ({
@@ -68,24 +66,27 @@ export const setEvent: ActionCreator<TAction> = (events: IEvent[]) => ({
   type: "SET_EVENTS",
   events
 });
-export const addEvent: ActionCreator<TAction> = (event: IEvent) =>({
+export const addEvent: ActionCreator<TAction> = (event: IEvent) => ({
   type: "ADD_EVENT",
   event
 });
-export const updateEvent: ActionCreator<TAction> = (event: IEvent, event_id: string) => ({
+export const updateEvent: ActionCreator<TAction> = (
+  event: IEvent,
+  event_id: string
+) => ({
   type: "UPDATE_EVENT",
   event,
   event_id
-})
+});
 export const removeEvent: ActionCreator<TAction> = (event_id: string) => ({
   type: "REMOVE_EVENT",
   event_id
 });
-export const setSearch: ActionCreator<TAction> = (search:string) =>({
+export const setSearch: ActionCreator<TAction> = (search: string) => ({
   type: "SET_SEARCH",
   search
-})
+});
 // para borrar una cuenta
 export const Reset: ActionCreator<TAction> = () => ({
   type: "RESET"
- });
+});

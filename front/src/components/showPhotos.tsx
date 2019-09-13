@@ -25,12 +25,10 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
-        Authorization: "Bearer " + props.token // aqui en el Bearer tengo que meter el espacio para que no me aparezca el Bearer que anteriormente habiamos quitado en nuestro token
+        Authorization: "Bearer " + props.token
       }
     }).then(res => {
       if (res.ok) {
-        // si todo esta ok enviame un json con la lista de las fotos, tienes que ser administrador para poder acceder a la lista
-
         props.removePhoto(photo_id);
         props.history.push("/posts");
       }
@@ -45,9 +43,10 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
     <div className="usersBackground">
       <div className="section container">
         {props.photos
-        .reverse()
+
           .filter(p => {
             const u1 = props.users.find(u => u._id === p.owner);
+
             if (u1) {
               return u1.username
                 .toLowerCase()
@@ -55,8 +54,9 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
             }
             return false;
           })
+
+          .filter(p => p.owner !== props.decoded._id)
           .reverse()
-          .filter(p => p.owner != props.decoded._id)
           .map(
             (_, i1) =>
               i1 % 3 === 0 && (
@@ -71,8 +71,10 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                       }
                       return false;
                     })
-                    .filter(p => p.owner != props.decoded._id)
+                    .filter(p => p.owner !== props.decoded._id)
+                    .reverse()
                     .slice(i1, i1 + 3)
+
                     .map(p => {
                       const u = props.users.find(u => u._id === p.owner);
                       if (!u) {
@@ -91,6 +93,7 @@ const ShowPhotos: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                                         p.filename
                                       : "/image/largee.gif"
                                   }
+                                  alt=""
                                 />
                               </Link>
                             </div>

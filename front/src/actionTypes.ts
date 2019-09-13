@@ -1,27 +1,28 @@
 import { IDecoded, IUser, IPhoto, IEvent } from "./interfaces";
+
+//TOKEN ACTION
 type TSetTokenAction = {
   type: "SET_TOKEN";
   token: string;
 };
 
-
+//DECODED ACTION
 type TSetDecodedAction = {
-  // hare esto para no llamar todas las veces al decoded y utilizarlo cuando yo quiera
+  // I'll do this so I don't call decoded every time and use it whenever I want.
   type: "SET_DECODED";
-  decoded: IDecoded; // me devuelve el decoded un objeto
+  decoded: IDecoded; //IDecoded returns an object.
 };
 
-
-// AQUI PONDREMOS LOS USERS
+//USERS ACTION
 type TSetUserAction = {
-  // LO QUE ME VA A LLEGAR ES UN ARRAY DE USUARIOS
+  // what's coming is an array of users.
   type: "SET_USERS";
   users: IUser[];
 };
 
 type TUpdateUserAction = {
   type: "UPDATE_USER";
-  user_id: string; // aqui necesito los datos del usuario para que me lo pueda actualizar
+  user_id: string; // here, I need the user data so I can update it.
   user: IUser;
 };
 type TAddUserAction = {
@@ -33,7 +34,7 @@ type TRemoveUserAction = {
   user_id: string;
 };
 
-//AQUI PONDREMOS TODAS LAS PHOTOS
+//PHOTOS ACTION
 type TSetPhotoAction = {
   type: "SET_PHOTOS";
   photos: IPhoto[];
@@ -53,7 +54,7 @@ type TRemovePhotoAction = {
   photo_id: string;
 };
 
-//AQUI PONDREMOS TODOS LOS EVENTOS
+//EVENTS ACTION
 
 type TSetEventAction = {
   type: "SET_EVENTS";
@@ -66,22 +67,23 @@ type TAddEventAction = {
 type TUpdateEventAction = {
   type: "UPDATE_EVENT";
   event: IEvent;
-}
+};
 
 type TRemoveEventAction = {
   type: "REMOVE_EVENT";
-  event_id : string;
-}
+  event_id: string;
+};
 
 type TSetSearchAction = {
-  type: 'SET_SEARCH';
+  type: "SET_SEARCH";
   search: string;
-}
-// haremos un reset cuando queramos borrar una cuenta de un usuario, que me borre todo
-//de redux
+};
+// we will do a reset when we want to delete a user's account,
+// which deletes all of redux.
+
 type TReset = {
-  type:'RESET';
- }
+  type: "RESET";
+};
 
 export type TAction =
   | TSetTokenAction
@@ -98,6 +100,5 @@ export type TAction =
   | TAddEventAction
   | TRemoveEventAction
   | TUpdateEventAction
-  |TSetSearchAction
-  | TReset
-  
+  | TSetSearchAction
+  | TReset;

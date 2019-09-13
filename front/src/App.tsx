@@ -31,7 +31,7 @@ const App: React.FC<IPropsGlobal> = props => {
       }
     }
     setIsLoading(false);
-  }, [props.setDecoded, props.setToken]);
+  }, [props.setDecoded, props.setToken]);//eslint-disable-line
 
   return (
     <BrowserRouter>

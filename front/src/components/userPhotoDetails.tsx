@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { IGlobalState } from "../reducers";
 import { Link } from "react-router-dom";
 
-
 interface IPropsGlobal {
   photos: IPhoto[];
   decoded: IDecoded;
@@ -29,30 +28,36 @@ const UserPhotoDetails: React.FC<
 
   return (
     <div className="usersBackground">
-    <div className="section container">
-      <Link to={"/users/" + myPhoto.owner + "/userDetails"}>
-        <Icon className="x">close</Icon>
-      </Link>
-      <div className="row">
-        <div className="col s12 box1">
-          <img
-            className="responsive-img photoInfo"
-            width="93%"
-            src={"http://localhost:8080/uploads/photos/" + myPhoto.filename}
-            alt="photo"
-          />
+      <div className="section container">
+        <Link to={"/users/" + myPhoto.owner + "/userDetails"}>
+          <Icon className="x">close</Icon>
+        </Link>
+        <div className="row">
+          <div className="col s12 box1">
+            <img
+              className="responsive-img photoInfo"
+              width="93%"
+              src={"http://localhost:8080/uploads/photos/" + myPhoto.filename}
+              alt=""
+            />
 
-          <div className="revealinfo overlay1">
-            <h6 className="texts">Title</h6>
-            <p className="texts1">{myPhoto.name}</p>
-            <h6 className="texts">Camera</h6>
-            <p className="texts1">{myPhoto.camera}</p>
-            <h6 className="texts">Location</h6>
-            <p className="texts1">{myPhoto.localization}</p>
+            <div className="revealinfo overlay1">
+              <h6 className="texts">
+                Title<Icon>create</Icon>
+              </h6>
+              <p className="texts1">{myPhoto.name}</p>
+              <h6 className="texts">
+                Camera<Icon>camera_alt</Icon>
+              </h6>
+              <p className="texts1">{myPhoto.camera}</p>
+              <h6 className="texts">
+                Location<Icon>location_on</Icon>
+              </h6>
+              <p className="texts1">{myPhoto.localization}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

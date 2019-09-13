@@ -1,94 +1,83 @@
-/*body{
-    background-image: url("/image/collage-image.jpeg");
-     background-size: cover;
-     background-repeat: no-repeat;
-     width: 100%;
-    height: 100%; 
-     background-attachment: fixed; 
-     
-}
-*/
 #btnLogin {
-    margin-top: 10px;
-    border-radius: 10px 10px 10px 10px !important;
-    margin-left: -70px;
+  margin-top: 10px;
+  border-radius: 10px 10px 10px 10px !important;
+  margin-left: -70px;
 }
 #btnSignUp {
-    margin-right: -118px !important;
-    margin-top: -54px;
-    border-radius: 10px 10px 10px 10px !important;
+  margin-right: -118px !important;
+  margin-top: -54px;
+  border-radius: 10px 10px 10px 10px !important;
 }
 .btnSignup1 {
-    margin-left: 260px;
-    border-radius: 10px 10px 10px 10px !important;
+  margin-left: 260px;
+  border-radius: 10px 10px 10px 10px !important;
 }
 .modal1 {
-    
-    width: 30% !important;
-    max-height: 90% !important;
-    overflow-y: hidden !important;
-    margin-top: -5px !important;
-    background-color: rgba(255, 255, 255, 0.884) !important;
-    opacity: 10px;
-    border-radius: 40px 40px 40px 40px !important;
+  width: 30% !important;
+  max-height: 90% !important;
+  overflow-y: hidden !important;
+  margin-top: -5px !important;
+  background-color: rgba(255, 255, 255, 0.884) !important;
+  opacity: 10px;
+  border-radius: 40px 40px 40px 40px !important;
 }
 .modal2 {
-    width: 30% !important;
-    max-height: 98% !important;
-    overflow-y: hidden !important;
-    top: 10px !important;
-    background-color:rgba(255, 255, 255, 0.884)  !important;
-    border-radius: 40px 40px 40px 40px !important;
+  width: 30% !important;
+  max-height: 98% !important;
+  overflow-y: hidden !important;
+  top: 10px !important;
+  background-color: rgba(255, 255, 255, 0.884) !important;
+  border-radius: 40px 40px 40px 40px !important;
 }
 .loginPhoto {
-    margin-top: 0px !important;
-    margin-left: 70px;
+  margin-top: 0px !important;
+  margin-left: 70px;
 }
 .avatarDefault {
-    border-radius: 76px;
-    margin-left: 90px;
-    margin-top: -32px;
+  border-radius: 76px;
+  margin-left: 90px;
+  margin-top: -32px;
 }
 .btnLog {
-    width: 150px;
-    margin-top: -9px;
-    text-align: center;
-    margin-left: 100px;
-    border-radius: 10px 10px 10px 10px !important;
+  width: 150px;
+  margin-top: -9px;
+  text-align: center;
+  margin-left: 100px;
+  border-radius: 10px 10px 10px 10px !important;
 }
 .submit {
-    width: 150px;
-    margin-top: -20px !important;
-    text-align: center;
-    margin-left: 110px;
-    border-radius: 10px 10px 10px 10px !important;
+  width: 150px;
+  margin-top: -20px !important;
+  text-align: center;
+  margin-left: 110px;
+  border-radius: 10px 10px 10px 10px !important;
 }
 .btnSignup {
-    width: 150px;
-    margin-top: -9px;
-    text-align: center;
-    margin-left: 300px !important;
-    border-radius: 10px 10px 10px 10px !important;
+  width: 150px;
+  margin-top: -9px;
+  text-align: center;
+  margin-left: 300px !important;
+  border-radius: 10px 10px 10px 10px !important;
 }
-.btnSignup1{
-    margin-left: 95px
+.btnSignup1 {
+  margin-left: 95px;
 }
 .border-red {
-    border-bottom: 1px solid red !important;
+  border-bottom: 1px solid red !important;
 }
-.input-field input[type=text]:focus {
-    border-bottom: 1px solid grey !important;
-    box-shadow: 0 1px 0 0 rgb(117, 110, 110) !important;
+.input-field input[type="text"]:focus {
+  border-bottom: 1px solid grey !important;
+  box-shadow: 0 1px 0 0 rgb(117, 110, 110) !important;
 }
-.input-field input[type=password]:focus {
-    border-bottom: 1px solid grey !important;
-    box-shadow: 0 1px 0 0 rgb(117, 110, 110) !important;
+.input-field input[type="password"]:focus {
+  border-bottom: 1px solid grey !important;
+  box-shadow: 0 1px 0 0 rgb(117, 110, 110) !important;
 }
 .input-field .prefix.active {
-    color: grey !important;
+  color: grey !important;
 }
 .input-field .active {
-    color: rgb(46, 42, 42) !important;
+  color: rgb(46, 42, 42) !important;
 }
 
 /* .box2 img {
@@ -101,11 +90,11 @@
     padding-right: 0px;
 } */
 
-.derech{
-    padding: 0 !important;
+.derech {
+  padding: 0 !important;
 }
-.izq{
-    padding: 0 !important;
+.izq {
+  padding: 0 !important;
 }
 /* .box3 img {
     right: 0;
@@ -123,146 +112,146 @@
     width: 68%;
 } */
 .camera {
-    position: fixed;
-    width: 100%;
-    /* height: 100%; */
-    z-index: 9;
+  position: fixed;
+  width: 100%;
+  /* height: 100%; */
+  z-index: 9;
 }
 .camera {
-    z-index: 8;
+  z-index: 8;
 }
 .carta {
-    margin: auto;
-    z-index: 9;
+  margin: auto;
+  z-index: 9;
 }
 .carta-container {
-    width: 100%;
-    /* height: 100%; */
+  width: 100%;
+  /* height: 100%; */
 }
 .thumb {
-    width: 0%;
-    height: 0%;
-    margin-left: 35%;
-    margin-top: 10%;
-    perspective: 1000px;
-    /* transform: rotateX(80deg); 
+  width: 0%;
+  height: 0%;
+  margin-left: 35%;
+  margin-top: 10%;
+  perspective: 1000px;
+  /* transform: rotateX(80deg); 
     transform-origin: bottom; */
-    position: absolute;
-    /* margin-left: 752px; */
-    -webkit-transition: right 2s, width 2s;
-    transition: width 2s;
+  position: absolute;
+  /* margin-left: 752px; */
+  -webkit-transition: right 2s, width 2s;
+  transition: width 2s;
 }
 .thumb button {
-    width: 0px;
-    height: 0px;
-    -webkit-transition: right 2s, width 2s;
-    transition: width 2s;
+  width: 0px;
+  height: 0px;
+  -webkit-transition: right 2s, width 2s;
+  transition: width 2s;
 }
 .principal {
-    background-image: url("/image/camara11.jpg");
-    z-index: 1;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 100vh;
-    background-position: center;
+  background-image: url("/image/camara11.jpg");
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  background-position: center;
 }
-.responsive:hover{
-    background-image: url("/image/camara24.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    -webkit-transition: right 2s, width 2s;
-    transition: width 4s;
-    transition-delay: 4.5s;
-    transform-style: preserve-3d;
-    transition: all 3.5s;
-    
+.responsive:hover {
+  background-image: url("/image/camara24.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  -webkit-transition: right 2s, width 2s;
+  transition: width 4s;
+  transition-delay: 4.5s;
+  transform-style: preserve-3d;
+  transition: all 3.5s;
 }
 
 .principal:hover .thumb {
-    width: 300px;
-    height: 300px;
-    transition-delay: 2s;
+  width: 300px;
+  height: 300px;
+  transition-delay: 2s;
 }
-.boton-polaroid{
-    margin-left: 450px !important;
-    margin-top: -125px !important;
+.boton-polaroid {
+  margin-left: 450px !important;
+  margin-top: -125px !important;
 }
 .thumb .boton-polaroid {
-    display: block;
-    width: 80%;
-    /* height: 95%; */
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/image/polaroid-definitiva5.jpg");
-    background-size: 0, cover;
-    transform-style: preserve-3d;
-    transition: all 0.5s;
+  display: block;
+  width: 80%;
+  /* height: 95%; */
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/image/polaroid-definitiva5.jpg");
+  background-size: 0, cover;
+  transform-style: preserve-3d;
+  transition: all 0.5s;
 }
 .principal:hover .thumb .boton-polaroid {
-    width: 324px;
-    height: 400px;
-    transition-delay: 2.5s;
+  width: 324px;
+  height: 400px;
+  transition-delay: 2.5s;
 }
 .thumb .boton-polaroid span {
-    color: white;
-    text-transform: uppercase;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    font: bold 12px/36px "Open Sans";
-    text-align: center;
-    transform: rotateX(-89.99deg);
-    transform-origin: top;
-    z-index: 1;
+  color: white;
+  text-transform: uppercase;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  font: bold 12px/36px "Open Sans";
+  text-align: center;
+  transform: rotateX(-89.99deg);
+  transform-origin: top;
+  z-index: 1;
 }
 .thumb .boton-polaroid:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 100px 50px rgba(0, 0, 0, 0.5);
-    transition: all 0.5s;
-    opacity: 0.15;
-    transform: rotateX(95deg) translateZ(-80px) scale(0.75);
-    transform-origin: bottom;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 100px 50px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s;
+  opacity: 0.15;
+  transform: rotateX(95deg) translateZ(-80px) scale(0.75);
+  transform-origin: bottom;
 }
 .thumb:hover .boton-polaroid:before {
-    opacity: 1;
-    box-shadow: 0 0 25px 25px rgba(0, 0, 0, 0.5);
-    transform: rotateX(0) translateZ(-60px);
+  opacity: 1;
+  box-shadow: 0 0 25px 25px rgba(0, 0, 0, 0.5);
+  transform: rotateX(0) translateZ(-60px);
 }
 @media screen and (max-width: 580px) {
-    .loginPhoto {
-        margin-left: 0px
-    }
-    .btnLog {
-        margin-left: 55px
-    }
-    .avatarDefault {
-        margin-left: 40px
-    }
-    .submit {
-        margin-left: 50px
-    }
-    .btnSignup1 {
-        margin-left: 40px;
-        margin-top: -12px;
-    }
-    .modal1{
-        margin-top: 0px !important;
-        width: 48% !important;
-        margin-left: 1px !important;
-    }
-    .modal2{
-        width: 47.8% !important;
-        margin-left: 2px !important;
-        top: 50px !important;
-    }
-    .principal{
-        height: 100%;
-        width: 100%
-    }
+  .loginPhoto {
+    margin-left: 0px;
+  }
+  .btnLog {
+    margin-left: 55px;
+  }
+  .avatarDefault {
+    margin-left: 40px;
+  }
+  .submit {
+    margin-left: 50px;
+  }
+  .btnSignup1 {
+    margin-left: 40px;
+    margin-top: -12px;
+  }
+  .modal1 {
+    margin-top: 0px !important;
+    width: 48% !important;
+    margin-left: 1px !important;
+  }
+  .modal2 {
+    width: 47.8% !important;
+    margin-left: 2px !important;
+    top: 50px !important;
+  }
+  .principal {
+    height: 100%;
+    width: 100%;
+  }
 }

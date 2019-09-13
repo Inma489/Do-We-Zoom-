@@ -14,8 +14,10 @@ export const eventReducer = (
     return [...state];
   }
   if (action.type === "UPDATE_EVENT") {
-    const index = state.findIndex(e => e._id === action.event._id); // aqui econtramos el event por el id
-    state[index] = action.event; //state[index], el estado initialState que le llega con la posicion de la url y lo iguala a la action del event,
+    const index = state.findIndex(e => e._id === action.event._id);
+    // here we find the event by the id.
+    state[index] = action.event; //state[index],
+    //initialState state that reaches it with the position of the url and matches it to the action of the event.
   }
   if (action.type === "REMOVE_EVENT") {
     const index = state.findIndex(e => e._id === action.event_id);

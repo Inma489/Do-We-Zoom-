@@ -1,58 +1,64 @@
-.users{
-    height: 55px !important;
+.users {
+  height: 55px !important;
 }
-.usersBackground{
+.usersBackground {
   background-image: url("/image/fondo-4.jpg");
-   background-repeat: no-repeat; 
-     background-size: cover; 
-    background-position: center; 
-    min-height: 100vh
-
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
 }
 .photo {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-.photolist{
-    display:contents !important;
+  display: block;
+  width: 100%;
+  height: auto;
 }
-.overlay{
-  
-    position: absolute; 
-    bottom: 0; 
-    background: rgb(0, 0, 0);
-    background: rgba(0, 0, 0, 0.5); /* Black see-through */
-    color: #f1f1f1; 
-    width: 100%;
-    height: 55% !important;
-    transition: .5s ease;
-    opacity:0;
-    color: white;
-    font-size: 20px;
-    padding: 20px;
-    text-align: center;
+.photolist {
+  display: contents !important;
 }
-.box {
+.overlay {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1;
+  width: 100%;
+  height: 55% !important;
+  transition: 0.5s ease;
+  opacity: 0;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+/* .box {
     position: relative;
     width: 50%;
     max-width: 300px;
-  }
+  } */
 .box:hover .overlay {
-    opacity: 1;
+  opacity: 1;
+}
+.word {
+  color: white;
+}
+.btnDeletePost {
+  margin-left: 101px;
+}
+@media screen and (max-width: 580px) {
+  .btnDeletePost {
+    margin-left: 150px;
   }
-  .word{
-    color: white;
+  .box {
+    margin: 0px !important;
+
+    padding: 0px !important;
   }
-  .btnDeletePost{
-    margin-left: 101px;
+  .overlay {
+    width: 345px;
+    height: 100px !important;
   }
-  @media screen and (max-width: 580px){
-    .btnDeletePost{margin-left: 110px}
-    .box{margin-left: 12px !important}
-    .overlay{width: 279px}
-    
-  }
-  /* @media only screen and (min-width: 768px) {
+}
+/* @media only screen and (min-width: 768px) {
     .btnDeletePost{margin-left: 75px}
   } */

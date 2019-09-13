@@ -4,7 +4,7 @@ import * as actions from "../actions";
 import { RouteComponentProps } from "react-router";
 import { connect } from "react-redux";
 import { IGlobalState } from "../reducers";
-import { updateEvent } from "../actions";
+
 import { Link } from "react-router-dom";
 import "../css/editEvent.css";
 
@@ -45,26 +45,21 @@ const EditEvent: React.FC<
     setDescription(event.target.value);
 
   const event = React.useMemo(
-    // aqui cogemos de redux los usuarios
+    // aqui cogemos de redux los events
     () => props.events.find(e => e._id === props.match.params.eventId),
     [props.match.params.eventId, props.events]
   );
 
   React.useEffect(() => {
-    /*el useEffect es para que me guarde los hooks de inicio cuando cambie el user.
-                    el useEffect es para cuando el memo cambie el user, es decir, cuando cambie el user.
-                    Aunque siempre se hacen la primera vez aunque no cambie lo que hay dentro del array, porque al iniciarse
-                    siempre lo hacen. SIEMPRE SE EJECUTA LA POR LO MENOS LA PRIMERA VEZ*/
+    /*el useEffect  SIEMPRE SE EJECUTA AL MENOS UNA VEZ*/
     if (event) {
       setName(event.name);
       setDate(event.date);
       setPlace(event.place);
       setTime(event.time);
       setDescription(event.description);
-
-      // setPassword(user.password);// me da problemas al darle al boton editar metiendole le setPassword
     }
-  }, [event]); // cada vez que el user cambie, es decir, cada vez que vaya a modificiar mi username
+  }, [event]);
 
   if (!event) {
     return null;
@@ -97,130 +92,117 @@ const EditEvent: React.FC<
 
   return (
     <div className="editBackground">
-    <div className=" section container contEdit">
-      <div className="row">
-        <div className="col s9 m8">
-          <div className="row card-panel">
-            <div className="input-field col s11">
-              <img
-              className="responsive-img"
-                width="300"
-                src={
-                  event.filename
-                    ? "http://localhost:8080/uploads/events/" +
-                      event.filename +
-                      "?" +
-                      Date()
-                    : "/image/largee.gif"
-                }
-                alt="photo"
-              />
-              <div className="file-field input-field">
-                <div className="btn">
-                  <Icon>add_a_photo</Icon>
+      <div className=" section container contEdit">
+        <div className="row">
+          <div className="col s9 m8">
+            <div className="row card-panel">
+              <div className="input-field col s11">
+                <img
+                  className="responsive-img"
+                  width="300"
+                  src={
+                    event.filename
+                      ? "http://localhost:8080/uploads/events/" +
+                        event.filename +
+                        "?" +
+                        Date()
+                      : "/image/largee.gif"
+                  }
+                  alt=""
+                />
+                <div className="file-field input-field">
+                  <div className="btn">
+                    <Icon>add_a_photo</Icon>
+                    <input
+                      type="file"
+                      onChange={updateFile}
+                      accept=".jpg"
+                      required
+                    />
+                  </div>
+                  <div className="file-path-wrapper">
+                    <input className="file-path validate" type="text" />
+                  </div>
+                </div>
+
+                <div className="row">
+                  <label className="letterss">Title</label>
                   <input
-                    type="file"
-                    onChange={updateFile}
-                    accept=".jpg"
+                    type="text"
+                    onChange={updateName}
+                    placeholder="Title"
+                    value={name}
+                    className="validate"
                     required
                   />
                 </div>
-                <div className="file-path-wrapper">
-                  <input className="file-path validate" type="text" />
+
+                <div className="row">
+                  <label className="letterss">Date</label>
+                  <input
+                    type="text"
+                    onChange={updateDate}
+                    value={date}
+                    placeholder="Date"
+                    className="validate"
+                    required
+                  />
+                </div>
+
+                <div className="row">
+                  <label className="letterss">Place</label>
+                  <input
+                    type="text"
+                    onChange={updatePlace}
+                    value={place}
+                    placeholder="Place"
+                    className="validate"
+                    required
+                  />
+                </div>
+
+                <div className="row">
+                  <label className="letterss">Time</label>
+                  <input
+                    type="text"
+                    onChange={updateTime}
+                    value={time}
+                    placeholder="Time"
+                    className="validate"
+                    required
+                  />
+                </div>
+
+                <div className="row">
+                  <label className="letterss">Description</label>
+                  <textarea
+                    onChange={updateDescription}
+                    value={description}
+                    placeholder="Description"
+                    className="materialize-textarea"
+                    data-length="120"
+                    required
+                  />
                 </div>
               </div>
-              
-              {/* <input
-                type="file"
-                onChange={updateFile}
-                className="validate"
-                required
-              /> */}
-              <div className="row">
-              <label className="letterss">Title</label>
-              <input
-                type="text"
-                onChange={updateName}
-                placeholder="Title"
-                value={name}
-                className="validate"
-                required
-            
-              />
-              </div>
-              
-              
-              <div className="row">
-              <label className="letterss">Date</label>
-              <input
-                type="text"
-                onChange={updateDate}
-                value={date}
-                placeholder="Date"
-                className="validate"
-                required
-              />
-              </div>
-              
-              
-              
-              <div className="row">
-              <label className="letterss">Place</label>
-              <input
-                type="text"
-                onChange={updatePlace}
-                value={place}
-                placeholder="Place"
-                className="validate"
-                required
-              />
-              </div>
-              
-              <div className="row">
-              <label className="letterss">Time</label>
-              <input
-                type="text"
-                onChange={updateTime}
-                value={time}
-                placeholder="Time"
-                className="validate"
-                required
-              />
-              </div>
-              
-              
-              <div className="row">
-              <label className="letterss">Description</label>
-              <textarea
-                
-                onChange={updateDescription}
-                value={description}
-                placeholder="Description"
-                className="materialize-textarea"
-                data-length="120"
-                required
-              />
-              </div>
-              
-            
-            </div>
-            <Link
-          to="/events"
-          onClick={() => editEvent(event._id)}
-          className="waves-effect waves-light btn btnevent"
-        >
-          <Icon>save</Icon>
-        </Link>
+              <Link
+                to="/events"
+                onClick={() => editEvent(event._id)}
+                className="waves-effect waves-light btn btnevent"
+              >
+                <Icon>save</Icon>
+              </Link>
 
-        <Link to={"/events"} className="waves-effect waves-light btn btncancelEvent">
-          <Icon>cancel</Icon>
-        </Link>
+              <Link
+                to={"/events"}
+                className="waves-effect waves-light btn btncancelEvent"
+              >
+                <Icon>cancel</Icon>
+              </Link>
+            </div>
           </div>
-         
         </div>
-       
       </div>
-    </div>
     </div>
   );
 };

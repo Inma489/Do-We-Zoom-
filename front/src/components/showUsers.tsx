@@ -24,19 +24,13 @@ const ShowUsers: React.FC<
     fetch("http://localhost:8080/api/users/" + id, {
       method: "DELETE",
       headers: {
-        //   "Content-type": "application/json",
         Authorization: "Bearer " + props.token
       }
     }).then(() => {
       props.removeUser(id);
       props.removePhoto(id);
-
-      // props.history.push("/users"); // me redirije a mi pagina de users// el history.push es para que me redirija al /users
     });
   };
-
-  // const ICanSee =
-  //  props.decoded.admin || props.decoded._id === props.match.params.userId;
 
   return (
     <div className="usersBackground">
@@ -45,7 +39,7 @@ const ShowUsers: React.FC<
           .filter(u =>
             u.username.toLowerCase().startsWith(props.search.toLowerCase())
           )
-          .filter(u => u._id != props.decoded._id)
+          .filter(u => u._id !== props.decoded._id)
           .map(
             (_, i1) =>
               i1 % 3 === 0 && (
@@ -56,7 +50,7 @@ const ShowUsers: React.FC<
                         .toLowerCase()
                         .startsWith(props.search.toLowerCase())
                     )
-                    .filter(u => u._id != props.decoded._id)
+                    .filter(u => u._id !== props.decoded._id)
                     .slice(i1, i1 + 3)
                     .map(u => (
                       <div

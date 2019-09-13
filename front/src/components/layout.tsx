@@ -26,7 +26,6 @@ import "../css/layoutBackGround.css";
 // import "../css/navbar.css";
 import LayoutBackGround from "./layoutBackGround";
 
-
 interface IPropsGlobal {
   setUsers: (users: IUser[]) => void;
   token: string;
@@ -36,25 +35,26 @@ interface IPropsGlobal {
   setSearch: (search: string) => void;
   setPhotos: (photos: IPhoto[]) => void;
 }
-// los componeentes siempre poner la primera letra en mayusculas
+// los componentes siempre ponerle la primera letra en mayusculas
 const LayoutPage: React.FC<
   IPropsGlobal & RouteComponentProps<{ userId: string; photoId: string }>
 > = props => {
-  // esto es lo que habia antes en el post que me genera todos las fotos,
+  // esto es lo que habia antes en el post que me genera todas las fotos,
   // pero me las filtra por el id de usuario
   const listPhotos = () => {
     fetch("http://localhost:8080/api/photos", {
       headers: {
         "Content-type": "application/json",
-        Authorization: "Bearer " + props.token // aqui en el Bearer tengo que meter el espacio para que no me aparezca el Bearer que anteriormente habiamos quitado en nuestro token
+        Authorization: "Bearer " + props.token // aqui en el Bearer tengo que meter el espacio para que no me aparezca
+        //el Bearer que anteriormente habíamos quitado en nuestro token
       }
     }).then(res => {
       if (res.ok) {
-        // si todo esta ok enviame un json con la lista de las fotos, tienes que ser administrador para poder acceder a la lista
+        // si todo esta ok enviame un json con la lista de las fotos.
         res.json().then(photos => {
           props.setPhotos(photos);
 
-          console.log(photos);
+          // console.log(photos);
         });
       }
     });
@@ -64,11 +64,12 @@ const LayoutPage: React.FC<
     fetch("http://localhost:8080/api/users", {
       headers: {
         "Content-type": "application/json",
-        Authorization: "Bearer " + props.token // aqui en el Bearer tengo que meter el espacio para que no me aparezca el Bearer que anteriormente habiamos quitado en nuestro token
+        Authorization: "Bearer " + props.token // aqui en el Bearer tengo que meter el espacio
+        // para que no me aparezca el Bearer que anteriormente habíamos quitado en nuestro token
       }
     }).then(res => {
       if (res.ok) {
-        // si todo esta ok enviame un json con la lista de los usuarios, tienes que ser administrador para poder acceder a la lista
+        // si todo esta ok enviame un json con la lista de los usuarios.
         res.json().then(users => {
           props.setUsers(users);
         });
@@ -81,11 +82,10 @@ const LayoutPage: React.FC<
 
   React.useEffect(() => {
     props.setSearch("");
-  }, [props.location.pathname]);
+  }, [props.location.pathname]); //eslint-disable-line
 
   return (
     <Fragment>
-      {/* <Navbar /> */}
       <Route component={Navbar} />
       <Route path="/" exact component={LayoutBackGround} />
       <div className="routes">

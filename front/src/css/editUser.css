@@ -1,33 +1,29 @@
-
 .formulario {
-    margin-top: 90px;
-    background-color: rgba(255, 255, 255, 0.788) !important;
-    border-radius: 20px 20px 20px 20px !important;
-    
-    
-    
+  margin-top: 90px;
+  background-color: rgba(255, 255, 255, 0.788) !important;
+  border-radius: 20px 20px 20px 20px !important;
 }
-.usersBackground{
-    background-image: url("/image/fondo-4.jpg");
-     background-repeat: no-repeat; 
-       background-size: cover; 
-      background-position: center; 
-      min-height: 100vh
-  
+.usersBackground {
+  background-image: url("/image/fondo-4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+.left {
+  margin-left: 247px;
+}
+.btnRight {
+  margin-left: 5px;
+}
+.caja1 {
+  margin-right: 40px !important;
+}
+@media screen and (max-width: 580px) {
+  .left {
+    margin-left: 85px;
   }
-.left{
-    margin-left: 247px;
-
-}
-.btnRight{
-    margin-left: 5px;
-    
-}
-.caja1{
-    margin-right: 40px !important;
-
-}
-@media screen and (max-width: 580px){
-    .left{margin-left: 85px}
-    .caja1{margin-right: 20px !important}
+  .caja1 {
+    margin-right: 20px !important;
+  }
 }

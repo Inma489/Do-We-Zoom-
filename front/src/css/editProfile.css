@@ -1,38 +1,46 @@
-.editProfile{
-    margin-left: 100px;
-    height: 216px !important;
+.editProfile {
+  margin-left: 100px;
+  height: 216px !important;
 }
-.coleditProfile{
-    margin-left: 55px !important;
+.coleditProfile {
+  margin-left: 55px !important;
 }
-.btneditPerfil{
-    margin-left: 200px;
-    background-color: #424242  !important;
+.btneditPerfil {
+  margin-left: 200px;
+  background-color: #424242 !important;
 }
-.btnfileProfile{
-    margin-left: 160px;
-    background-color: #424242  !important;
+.btnfileProfile {
+  margin-left: 160px;
+  background-color: #424242 !important;
 }
-.contEditProfile{
-    margin-left: 393px !important;
+.contEditProfile {
+  margin-left: 393px !important;
 }
-.btncancelProfile{
-    background-color: #424242 !important;
-    margin-left: 5px;
+.btncancelProfile {
+  background-color: #424242 !important;
+  margin-left: 5px;
 }
-.usersBackground{
-    background-image: url("/image/fondo-4.jpg");
-     background-repeat: no-repeat; 
-       background-size: cover; 
-      background-position: center; 
-      min-height: 100vh
-  
+.usersBackground {
+  background-image: url("/image/fondo-4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+@media screen and (max-width: 580px) {
+  .contEditProfile {
+    margin-left: 20px !important;
   }
-@media screen and (max-width: 580px){
-    .contEditProfile{margin-left: 20px !important}
-    .coleditProfile{margin-left: 20px !important}
-    .btnfileProfile{margin-left: 55px}
-    .editProfile{margin-left: 0px}
-    .btneditPerfil{margin-left: 95px}
-
+  .coleditProfile {
+    margin-left: 20px !important;
+  }
+  .btnfileProfile {
+    margin-left: 55px;
+  }
+  .editProfile {
+    margin-left: 0px;
+  }
+  .btneditPerfil {
+    margin-left: 95px;
+  }
 }

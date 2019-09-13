@@ -21,11 +21,12 @@ const ShowEvents: React.FC<IPropsGlobal & RouteComponentProps> = props => {
     fetch("http://localhost:8080/api/events/", {
       headers: {
         "Content-type": "application/json",
-        Authorization: "Bearer " + props.token // aqui en el Bearer tengo que meter el espacio para que no me aparezca el Bearer que anteriormente habiamos quitado en nuestro token
+        Authorization: "Bearer " + props.token // aqui en el Bearer tengo que meter el espacio
+        // para que no me aparezca el Bearer que anteriormente habiamos quitado en nuestro token
       }
     }).then(res => {
       if (res.ok) {
-        // si todo esta ok enviame un json con la lista de los usuarios, tienes que ser administrador para poder acceder a la lista
+        // si todo esta ok enviame un json con la lista de los events,
         res.json().then(events => {
           props.setEvent(events);
         });
@@ -38,12 +39,10 @@ const ShowEvents: React.FC<IPropsGlobal & RouteComponentProps> = props => {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
-        Authorization: "Bearer " + props.token // aqui en el Bearer tengo que meter el espacio para que no me aparezca el Bearer que anteriormente habiamos quitado en nuestro token
+        Authorization: "Bearer " + props.token
       }
     }).then(res => {
       if (res.ok) {
-        // si todo esta ok enviame un json con la lista de las fotos, tienes que ser administrador para poder acceder a la lista
-
         props.removeEvent(event_id);
         props.history.push("/events");
       }
@@ -101,6 +100,7 @@ const ShowEvents: React.FC<IPropsGlobal & RouteComponentProps> = props => {
                                     e.filename
                                   : "/image/largee.gif"
                               }
+                              alt=""
                             />
                           </div>
                           <div className="card-stacked hoverable">

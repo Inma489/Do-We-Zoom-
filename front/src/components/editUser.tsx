@@ -19,17 +19,17 @@ const EditUser: React.FC<
   IPropsGlobal & RouteComponentProps<{ userId: string }>
 > = props => {
   const { Icon } = require("react-materialize");
-  const [file, setFile] = React.useState();
+  const [file, setFile] = React.useState(); //eslint-disable-line
   const [username, setUsername] = React.useState("");
   const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [updated, setUpdated] = React.useState(false);
-  const inputFileRef = React.createRef<any>();
+  const [password] = React.useState("");
+  // const [updated, setUpdated] = React.useState(false);
+  // const inputFileRef = React.createRef<any>();
 
-  const handleFileUpload = (event: any) => setFile(event.target.files[0]);
+  // const handleFileUpload = (event: any) => setFile(event.target.files[0]);
 
-  const updateFile = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setFile(event.target.files![0]);
+  // const updateFile = (event: React.ChangeEvent<HTMLInputElement>) =>
+  //   setFile(event.target.files![0]);
 
   const updateUsername = (event: React.ChangeEvent<HTMLInputElement>) =>
     setUsername(event.target.value);
@@ -37,8 +37,8 @@ const EditUser: React.FC<
   const updateEmail = (event: React.ChangeEvent<HTMLInputElement>) =>
     setEmail(event.target.value);
 
-  const updatePassword = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setPassword(event.target.value);
+  // const updatePassword = (event: React.ChangeEvent<HTMLInputElement>) =>
+  //   setPassword(event.target.value);
 
   const user = React.useMemo(
     // aqui cogemos de redux los usuarios
@@ -47,38 +47,15 @@ const EditUser: React.FC<
   );
 
   React.useEffect(() => {
-    /*el useEffect es para que me guarde los hooks de inicio cuando cambie el user.
-            el useEffect es para cuando el memo cambie el user, es decir, cuando cambie el user.
-            Aunque siempre se hacen la primera vez aunque no cambie lo que hay dentro del array, porque al iniciarse
-            siempre lo hacen. SIEMPRE SE EJECUTA LA POR LO MENOS LA PRIMERA VEZ*/
     if (user) {
       setUsername(user.username);
       setEmail(user.email);
-
-      // setPassword(user.password);// me da problemas al darle al boton editar metiendole le setPassword
     }
-  }, [user]); // cada vez que el user cambie, es decir, cada vez que vaya a modificiar mi username
+  }, [user]);
 
   if (!user) {
-    /* esto se hacae porque puede ser que renderice y aún no tena ningún user, entonces hacemos un 
-            return null y no me haria el return de mi variable user que estaria vacio, pero los gauardo en mis hooks.
-            Asi en el value de mis inputs pongo mis hooks que estan iniciadas ya, porque nos hemos asegurado de que 
-            user exista y entonces en useEffect ya inició todos los hooks*/
-
     return null;
   }
-  // esto es para la foto de perfil del usuario
-  // const send = () => {
-  //   const data = new FormData();
-  //   data.append("file", file);
-  //   fetch("http://localhost:8080/api/users/uploadAvatar", {
-  //     method: "POST",
-  //     headers: {
-  //       Authorization: "Bearer " + props.token
-  //     },
-  //     body: data
-  //   }).then(() => setUpdated(v => !v));
-  // };
 
   const edit = () => {
     const data = new FormData();
@@ -104,76 +81,80 @@ const EditUser: React.FC<
             res
               .json()
               .then(user => {
-                console.log(user);
-                props.setDecoded(user);
-                props.updateUser(user, user._id);
-
-                props.history.push("/myProfile"); // me redirije a mi pagina showUsers
+                // console.log(user);
+                if (props.decoded.admin && user._id !== props.decoded.admin) {
+                  props.updateUser(user, user._id);
+                } else if (
+                  props.decoded.admin &&
+                  user._id === props.decoded.admin
+                ) {
+                  props.setDecoded(user);
+                  props.updateUser(user, user._id);
+                }
               })
               .catch(err => {
-                console.log("error " + err);
+                // console.log("error " + err);
               });
           } else {
-            // res.send("error");
-            console.log("error");
+            // console.log("error");
           }
         })
         .catch(err => {
-          //   response.status(400).send("error editar ," + err);
-          console.log("error editar ," + err);
+          // console.log("error editar ," + err);
         });
     }
   };
 
   return (
-    // aqui pondremos el nuevo formulario metido en card
-<div className="usersBackground">
-    <div className="section container caja1">
-      <div className="row">
-        <div className="col s12 m8">
-          <div className="row card-panel formulario">
-            <div className="input-field col s12">
-              <div className="row">
-                <div className="col s12">
-                  <label>Username</label>
-                  <input
-                    value={username}
-                    onChange={updateUsername}
-                    type="text"
-                    className="validate"
-                    required
-                  />
+    <div className="usersBackground">
+      <div className="section container caja1">
+        <div className="row">
+          <div className="col s12 m8">
+            <div className="row card-panel formulario">
+              <div className="input-field col s12">
+                <div className="row">
+                  <div className="col s12">
+                    <label>Username</label>
+                    <input
+                      value={username}
+                      onChange={updateUsername}
+                      type="text"
+                      className="validate"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col s12">
+                    <label>Email</label>
+                    <input
+                      value={email}
+                      onChange={updateEmail}
+                      type="email"
+                      className="validate"
+                      required
+                    />
+                  </div>
                 </div>
               </div>
-              <div className="row">
-                <div className="col s12">
-                  <label>Email</label>
-                  <input
-                    value={email}
-                    onChange={updateEmail}
-                    type="email"
-                    className="validate"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-            <Link
-              to={"/users"}
-              onClick={edit}
-              className="waves-effect waves-light btn left"
-            >
-              <Icon>save</Icon>
-            </Link>
+              <Link
+                to={"/users"}
+                onClick={edit}
+                className="waves-effect waves-light btn left"
+              >
+                <Icon>save</Icon>
+              </Link>
 
-            <Link to={"/users"} className="waves-effect waves-light btn btnRight">
-              <Icon>cancel</Icon>
-            </Link>
+              <Link
+                to={"/users"}
+                className="waves-effect waves-light btn btnRight"
+              >
+                <Icon>cancel</Icon>
+              </Link>
+            </div>
           </div>
-         
         </div>
       </div>
-    </div>
     </div>
   );
 };

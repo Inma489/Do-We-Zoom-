@@ -1,23 +1,24 @@
-.fileaddphoto{
-    margin-left: 90px;
+.fileaddphoto {
+  margin-left: 90px;
 }
-.contaddphoto{
-    margin-left: 400px !important;
+.contaddphoto {
+  margin-left: 400px !important;
 }
-.btnsavePhoto{
-    margin-left: 50px;
+.btnsavePhoto {
+  margin-left: 50px;
 }
-.letters{
-    color: rgb(48, 46, 46)
+.letters {
+  color: rgb(48, 46, 46);
 }
-.usersBackground{
-    background-image: url("/image/fondo-4.jpg");
-     background-repeat: no-repeat; 
-       background-size: cover; 
-      background-position: center; 
-      min-height: 100vh
-  
+.usersBackground {
+  background-image: url("/image/fondo-4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+@media screen and (max-width: 580px) {
+  .contaddphoto {
+    margin-left: 20px !important;
   }
-@media screen and (max-width:580px){
-    .contaddphoto{margin-left: 20px !important}
 }

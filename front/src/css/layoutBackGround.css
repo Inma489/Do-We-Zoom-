@@ -1,22 +1,17 @@
-.backGroundImageLayout{
-    background-image: url("/image/fondo-definitivo.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 89.83vh;
-    background-position: center
+.backGroundImageLayout {
+  background-image: url("/image/fondo-definitivo.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
 }
-.header{
-    color : white;
-    display: flex;
-    
-    
-    
-    
+.header {
+  color: white;
+  display: flex;
 }
-.titleback{
-    font-size: 50px;
-    margin-top: 436px;
-    margin-left: 300px;
-    box-shadow: 10%
-    
+.titleback {
+  font-size: 50px;
+  margin-top: 436px;
+  margin-left: 300px;
+  box-shadow: 10%;
 }

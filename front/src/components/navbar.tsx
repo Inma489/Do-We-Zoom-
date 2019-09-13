@@ -18,9 +18,6 @@ interface IPropsGlobal {
 }
 
 const Navbar: React.FC<IPropsGlobal & RouteComponentProps> = props => {
-  // const Navbar: React.FC<IPropsGlobal> = props => {
-
-  // const { Button, Icon, Divider, Dropdown } = require("react-materialize");
   const user = props.users.find(u => u._id === props.decoded._id);
   const param = props.location.pathname;
   const onSearchChange = (e: any) => {
@@ -29,7 +26,7 @@ const Navbar: React.FC<IPropsGlobal & RouteComponentProps> = props => {
 
   const logOut = () => {
     props.Reset();
-    localStorage.removeItem("token"); // para que elimine el token de la local en el localstorage
+    localStorage.removeItem("token"); // para que elimine el token del localstorage
   };
 
   if (!user) {
@@ -37,21 +34,19 @@ const Navbar: React.FC<IPropsGlobal & RouteComponentProps> = props => {
   }
 
   return (
-    // creamos de nuevo un navbar
-
     <div>
       <materialize.Navbar
         brand={
-          <materialize.NavItem>
-            <Link to="/">
-              <img
-                className="responsive-img object"
-                width="70"
-                src="/image/objetivo.png"
-                alt="logo"
-              />
-            </Link>
-          </materialize.NavItem>
+          // <materialize.NavItem>
+          <Link to="/">
+            <img
+              className="responsive-img object"
+              width="70"
+              src="/image/objetivo.png"
+              alt="logo"
+            />
+          </Link>
+          // </materialize.NavItem>
         }
         className="black nav"
         fixed={true}
@@ -65,8 +60,6 @@ const Navbar: React.FC<IPropsGlobal & RouteComponentProps> = props => {
               : true
           }
         >
-          {/* <materialize.NavItem className="searcha"> */}
-
           <input
             id="search"
             type="search"
@@ -75,26 +68,26 @@ const Navbar: React.FC<IPropsGlobal & RouteComponentProps> = props => {
           />
           <materialize.Icon className="iconsearch">search</materialize.Icon>
         </materialize.NavItem>
-        <materialize.NavItem>
-          <Link className="media" to="/">
-            Home
-          </Link>
-        </materialize.NavItem>
-        <materialize.NavItem>
-          <Link className="media" to="/users">
-            Users
-          </Link>
-        </materialize.NavItem>
-        <materialize.NavItem>
-          <Link className="media" to="/posts">
-            Posts
-          </Link>
-        </materialize.NavItem>
-        <materialize.NavItem>
-          <Link className="media" to="/events">
-            Events
-          </Link>
-        </materialize.NavItem>
+        {/* <materialize.NavItem> */}
+        <Link className="media" to="/">
+          Home
+        </Link>
+        {/* </materialize.NavItem> */}
+        {/* <materialize.NavItem> */}
+        <Link className="media" to="/users">
+          Users
+        </Link>
+        {/* </materialize.NavItem> */}
+        {/* <materialize.NavItem> */}
+        <Link className="media" to="/posts">
+          Posts
+        </Link>
+        {/* </materialize.NavItem> */}
+        {/* <materialize.NavItem> */}
+        <Link className="media" to="/events">
+          Events
+        </Link>
+        {/* </materialize.NavItem> */}
         <materialize.NavItem>
           <img
             width="60"
@@ -142,10 +135,6 @@ const Navbar: React.FC<IPropsGlobal & RouteComponentProps> = props => {
         </materialize.Dropdown>
       </materialize.Navbar>
     </div>
-
-    //si no hay token muestrame estas cosas si no muestrame otras
-    // para darle opciones a mi dropdown : options={{hover:true}}
-    // aqui comenzare otro navbar de nuevo por 4 vez o 5...
   );
 };
 const mapStateToProps = (state: IGlobalState) => ({

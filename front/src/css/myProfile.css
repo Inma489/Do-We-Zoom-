@@ -1,92 +1,90 @@
-
 .container {
-    padding: 0 0.5rem;
-    margin: 0 auto;
-    max-width: 100% !important;
+  padding: 0 0.5rem;
+  margin: 0 auto;
+  max-width: 100% !important;
 }
-#content{
-    display: block;
+#content {
+  display: block;
 }
 .section {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
-.usersBackground{
-    background-image: url("/image/fondo-4.jpg");
-     background-repeat: no-repeat; 
-       background-size: cover; 
-      background-position: center; 
-      min-height: 100vh
-  
-  }
+.usersBackground {
+  background-image: url("/image/fondo-4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
 .card1 {
-    position: relative;
-    overflow: hidden;
-    margin: 0.5rem 0 1rem 0;
-    background-color: #fff;
-    /* border-radius: 2px; */
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    border-radius: 10px 10px 10px 10px
-    
+  position: relative;
+  overflow: hidden;
+  margin: 0.5rem 0 1rem 0;
+  background-color: #fff;
+  /* border-radius: 2px; */
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 10px 10px 10px 10px;
 }
 #profile-page-header .card-image {
-    height: 250px;
+  height: 250px;
 }
 .waves-block {
-    display: block;
+  display: block;
 }
 .card1 .card-image img {
-    border-radius: 2px 2px 0 0;
-    position: relative;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 100%;
+  border-radius: 2px 2px 0 0;
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
 }
 #profile-page-header .card-profile-image {
-    width: 110px;
-    position: absolute;
-    top: 190px;
-    z-index: 1;
-    left: 40px;
-    margin: 0;
+  width: 110px;
+  position: absolute;
+  top: 190px;
+  z-index: 1;
+  left: 40px;
+  margin: 0;
 }
- .foto-perfil{
-     /* width: 150px !important; */
-    max-width: 100%;
-    height: 103px !important;
-    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
+.foto-perfil {
+  /* width: 150px !important; */
+  max-width: 100%;
+  height: 103px !important;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.fondo-perfil{
-    height: 364px !important;
+.fondo-perfil {
+  height: 364px !important;
 }
-.title1{
-    margin-left: 21px;
+.title1 {
+  margin-left: 21px;
 }
-.title2{
-    margin-left: 13px;
+.title2 {
+  margin-left: 13px;
 }
-.btneditprofile{
-    margin-left: 815px;
-    margin-bottom: 5px;
-    background-color: #424242  !important;
+.btneditprofile {
+  margin-left: 815px;
+  margin-bottom: 5px;
+  background-color: #424242 !important;
 }
-.btndeleteacount{
-    margin-left: 5px;
-    margin-bottom: 5px;
-    background-color: #424242 !important;
+.btndeleteacount {
+  margin-left: 5px;
+  margin-bottom: 5px;
+  background-color: #424242 !important;
 }
-@media screen and (max-width:580px){
-    .btneditprofile{margin-left: 212px}
-    .title1{
-        margin-left: 0px;
-        margin-bottom: 21px;
-        margin-top: 58px;
-    }
-    .title2{
-        margin-left: -24px;
-    }
+@media screen and (max-width: 580px) {
+  .btneditprofile {
+    margin-left: 212px;
+  }
+  .title1 {
+    margin-left: 0px;
+    margin-bottom: 21px;
+    margin-top: 58px;
+  }
+  .title2 {
+    margin-left: -24px;
+  }
 }
