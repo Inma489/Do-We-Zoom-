@@ -5,23 +5,21 @@ const photoModel = require("../model/photoModel");
 const userModel = require("../model/userModel");
 const multer = require("multer");
 
-//VAMOS A OBTENER LISTADO DE FOTOS
-//Tanto el admin podra listar fotos como el usuario podra ver listado de sus fotos
+//We will get list of photos.
+//Both, the admin can list photos and the user will be able to see list of photos.
 
 router.get("/", async (req, res) => {
-  // req.headers.authorization // nos devuelve el token
-  console.log(req.headers.authorization); // aqui comprobamos que el token que estamos enviando con postman es correcto o no
+  // req.headers.authorization // returns the token to us.
+  console.log(req.headers.authorization);
+  // here we verify that the token we are sending is correct or not.
 
-  // console.log(token);
   try {
-    const token = req.headers.authorization.replace("Bearer ", ""); // esto es para que nos quite del console el Bearer que nos aparece al lado del token
-    let verification = jwt.verify(token, "mysecret"); // aqui entra tanto si es administrador como si no
-    // console.log(verification);
-    // si no esta no esta verificado y no es administrador// este admin viene de la base de datos
-    // res.status(401).send('You are not an admin');// mee dice que si no es un administrador me muestre el estado de que no lo es
+    const token = req.headers.authorization.replace("Bearer ", "");
+    let verification = jwt.verify(token, "mysecret");
+
     if (!verification.admin) {
-      // si no eres admin muestrame esto:
-      //con el async y con el await ya no tengo que poner el .then
+      // if you're not admin show me this:
+      //with the async and with the await I no longer have to put the .then
 
       const photo = await photoModel.find(
         {},
@@ -35,10 +33,11 @@ router.get("/", async (req, res) => {
           localization: 1
         }
       );
-      // el 1 es para que me muestre las cosas y el 0 es cuando no quiero que me las muestre
+      //the 1 is for you to show me things
+      //and 0 is when I don't want you to show them to me.
       res.send(photo);
     } else {
-      // si eres admin muestrame esto:
+      // if you are an admin show me this:
       const photo = await photoModel.find(
         {},
         {
@@ -54,15 +53,12 @@ router.get("/", async (req, res) => {
       res.send(photo);
     }
   } catch (err) {
-    // si no es ni administrador ni esta verirficado mandame un error en el que me diga que no tienes permiso para acceder
     console.log(err);
     res.status(401).send("You don't have permission to get photos");
   }
 });
 
-
-// las fotos que suban los usuarios si las voy a gaurdar en la base de datos con
-//el filename
+// photos uploaded by users will be saved to the database with the filename.
 
 var photosStorage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -73,24 +69,25 @@ var photosStorage = multer.diskStorage({
   }
 });
 
-//AHORA VAMOS A CREAR UNA FOTO con MULTERRRRR
+//Now we will create/add a photo with multer.
 
 router.post(
   "/add",
   multer({ storage: photosStorage }).single("file"),
   async (req, res) => {
-    //ME VA HACER FALTA EL TOKEN PARA CREAR FOTOS PARA EL ALBUM, PARA EL ADMIN NO PUEDE CREAR FOTOS// EL USUARIO SI
-    const token = req.headers.authorization.replace("Bearer ", ""); // esto es para que nos quite del console el Bearer que nos aparece al lado del token
+    //I will fail the token to create/add photos.
+
+    const token = req.headers.authorization.replace("Bearer ", "");
     const newPhoto = req.body;
     console.log("newPhoto");
 
     try {
-      let verification = jwt.verify(token, "mysecret"); // verificacion token
+      let verification = jwt.verify(token, "mysecret");
       console.log(verification);
 
       if (!verification.admin) {
         const photo = await new photoModel({
-          //aqui nos crea una photo nueva
+          //here,we create a new photo.
           ...(newPhoto.name != null && { name: newPhoto.name }),
           camera: newPhoto.camera,
           ...(req.file &&
@@ -99,11 +96,11 @@ router.post(
           ...(newPhoto.localization != null && {
             localization: newPhoto.localization
           }),
-          owner: verification._id //  poner el owner en postman y meter el id a mano luego en el front sera distinto
+          owner: verification._id
         });
         console.log(photo);
         photo.save((error, result) => {
-          //aqui manejo errores, si me da un error muestramelos
+          //here, I handle errors if I fail to show it.
           if (error) {
             if (error.code === 11000) {
               console.log(error);
@@ -126,7 +123,7 @@ router.post(
   }
 );
 
-//AHORA VOY A EDITAR UNA PHOTO SOLAMENTE SI ERES USUARIOS PODRAS EDITAR SI ERES ADMIN NO
+//Now, I will edit a photo only if you are a user you can edit, if you are admin,no.
 
 router.put(
   "/:id",
@@ -137,9 +134,9 @@ router.put(
     const editPhoto = req.body;
     console.log(token);
     try {
-      let verification = jwt.verify(token, "mysecret"); // verificacion token
+      let verification = jwt.verify(token, "mysecret"); // verification token
       if (!verification.admin) {
-        // si eres usuario podras editar
+        // if you are a user, you can edit.
         await photoModel.findOneAndUpdate(
           {
             _id: idPhoto
@@ -164,14 +161,12 @@ router.put(
   }
 );
 
-//AHORA HAREMOS ELIMINAR UNA FOTO, EL ADMIN PODRA ELIMINARLA Y EL USER TAMBIEN
+//here, we will delete a photo, the admin may delete it and the user too.
 
 router.delete("/:id", (req, res) => {
   const token = req.headers.authorization.replace("Bearer ", "");
   const idPhoto = req.params.id;
   try {
-    //meto la verificacion de si estas logueado y me da el token
-
     let verification = jwt.verify(token, "mysecret");
     if (verification.admin) {
       photoModel.findOneAndDelete({ _id: idPhoto }, (error, result) => {

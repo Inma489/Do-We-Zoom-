@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// here, we create event model
 const eventSchema = new Schema(
   {
     admin: { type: Schema.Types.ObjectId, ref: "userModel" },
@@ -11,7 +12,7 @@ const eventSchema = new Schema(
     time: { type: String, required: true },
     description: String
   },
-  { collection: "events" }
+  { collection: "events" } // our collection from Robot3T.
 );
 
 module.exports = mongoose.model("eventModel", eventSchema);

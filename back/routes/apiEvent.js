@@ -3,16 +3,16 @@ var router = express.Router();
 var jwt = require("jsonwebtoken");
 const multer = require("multer");
 const eventModel = require("../model/eventModel");
-//LISTAR TODOS LOS EVENTOS LOS CUALES EL DAMINSITRADOR PODRA VERLOS Y EL USUARIO TAMBIEN
-// SOLO VERLOS LOS USUARIOS Y CREAR,ELIMINAR Y MODIFICAR LO HARA EL ADMINISTRADOR
+
+//List all events that can be edited and deleted
+//by the administrator and only viewed by the user.
 
 router.get("/", async (req, res) => {
   console.log(req.headers.authorization);
   try {
     const token = req.headers.authorization.replace("Bearer ", "");
-    const verification = jwt.verify(token, "mysecret"); // aqui entra tanto si es administrador como si no
-    //si eres administrador podras ver todo lo que le ponga, si no..el usuario
-    //solo podra ver las cosas
+    const verification = jwt.verify(token, "mysecret");
+
     if (verification.admin) {
       const event = await eventModel.find(
         {},
@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
       );
       res.send(event);
     } else {
-      // si no eres admin, es decir si eres un usuario muestrame esto
+      // If you're not admin, show me this:
       const event = await eventModel.find(
         {},
         {
@@ -38,33 +38,31 @@ router.get("/", async (req, res) => {
       res.send(event);
     }
   } catch (error) {
-    // si no es ni administrador ni esta verirficado mandame un error en el que me diga que no tienes permiso para acceder
+    // if you're not an administrator, or a verified user, send me an error
+    //that says you don't have permission to list events.
     console.log(error);
     res.status(401).send("You don't have permission to get events");
   }
 });
 
-//MOSTRAR UN EVENTO POR EL ID
+//SHOW EVENT BY ID
 router.get("/:id", async (req, res) => {
-  const token = req.headers.authorization.replace("Bearer ", ""); // esto es para que nos quite del console el Bearer que nos aparece al lado del token
+  const token = req.headers.authorization.replace("Bearer ", "");
+
   try {
     const verification = jwt.verify(token, "mysecret"); // verificacion token
-    // console.log(token);
-    console.log(verification);
+
     const eventId = req.params.id;
-    // aqui es donde no me muestra el evento si le pongo un find()
-    //lo que tenia puesto es findbyid
-    //PREGUNTAR A ANGEL
-    // PREGUNTAR A ANGELLLL IMPORTANTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!!!!!!!
+
     const event = await eventModel.findById(eventId);
-    res.send(event); // me imprime esa evento correctamente
+    res.send(event);
   } catch (err) {
     res.status(401).send("You don't have permission to show this event " + err);
   }
 });
 
-// las fotos que suban los usuarios si las voy a gaurdar en la base de datos con
-//el filename
+//path to save the photos to an uploads folder
+//on the server and the database filename.
 
 var eventStorage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -75,34 +73,37 @@ var eventStorage = multer.diskStorage({
   }
 });
 
-//AHORA VAMOS A CREAR UN EVENTO
+//CREATE EVENT
 
 router.post(
   "/add",
   multer({ storage: eventStorage }).single("file"),
   async (req, res) => {
-    //ME VA HACER FALTA EL TOKEN PARA CREAR eventod PARA EL admin , PARA EL usuario NO PUEDE CREAR eventos
-    const token = req.headers.authorization.replace("Bearer ", ""); // esto es para que nos quite del console el Bearer que nos aparece al lado del token
+    //I need the token to be able to create events for the admin.
+    //The user cannot create events.
+    const token = req.headers.authorization.replace("Bearer ", "");
     const newEvent = req.body;
     console.log(newEvent);
     try {
-      const verification = jwt.verify(token, "mysecret"); // verificacion token
+      const verification = jwt.verify(token, "mysecret"); // verification token.
 
       if (verification.admin) {
         const event = await new eventModel({
-          //aqui nos crea un album nuevo
-          ...(newEvent.name != null && {name : newEvent.name}),
+          //here,we create a new event.
+          ...(newEvent.name != null && { name: newEvent.name }),
           ...(req.file &&
             req.file.filename != "" && { filename: req.file.filename }),
           ...(!req.file && { filename: "" }),
           admin: verification._id,
-          ...(newEvent.date != null && {date: newEvent.date}),
-          ...(newEvent.place != null && {place: newEvent.place}),
-          ...(newEvent.time != null && {time: newEvent.time}),
-          ...(newEvent.description != null && {description: newEvent.description})
+          ...(newEvent.date != null && { date: newEvent.date }),
+          ...(newEvent.place != null && { place: newEvent.place }),
+          ...(newEvent.time != null && { time: newEvent.time }),
+          ...(newEvent.description != null && {
+            description: newEvent.description
+          })
         });
         event.save((error, result) => {
-          //aqui manejo errores, si me da un error muestramelos
+          //here I handle errors, if you give me an error we show it.
           if (error) {
             if (error.code === 11000) {
               console.log(error);
@@ -125,23 +126,23 @@ router.post(
   }
 );
 
-// ahora creamos la funcion de poder editar un event, si eres usuario no podras editar el evento y si eres admin si
-// con foto
+// Here, we will edit an event, if you are a user you will not be able to edit the event
+//and if you are admin if you can do it and modify its photo as well.
 
 router.put(
   "/:id",
   multer({ storage: eventStorage }).single("file"),
   async (req, res) => {
-    const token = req.headers.authorization.replace("Bearer ", ""); // esto es para que nos quite del console el Bearer que nos aparece al lado del token
+    const token = req.headers.authorization.replace("Bearer ", "");
     const idEvent = req.params.id;
     const editEvent = req.body;
     console.log(token);
     try {
-      const verification = jwt.verify(token, "mysecret"); // verificacion token
+      const verification = jwt.verify(token, "mysecret"); // verification token
       if (verification.admin) {
-        // si eres admin podrás editar tu evento
+        //if you're admin you can edit the event.
 
-        //aqui me ecuntra el evento por el id y me lo actualiza
+        //here ,I get the event by the id and update it.
         await eventModel.findOneAndUpdate(
           { _id: idEvent },
           {
@@ -155,7 +156,9 @@ router.put(
           }
         );
 
-        const event = await eventModel.findById(idEvent); // el idEvent nunca irá entre llaves aqui porq no devuelve un objeto
+        const event = await eventModel.findById(idEvent);
+        // the idEvent will never be enclosed in braces here,
+        //so it does not return an object.
 
         res.send(event);
       } else {
@@ -171,7 +174,7 @@ router.put(
   }
 );
 
-// // ahora voy a eliminar un evento y solo el admin podrá borrar los eventos
+//here, we're going to delete an event and only the admin will be able to do it.
 
 router.delete("/:id", (req, res) => {
   const token = req.headers.authorization.replace("Bearer ", "");

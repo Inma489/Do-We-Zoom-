@@ -12,7 +12,7 @@ var app = express();
 
 const apiRouter = require("./routes/api");
 
-//conecter to mongoose
+//conected to mongoose
 
 app.use(cors());
 app.use(logger("dev"));

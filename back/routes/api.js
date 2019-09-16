@@ -1,27 +1,24 @@
 var express = require("express");
 var router = express.Router();
 
-//requerirlas (sólo las rutas de back)
+//require them (back paths only).
 
 const apiAuthRouter = require("./apiAuth");
 const apiUserRouter = require("./apiUser");
 const apiPhotoRouter = require("./apiPhoto");
-const apiEventRouter = require("./apiEvent");;
+const apiEventRouter = require("./apiEvent");
 
-//llamarlas
-// (/users) es la segunda parte de la url
+//here, we call the routes.
 
-router.use("/users", apiUserRouter); // usamos los router que hemos creado en las diferentes rutas
-//en este caso es router.use("/users");
+// (/users) it's the second part of the url.
+//we use router.use so we can call apiUser.
+router.use("/users", apiUserRouter); // we use the routers we've created on different routes.
+// we use router.use so we can call apiAuth.
 router.use("/auth", apiAuthRouter);
-//aqui requiero a lo que voy a utilizar que es la ruta photos
+//we use router.use so we can call apiphotos.
 router.use("/photos", apiPhotoRouter);
-//aqui requiero la apievent para usarla
+//we use router.use so we can call apievent.
 router.use("/events", apiEventRouter);
 
-//exportar
-//aqui van todas las rutas de tu carpeta routes
-//ej: apiUsers,apiAuth, etc
-//esta api.js va a app.js
-
+//exportar router
 module.exports = router;
